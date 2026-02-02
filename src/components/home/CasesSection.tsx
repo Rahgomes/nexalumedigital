@@ -8,13 +8,13 @@ export default function CasesSection() {
   return (
     <section
       id="cases"
-      className="py-32 bg-background-dark overflow-hidden"
+      className="py-16 md:py-24 lg:py-32 bg-background-dark overflow-hidden"
       aria-labelledby="cases-heading"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         {/* Section Header */}
         <motion.div
-          className="mb-16"
+          className="mb-10 md:mb-16"
           variants={fadeIn}
           initial="hidden"
           whileInView="visible"
@@ -23,14 +23,14 @@ export default function CasesSection() {
           <h3 className="text-accent-cyan font-bold tracking-[0.2em] uppercase text-sm mb-4">
             Sucesso Comprovado
           </h3>
-          <h2 id="cases-heading" className="text-4xl font-black text-white font-heading">
+          <h2 id="cases-heading" className="text-3xl sm:text-4xl font-black text-white font-heading">
             Resultados que Falam
           </h2>
         </motion.div>
 
         {/* Case Cards */}
         <motion.div
-          className="grid md:grid-cols-2 gap-10"
+          className="grid md:grid-cols-2 gap-6 md:gap-10"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -54,11 +54,11 @@ export default function CasesSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent" />
 
               {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <div className="inline-block px-3 py-1 rounded-full bg-accent-cyan/20 border border-accent-cyan/30 text-accent-cyan text-xs font-black mb-4">
+              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8">
+                <div className="inline-block px-3 py-1 rounded-full bg-accent-cyan/20 border border-accent-cyan/30 text-accent-cyan text-xs font-black mb-3 sm:mb-4">
                   {caseItem.metric}
                 </div>
-                <h3 className="text-2xl font-bold mb-2 text-white">
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 text-white">
                   {caseItem.client}
                 </h3>
                 <p className="text-metal-gray text-sm max-w-sm">

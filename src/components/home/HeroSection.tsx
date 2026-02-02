@@ -5,18 +5,17 @@ import { ArrowRight } from "lucide-react";
 import { heroTextReveal, fadeIn, staggerContainer } from "@/lib/animations";
 import { HERO_IMAGE_URL } from "@/lib/constants";
 import Button from "@/components/ui/Button";
-import DiagnosticFormDialog from "@/components/ui/DiagnosticFormDialog";
 
 export default function HeroSection() {
   return (
     <section
-      className="relative hero-gradient overflow-hidden pt-20 pb-32"
+      className="relative hero-gradient overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32"
       aria-labelledby="hero-heading"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
         {/* Text Content */}
         <motion.div
-          className="relative z-10 space-y-8"
+          className="relative z-10 space-y-6 lg:space-y-8"
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
@@ -37,7 +36,7 @@ export default function HeroSection() {
           <motion.h1
             id="hero-heading"
             variants={heroTextReveal}
-            className="text-5xl lg:text-7xl font-black leading-[1.08] text-white font-heading"
+            className="text-3xl sm:text-5xl lg:text-7xl font-black leading-[1.08] text-white font-heading"
           >
             Transformamos presenca digital em{" "}
             <span className="gradient-highlight-text">resultados reais.</span>
@@ -46,24 +45,24 @@ export default function HeroSection() {
           {/* Subtitle */}
           <motion.p
             variants={heroTextReveal}
-            className="text-lg lg:text-xl text-metal-gray max-w-xl leading-relaxed"
+            className="text-base sm:text-lg lg:text-xl text-metal-gray max-w-xl leading-relaxed"
           >
             Sistemas inteligentes e interfaces de alta performance projetados
             para escalar seu negocio com o poder da inteligencia artificial.
           </motion.p>
 
           {/* CTAs */}
-          <motion.div variants={heroTextReveal} className="flex flex-wrap gap-4 pt-4">
-            <DiagnosticFormDialog
-              trigger={
-                <Button variant="primary" icon={ArrowRight}>
-                  Comecar Agora
-                </Button>
-              }
-            />
-            <Button variant="secondary">
-              <a href="#services">Saiba Mais</a>
-            </Button>
+          <motion.div variants={heroTextReveal} className="flex flex-col sm:flex-row gap-4 pt-4">
+            <a href="#contact">
+              <Button variant="primary" icon={ArrowRight} className="w-full sm:w-auto">
+                Comecar Agora
+              </Button>
+            </a>
+            <a href="#services">
+              <Button variant="secondary" className="w-full sm:w-auto">
+                Saiba Mais
+              </Button>
+            </a>
           </motion.div>
         </motion.div>
 
@@ -76,7 +75,7 @@ export default function HeroSection() {
           transition={{ delay: 0.3 }}
         >
           {/* Background glow */}
-          <div className="absolute w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10 animate-pulse" />
+          <div className="absolute w-75 h-75 md:w-125 md:h-125 bg-primary/20 rounded-full blur-[120px] -z-10 animate-pulse" />
 
           {/* Image card */}
           <div
@@ -89,7 +88,7 @@ export default function HeroSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-transparent" />
 
             {/* Status card overlay */}
-            <div className="absolute bottom-6 left-6 right-6 p-4 rounded-lg bg-surface-dark/80 backdrop-blur-md border border-white/10">
+            <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 p-3 sm:p-4 rounded-lg bg-surface-dark/80 backdrop-blur-md border border-white/10">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-[10px] text-metal-gray uppercase tracking-widest font-bold">
                   AI Analytics Core

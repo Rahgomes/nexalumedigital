@@ -8,13 +8,13 @@ export default function WhyNexalumeSection() {
   return (
     <section
       id="why"
-      className="py-24 bg-surface-dark/30 border-y border-white/5"
+      className="py-16 md:py-24 bg-surface-dark/30 border-y border-white/5"
       aria-labelledby="why-heading"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         <motion.h2
           id="why-heading"
-          className="text-center text-3xl md:text-4xl font-black mb-16 text-white font-heading"
+          className="text-center text-2xl sm:text-3xl md:text-4xl font-black mb-10 md:mb-16 text-white font-heading"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -24,7 +24,7 @@ export default function WhyNexalumeSection() {
         </motion.h2>
 
         <motion.div
-          className="grid md:grid-cols-3 gap-12"
+          className="grid md:grid-cols-3 gap-8 md:gap-12"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

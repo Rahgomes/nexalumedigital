@@ -9,13 +9,13 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-32 bg-background-dark"
+      className="py-16 md:py-24 lg:py-32 bg-background-dark"
       aria-labelledby="services-heading"
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
         {/* Section Header */}
         <motion.div
-          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+          className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-6"
           variants={fadeIn}
           initial="hidden"
           whileInView="visible"
@@ -25,7 +25,7 @@ export default function ServicesSection() {
             <h3 className="text-accent-cyan font-bold tracking-[0.2em] uppercase text-sm">
               Nossas Solucoes
             </h3>
-            <h2 id="services-heading" className="text-4xl font-black text-white font-heading">
+            <h2 id="services-heading" className="text-3xl sm:text-4xl font-black text-white font-heading">
               O que fazemos
             </h2>
           </div>
@@ -37,7 +37,7 @@ export default function ServicesSection() {
 
         {/* Service Cards */}
         <motion.div
-          className="grid md:grid-cols-3 gap-8"
+          className="grid md:grid-cols-3 gap-6 md:gap-8"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"

@@ -4,19 +4,17 @@ import { motion } from "framer-motion";
 import { fadeIn } from "@/lib/animations";
 import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from "@/lib/constants";
 import Button from "@/components/ui/Button";
-import DiagnosticFormDialog from "@/components/ui/DiagnosticFormDialog";
 
 export default function CTASection() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
   return (
     <section
-      id="contact"
-      className="py-24 bg-gradient-to-b from-background-dark to-primary/10"
+      className="py-16 md:py-24 bg-linear-to-b from-background-dark to-primary/10"
       aria-labelledby="cta-heading"
     >
       <motion.div
-        className="max-w-4xl mx-auto px-6 text-center space-y-10"
+        className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 md:space-y-10"
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"
@@ -24,22 +22,23 @@ export default function CTASection() {
       >
         <h2
           id="cta-heading"
-          className="text-4xl md:text-5xl font-black text-white font-heading"
+          className="text-3xl sm:text-4xl md:text-5xl font-black text-white font-heading"
         >
           Pronto para o proximo passo?
         </h2>
 
-        <p className="text-metal-gray text-lg max-w-2xl mx-auto">
+        <p className="text-metal-gray text-base sm:text-lg max-w-2xl mx-auto">
           Agende uma consultoria tecnica gratuita e descubra como a Nexalume
           pode acelerar sua transformacao digital.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Falar via WhatsApp"
+            className="w-full sm:w-auto"
           >
             <Button variant="whatsapp" iconPosition="left">
               <svg
@@ -47,17 +46,15 @@ export default function CTASection() {
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
-                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-1.557-.594-2.662-1.726-1.104-1.132-1.445-2.141-1.577-2.498-.132-.358-.016-.551.102-.681.117-.13.252-.271.378-.407.127-.135.169-.227.253-.379.084-.151.042-.284-.021-.415-.064-.131-.563-1.359-.773-1.865-.203-.49-.411-.424-.563-.432l-.481-.009c-.167 0-.441.062-.672.311-.23.25-.879.858-.879 2.092s.899 2.427 1.025 2.594c.125.167 1.77 2.703 4.288 3.788.599.258 1.066.412 1.431.528.601.191 1.148.164 1.58.1.481-.071 1.482-.605 1.689-1.19.209-.585.209-1.087.147-1.19-.062-.102-.23-.164-.48-.289z" />
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
               </svg>
               Falar via WhatsApp
             </Button>
           </a>
 
-          <DiagnosticFormDialog
-            trigger={
-              <Button variant="primary">Preencher Diagnostico</Button>
-            }
-          />
+          <a href="#contact" className="w-full sm:w-auto">
+            <Button variant="primary">Preencher Formulario</Button>
+          </a>
         </div>
       </motion.div>
     </section>

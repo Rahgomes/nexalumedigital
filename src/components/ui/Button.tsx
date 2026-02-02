@@ -39,7 +39,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={`
           inline-flex items-center justify-center gap-2.5
-          px-8 py-4 rounded-xl text-base
+          px-6 py-3 sm:px-8 sm:py-4 rounded-xl text-sm sm:text-base
           transition-all duration-300 cursor-pointer
           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
           disabled:opacity-50 disabled:cursor-not-allowed

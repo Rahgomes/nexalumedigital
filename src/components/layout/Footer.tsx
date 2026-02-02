@@ -4,8 +4,8 @@ import { FOOTER_LINKS, SOCIAL_LINKS } from "@/lib/constants";
 export default function Footer() {
   return (
     <footer className="bg-background-dark pt-20 pb-10 border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12 mb-16">
           {/* Brand column */}
           <div className="col-span-2 space-y-6">
             <div className="flex items-center gap-2">
