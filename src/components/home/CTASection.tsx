@@ -10,11 +10,11 @@ export default function CTASection() {
 
   return (
     <section
-      className="py-16 md:py-24 bg-linear-to-b from-background-dark to-primary/10"
+      className="cta-background py-16 md:py-24"
       aria-labelledby="cta-heading"
     >
       <motion.div
-        className="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 md:space-y-10"
+        className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 md:space-y-10"
         variants={fadeIn}
         initial="hidden"
         whileInView="visible"

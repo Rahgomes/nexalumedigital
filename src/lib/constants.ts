@@ -7,6 +7,9 @@ import {
   Handshake,
   Linkedin,
   Instagram,
+  Layers,
+  Zap,
+  Settings,
 } from "lucide-react";
 import type {
   NavLink,
@@ -27,7 +30,7 @@ export const NAV_LINKS: NavLink[] = [
 export const SERVICES: ServiceCardData[] = [
   {
     icon: Monitor,
-    title: "Digital Presence",
+    title: "Presenca Digital",
     description:
       "UX/UI Design de vanguarda e Web Development focado em conversao e experiencia do usuario.",
     features: [
@@ -38,7 +41,7 @@ export const SERVICES: ServiceCardData[] = [
   },
   {
     icon: Database,
-    title: "Corporate Systems",
+    title: "Sistemas Corporativos",
     description:
       "Sistemas robustos e arquitetura escalavel para gerenciar processos complexos com seguranca.",
     features: [
@@ -56,6 +59,39 @@ export const SERVICES: ServiceCardData[] = [
       "Agentes IA de Atendimento",
       "Automacao de Workflows",
       "Data Intelligence",
+    ],
+  },
+  {
+    icon: Layers,
+    title: "Micro SaaS sob Demanda",
+    description:
+      "Solucoes SaaS personalizadas para nichos especificos, do zero ao produto com modelo de negocio.",
+    features: [
+      "Do zero ao produto com modelo de negocio",
+      "Infraestrutura completa e escalavel",
+      "Interface amigavel com logica de recorrencia",
+    ],
+  },
+  {
+    icon: Zap,
+    title: "Integracoes e Automacoes",
+    description:
+      "Conecte sistemas e automatize processos com eficiencia usando n8n e APIs modernas.",
+    features: [
+      "Especialistas em Notion API e n8n",
+      "Automacao de processos complexos",
+      "Integracao entre plataformas e sistemas",
+    ],
+  },
+  {
+    icon: Settings,
+    title: "Software Sob Medida",
+    description:
+      "Sistemas criados para resolver desafios especificos da sua operacao.",
+    features: [
+      "Plataformas web, CRMs, ERPs e dashboards",
+      "Arquitetura segura, escalavel e com foco em UX",
+      "Tecnologias modernas adequadas ao seu projeto",
     ],
   },
 ];

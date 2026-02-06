@@ -57,6 +57,51 @@ body {
   box-shadow: 0 0 25px rgba(0, 229, 255, 0.15);
 }
 
+/* Card hover gradient effect */
+.card-hover-gradient {
+  background: var(--color-surface-dark);
+  transition: background 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover-gradient:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-surface-dark) 0%,
+    var(--color-surface-dark) 60%,
+    rgba(31, 162, 255, 0.08) 100%
+  );
+}
+
+/* CTA Section background com efeitos abstratos */
+.cta-background {
+  position: relative;
+  background: linear-gradient(135deg, #0B1C2D 0%, #122B45 100%);
+}
+
+.cta-background::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(31, 162, 255, 0.15), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(0, 229, 255, 0.1), transparent),
+    radial-gradient(ellipse 40% 30% at 10% 80%, rgba(31, 162, 255, 0.08), transparent);
+  pointer-events: none;
+}
+
+.cta-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(31, 162, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 162, 255, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse 80% 60% at center, black, transparent);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at center, black, transparent);
+  pointer-events: none;
+}
+
 /* Gradients */
 .gradient-base {
   background: linear-gradient(135deg, #0B1C2D 0%, #0D2238 50%, #122B45 100%);

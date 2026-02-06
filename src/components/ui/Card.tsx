@@ -20,7 +20,8 @@ export default function ServiceCard({
     <motion.div
       variants={staggerItem}
       className={`
-        group p-8 rounded-xl bg-surface-dark transition-all duration-500
+        group p-8 rounded-xl card-hover-gradient transition-all duration-500
+        h-full min-h-[380px] md:min-h-[420px] flex flex-col
         ${
           isHighlighted
             ? "neon-border-cyan"
@@ -28,21 +29,21 @@ export default function ServiceCard({
         }
       `}
     >
-      <div className="size-14 rounded-lg bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300">
+      <div className="size-14 rounded-lg bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-300 shrink-0">
         <Icon className="size-7 text-accent-cyan" />
       </div>
 
-      <h3 className="text-xl font-bold mb-4 text-white">{title}</h3>
+      <h3 className="text-xl font-bold mb-4 text-white shrink-0">{title}</h3>
 
-      <p className="text-metal-gray leading-relaxed mb-6">{description}</p>
+      <p className="text-metal-gray leading-relaxed mb-6 shrink-0">{description}</p>
 
-      <ul className="space-y-3">
+      <ul className="space-y-3 mt-auto">
         {features.map((feature) => (
           <li
             key={feature}
-            className="flex items-center gap-2 text-sm text-metal-gray/80"
+            className="flex items-start gap-2 text-sm text-metal-gray/80"
           >
-            <CheckCircle className="size-4 text-accent-cyan shrink-0" />
+            <CheckCircle className="size-4 text-accent-cyan shrink-0 mt-0.5" />
             {feature}
           </li>
         ))}

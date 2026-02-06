@@ -1,9 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { staggerContainer, fadeIn } from "@/lib/animations";
+import { fadeIn } from "@/lib/animations";
 import { SERVICES } from "@/lib/constants";
 import ServiceCard from "@/components/ui/Card";
+import Carousel from "@/components/ui/Carousel";
+import type { ServiceCardData } from "@/lib/types";
 
 export default function ServicesSection() {
   return (
@@ -12,7 +14,7 @@ export default function ServicesSection() {
       className="py-16 md:py-24 lg:py-32 bg-background-dark"
       aria-labelledby="services-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
         {/* Section Header */}
         <motion.div
           className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-6"
@@ -35,22 +37,17 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-        {/* Service Cards */}
-        <motion.div
-          className="grid md:grid-cols-3 gap-6 md:gap-8"
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-        >
-          {SERVICES.map((service, index) => (
+        {/* Service Cards Carousel */}
+        <Carousel
+          items={SERVICES}
+          renderItem={(service: ServiceCardData, index: number) => (
             <ServiceCard
               key={service.title}
               service={service}
               isHighlighted={index === 0}
             />
-          ))}
-        </motion.div>
+          )}
+        />
       </div>
     </section>
   );

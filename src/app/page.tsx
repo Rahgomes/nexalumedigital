@@ -7,6 +7,7 @@ import CasesSection from "@/components/home/CasesSection";
 import ContactSection from "@/components/home/ContactSection";
 import CTASection from "@/components/home/CTASection";
 import WhatsAppFloatingButton from "@/components/ui/WhatsAppFloatingButton";
+import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 
 export default function HomePage() {
   return (
@@ -21,6 +22,7 @@ export default function HomePage() {
         <CTASection />
       </main>
       <Footer />
+      <ScrollToTopButton />
       <WhatsAppFloatingButton />
     </>
   );
