@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import { ToastProvider } from "@/components/ui/Toast";
+import { Chatbot } from "@/components/chatbot/Chatbot";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -52,9 +53,8 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${inter.variable} antialiased bg-background-dark text-white`}
       >
-        <ToastProvider>
-          {children}
-        </ToastProvider>
+        <ToastProvider>{children}</ToastProvider>
+        <Chatbot />
       </body>
     </html>
   );

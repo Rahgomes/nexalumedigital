@@ -1,0 +1,760 @@
+{
+  "version": "6.1",
+  "id": "nexalume-atendimento-2026",
+  "name": "Nexa Lume - Atendimento",
+  "events": [
+    {
+      "id": "evt_start_nexa",
+      "outgoingEdgeId": "edge_start_to_inicio",
+      "graphCoordinates": { "x": 0, "y": 0 },
+      "type": "start"
+    }
+  ],
+  "groups": [
+    {
+      "id": "grp_inicio",
+      "title": "Boas-vindas",
+      "graphCoordinates": { "x": 1, "y": 148 },
+      "blocks": [
+        {
+          "id": "blk_welcome_1",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Oi! 👋 Eu sou a Lume, assistente virtual da Nexa Lume Digital."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_welcome_2",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Que bom ter você por aqui! Vou te ajudar a encontrar a solução ideal pro seu negócio. 💡"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_welcome_menu",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "item_servicos",
+              "content": "🔍 Quero conhecer os serviços",
+              "outgoingEdgeId": "edge_to_servicos"
+            },
+            {
+              "id": "item_orcamento",
+              "content": "💰 Preciso de um orçamento",
+              "outgoingEdgeId": "edge_to_lead"
+            },
+            {
+              "id": "item_duvida",
+              "content": "❓ Tenho uma dúvida",
+              "outgoingEdgeId": "edge_to_duvidas"
+            },
+            {
+              "id": "item_falar",
+              "content": "💬 Quero falar com alguém",
+              "outgoingEdgeId": "edge_to_contato"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "grp_servicos",
+      "title": "Serviços",
+      "graphCoordinates": { "x": 400, "y": 0 },
+      "blocks": [
+        {
+          "id": "blk_servicos_intro",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Ótima escolha! A Nexa trabalha com soluções completas de presença digital: 🚀"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_servicos_lista",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "🌐 Sites e Landing Pages\n🤖 Automação e Inteligência Artificial\n📱 Marketing Digital e Redes Sociais\n🎨 Identidade Visual e Branding\n📊 Tráfego Pago e Performance"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_servicos_escolha",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "svc_sites",
+              "content": "🌐 Sites e Landing Pages",
+              "outgoingEdgeId": "edge_servico_to_lead"
+            },
+            {
+              "id": "svc_automacao",
+              "content": "🤖 Automação e IA",
+              "outgoingEdgeId": "edge_servico_to_lead"
+            },
+            {
+              "id": "svc_marketing",
+              "content": "📱 Marketing Digital",
+              "outgoingEdgeId": "edge_servico_to_lead"
+            },
+            {
+              "id": "svc_identidade",
+              "content": "🎨 Identidade Visual",
+              "outgoingEdgeId": "edge_servico_to_lead"
+            },
+            {
+              "id": "svc_trafego",
+              "content": "📊 Tráfego Pago",
+              "outgoingEdgeId": "edge_servico_to_lead"
+            },
+            {
+              "id": "svc_ajuda",
+              "content": "🤔 Preciso de ajuda pra decidir",
+              "outgoingEdgeId": "edge_servico_to_lead"
+            }
+          ],
+          "options": { "variableId": "var_servico" }
+        }
+      ]
+    },
+    {
+      "id": "grp_duvidas",
+      "title": "Dúvidas",
+      "graphCoordinates": { "x": 400, "y": 300 },
+      "blocks": [
+        {
+          "id": "blk_duvidas_intro",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [{ "text": "Claro! Qual sua dúvida? 🤔" }]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_duvidas_menu",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "duv_preco",
+              "content": "💵 Quanto custa um projeto?",
+              "outgoingEdgeId": "edge_to_preco"
+            },
+            {
+              "id": "duv_prazo",
+              "content": "⏱️ Qual o prazo de entrega?",
+              "outgoingEdgeId": "edge_to_prazo"
+            },
+            {
+              "id": "duv_processo",
+              "content": "🔧 Como funciona o processo?",
+              "outgoingEdgeId": "edge_to_processo"
+            },
+            {
+              "id": "duv_outra",
+              "content": "📝 Outra dúvida",
+              "outgoingEdgeId": "edge_to_lead"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "grp_preco",
+      "title": "FAQ - Preço",
+      "graphCoordinates": { "x": 800, "y": 200 },
+      "blocks": [
+        {
+          "id": "blk_preco_1",
+          "type": "text",
+          "content": {
+            "richText": [
+              { "type": "p", "children": [{ "text": "Boa pergunta! 💰" }] }
+            ]
+          }
+        },
+        {
+          "id": "blk_preco_2",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "O valor varia de acordo com a complexidade e escopo do projeto. Trabalhamos com orçamentos personalizados pra entregar exatamente o que você precisa, sem custos desnecessários."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_preco_3",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Quer receber uma proposta sem compromisso? É só deixar seus dados! 👇"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "grp_prazo",
+      "title": "FAQ - Prazo",
+      "graphCoordinates": { "x": 800, "y": 400 },
+      "blocks": [
+        {
+          "id": "blk_prazo_1",
+          "type": "text",
+          "content": {
+            "richText": [
+              { "type": "p", "children": [{ "text": "⏱️ Sobre prazos:" }] }
+            ]
+          }
+        },
+        {
+          "id": "blk_prazo_2",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "• Landing Page: 5-10 dias úteis\n• Site institucional: 15-30 dias úteis\n• Projetos de automação: depende da complexidade\n• Identidade visual: 10-20 dias úteis"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_prazo_3",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Trabalhamos com sprints e entregas parciais pra você acompanhar tudo! Quer conversar sobre seu projeto? 😊"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "grp_processo",
+      "title": "FAQ - Processo",
+      "graphCoordinates": { "x": 800, "y": 600 },
+      "blocks": [
+        {
+          "id": "blk_processo_1",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [{ "text": "🔧 Nosso processo é bem organizado:" }]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_processo_2",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "1️⃣ Discovery: entendemos seu negócio e objetivos\n2️⃣ Proposta: apresentamos soluções e investimento\n3️⃣ Execução: mão na massa com atualizações frequentes\n4️⃣ Entrega: treinamento e suporte incluso\n5️⃣ Acompanhamento: não te abandonamos depois!"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_processo_3",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Bora agendar uma conversa pra te explicar melhor? Deixa seus dados! 👇"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "grp_contato",
+      "title": "Falar com alguém",
+      "graphCoordinates": { "x": 400, "y": 600 },
+      "blocks": [
+        {
+          "id": "blk_contato_1",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Claro! Nosso time tá pronto pra te atender. 💬" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_contato_2",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Deixa seus dados que entramos em contato rapidinho!"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "grp_lead",
+      "title": "Captura de Lead",
+      "graphCoordinates": { "x": 1200, "y": 0 },
+      "blocks": [
+        {
+          "id": "blk_lead_intro",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Show! Pra gente te ajudar melhor, me conta um pouquinho sobre você? 😊"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_lead_nome_ask",
+          "type": "text",
+          "content": {
+            "richText": [
+              { "type": "p", "children": [{ "text": "Qual seu nome?" }] }
+            ]
+          }
+        },
+        {
+          "id": "blk_lead_nome",
+          "outgoingEdgeId": "edge_lead_nome_to_resp",
+          "type": "text input",
+          "options": {
+            "variableId": "var_nome",
+            "labels": {
+              "placeholder": "Digite seu nome...",
+              "button": "Continuar"
+            }
+          }
+        },
+        {
+          "id": "blk_lead_nome_resp",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Prazer, " },
+                  { "type": "variable", "id": "var_nome" },
+                  { "text": "! 🤝" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_lead_email_ask",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [{ "text": "Qual seu melhor email?" }]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_lead_email",
+          "outgoingEdgeId": "edge_lead_email_to_phone",
+          "type": "email input",
+          "options": {
+            "variableId": "var_email",
+            "labels": {
+              "placeholder": "seu@email.com",
+              "button": "Continuar"
+            },
+            "retryMessageContent": "Hmm, esse email não parece válido. Pode verificar? 🤔"
+          }
+        },
+        {
+          "id": "blk_lead_phone_ask",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [{ "text": "E seu WhatsApp? (com DDD)" }]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_lead_phone",
+          "outgoingEdgeId": "edge_lead_phone_to_empresa",
+          "type": "text input",
+          "options": {
+            "variableId": "var_telefone",
+            "labels": {
+              "placeholder": "(11) 99999-9999",
+              "button": "Continuar"
+            }
+          }
+        },
+        {
+          "id": "blk_lead_empresa_ask",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Qual o nome da sua empresa ou projeto? (pode pular se preferir)"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_lead_empresa",
+          "outgoingEdgeId": "edge_lead_to_msg",
+          "type": "text input",
+          "options": {
+            "variableId": "var_empresa",
+            "labels": {
+              "placeholder": "Nome da empresa...",
+              "button": "Continuar"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "grp_mensagem",
+      "title": "Mensagem",
+      "graphCoordinates": { "x": 1600, "y": 0 },
+      "blocks": [
+        {
+          "id": "blk_msg_ask",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Conta mais sobre o que você precisa? Pode mandar detalhes do projeto, dúvidas, ou o que tiver em mente! ✍️"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_msg_input",
+          "outgoingEdgeId": "edge_msg_to_webhook",
+          "type": "text input",
+          "options": {
+            "variableId": "var_mensagem",
+            "isLong": true,
+            "labels": {
+              "placeholder": "Escreva sua mensagem aqui...",
+              "button": "Enviar"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "grp_webhook",
+      "title": "Enviar para n8n",
+      "graphCoordinates": { "x": 2000, "y": 0 },
+      "blocks": [
+        {
+          "id": "blk_webhook",
+          "outgoingEdgeId": "edge_webhook_to_final",
+          "type": "webhook",
+          "options": {
+            "webhook": {
+              "url": "https://n8n.ramongomessilva.com.br/webhook/typebot-lead",
+              "method": "POST"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "grp_final",
+      "title": "Finalização",
+      "graphCoordinates": { "x": 2400, "y": 0 },
+      "blocks": [
+        {
+          "id": "blk_final_1",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  { "text": "Perfeito, " },
+                  { "type": "variable", "id": "var_nome" },
+                  { "text": "! 🎉" }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_final_2",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Recebi todas as informações! Em breve, um atendente da nossa equipe entrará em contato pelo WhatsApp ou email que você informou."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blk_final_3",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Enquanto isso, dá uma olhada no nosso site e cases de sucesso! 🚀\n\nObrigado por escolher a Nexa Lume Digital! 💜"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_start_to_inicio",
+      "from": { "eventId": "evt_start_nexa" },
+      "to": { "groupId": "grp_inicio" }
+    },
+    {
+      "id": "edge_to_servicos",
+      "from": { "blockId": "blk_welcome_menu", "itemId": "item_servicos" },
+      "to": { "groupId": "grp_servicos" }
+    },
+    {
+      "id": "edge_to_lead",
+      "from": { "blockId": "blk_welcome_menu", "itemId": "item_orcamento" },
+      "to": { "groupId": "grp_lead" }
+    },
+    {
+      "id": "edge_to_duvidas",
+      "from": { "blockId": "blk_welcome_menu", "itemId": "item_duvida" },
+      "to": { "groupId": "grp_duvidas" }
+    },
+    {
+      "id": "edge_to_contato",
+      "from": { "blockId": "blk_welcome_menu", "itemId": "item_falar" },
+      "to": { "groupId": "grp_contato" }
+    },
+    {
+      "id": "edge_servico_to_lead",
+      "from": { "blockId": "blk_servicos_escolha" },
+      "to": { "groupId": "grp_lead" }
+    },
+    {
+      "id": "edge_to_preco",
+      "from": { "blockId": "blk_duvidas_menu", "itemId": "duv_preco" },
+      "to": { "groupId": "grp_preco" }
+    },
+    {
+      "id": "edge_to_prazo",
+      "from": { "blockId": "blk_duvidas_menu", "itemId": "duv_prazo" },
+      "to": { "groupId": "grp_prazo" }
+    },
+    {
+      "id": "edge_to_processo",
+      "from": { "blockId": "blk_duvidas_menu", "itemId": "duv_processo" },
+      "to": { "groupId": "grp_processo" }
+    },
+    {
+      "id": "edge_duvida_outra_to_lead",
+      "from": { "blockId": "blk_duvidas_menu", "itemId": "duv_outra" },
+      "to": { "groupId": "grp_lead" }
+    },
+    {
+      "id": "edge_preco_to_lead",
+      "from": { "blockId": "blk_preco_3" },
+      "to": { "groupId": "grp_lead" }
+    },
+    {
+      "id": "edge_prazo_to_lead",
+      "from": { "blockId": "blk_prazo_3" },
+      "to": { "groupId": "grp_lead" }
+    },
+    {
+      "id": "edge_processo_to_lead",
+      "from": { "blockId": "blk_processo_3" },
+      "to": { "groupId": "grp_lead" }
+    },
+    {
+      "id": "edge_contato_to_lead",
+      "from": { "blockId": "blk_contato_2" },
+      "to": { "groupId": "grp_lead" }
+    },
+    {
+      "id": "edge_lead_nome_to_resp",
+      "from": { "blockId": "blk_lead_nome" },
+      "to": { "groupId": "grp_lead", "blockId": "blk_lead_nome_resp" }
+    },
+    {
+      "id": "edge_lead_email_to_phone",
+      "from": { "blockId": "blk_lead_email" },
+      "to": { "groupId": "grp_lead", "blockId": "blk_lead_phone_ask" }
+    },
+    {
+      "id": "edge_lead_phone_to_empresa",
+      "from": { "blockId": "blk_lead_phone" },
+      "to": { "groupId": "grp_lead", "blockId": "blk_lead_empresa_ask" }
+    },
+    {
+      "id": "edge_lead_to_msg",
+      "from": { "blockId": "blk_lead_empresa" },
+      "to": { "groupId": "grp_mensagem" }
+    },
+    {
+      "id": "edge_msg_to_webhook",
+      "from": { "blockId": "blk_msg_input" },
+      "to": { "groupId": "grp_webhook" }
+    },
+    {
+      "id": "edge_webhook_to_final",
+      "from": { "blockId": "blk_webhook" },
+      "to": { "groupId": "grp_final" }
+    }
+  ],
+  "variables": [
+    { "id": "var_nome", "name": "Nome", "isSessionVariable": false },
+    { "id": "var_email", "name": "Email", "isSessionVariable": false },
+    { "id": "var_telefone", "name": "Telefone", "isSessionVariable": false },
+    { "id": "var_empresa", "name": "Empresa", "isSessionVariable": false },
+    { "id": "var_servico", "name": "Servico", "isSessionVariable": false },
+    { "id": "var_mensagem", "name": "Mensagem", "isSessionVariable": false }
+  ],
+  "theme": {},
+  "selectedThemeTemplateId": null,
+  "settings": {
+    "general": {
+      "isBrandingEnabled": true
+    }
+  },
+  "createdAt": "2026-02-08T08:00:00.000Z",
+  "updatedAt": "2026-02-08T08:00:00.000Z",
+  "icon": "💜",
+  "folderId": null,
+  "publicId": null,
+  "customDomain": null,
+  "workspaceId": "cmld50n4u0000mh1n3qsto5q0",
+  "resultsTablePreferences": null,
+  "isArchived": false,
+  "isClosed": false,
+  "whatsAppCredentialsId": null,
+  "riskLevel": null
+}
