@@ -1,47 +1,113 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Code2 } from "lucide-react";
-import { NAV_LINKS } from "@/lib/constants";
+import { useState, useRef, useEffect } from "react";
+import { Menu, X, Code2, ChevronDown } from "lucide-react";
+import Link from "next/link";
+import MegaMenu from "./MegaMenu";
+import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const megaMenuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Clean up timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (megaMenuTimeoutRef.current) {
+        clearTimeout(megaMenuTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  const handleMouseEnter = () => {
+    if (megaMenuTimeoutRef.current) {
+      clearTimeout(megaMenuTimeoutRef.current);
+    }
+    setMegaMenuOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    megaMenuTimeoutRef.current = setTimeout(() => {
+      setMegaMenuOpen(false);
+    }, 150);
+  };
+
+  const closeMegaMenu = () => {
+    setMegaMenuOpen(false);
+  };
 
   return (
-    <nav className="sticky top-0 z-50 glass-nav" role="navigation" aria-label="Menu principal">
+    <nav
+      className="sticky top-0 z-50 glass-nav"
+      role="navigation"
+      aria-label="Menu principal"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group">
           <div className="size-8 bg-primary rounded-lg flex items-center justify-center neon-glow-primary">
             <Code2 className="size-5 text-white" />
           </div>
           <span className="text-xl sm:text-2xl font-black tracking-tighter text-white">
-            NEXA<span className="text-primary group-hover:text-accent-cyan transition-colors">LUME</span>
+            NEXA
+            <span className="text-primary group-hover:text-accent-cyan transition-colors">
+              LUME
+            </span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-10">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-metal-gray hover:text-white transition-colors"
+          {/* Solucoes with Mega Menu */}
+          <div
+            className="relative"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <button
+              className="flex items-center gap-1 text-sm font-medium text-metal-gray hover:text-white transition-colors"
+              onClick={() => setMegaMenuOpen(!megaMenuOpen)}
+              aria-expanded={megaMenuOpen}
+              aria-haspopup="menu"
             >
-              {link.label}
-            </a>
-          ))}
+              Solucoes
+              <ChevronDown
+                className={`size-4 transition-transform duration-200 ${
+                  megaMenuOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+          </div>
+
+          <Link
+            href="#why"
+            className="text-sm font-medium text-metal-gray hover:text-white transition-colors"
+          >
+            Sobre Nos
+          </Link>
+          <Link
+            href="#cases"
+            className="text-sm font-medium text-metal-gray hover:text-white transition-colors"
+          >
+            Cases
+          </Link>
+          <Link
+            href="#contact"
+            className="text-sm font-medium text-metal-gray hover:text-white transition-colors"
+          >
+            Contato
+          </Link>
         </div>
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <a
+          <Link
             href="#contact"
             className="btn-gradient px-6 py-2.5 rounded-lg font-bold text-sm tracking-wide neon-glow-primary hover:opacity-90 transition-all"
           >
-            Diagnostico Gratuito
-          </a>
+            Fale com um Especialista
+          </Link>
         </div>
 
         {/* Mobile Hamburger */}
@@ -55,38 +121,16 @@ export default function Header() {
         </button>
       </div>
 
+      {/* Mega Menu (Desktop) */}
+      <div
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <MegaMenu isOpen={megaMenuOpen} onClose={closeMegaMenu} />
+      </div>
+
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="md:hidden overflow-hidden border-t border-white/5"
-          >
-            <div className="px-4 sm:px-6 py-6 space-y-4 bg-background-dark/95 backdrop-blur-xl">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block text-base font-medium text-metal-gray hover:text-white transition-colors py-2"
-                >
-                  {link.label}
-                </a>
-              ))}
-              <a
-                href="#contact"
-                onClick={() => setMobileOpen(false)}
-                className="block w-full btn-gradient px-6 py-3 rounded-lg font-bold text-sm tracking-wide neon-glow-primary hover:opacity-90 transition-all mt-2 text-center"
-              >
-                Diagnostico Gratuito
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
     </nav>
   );
 }

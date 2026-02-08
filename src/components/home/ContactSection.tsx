@@ -45,7 +45,7 @@ export default function ContactSection() {
         variant: "success",
         title: "Enviado com sucesso!",
         description:
-          "Recebemos seu diagnostico. Nossa equipe entrara em contato em ate 24 horas.",
+          "Recebemos sua mensagem. Nossa equipe entrara em contato em ate 24 horas.",
       });
       reset();
     } catch {
@@ -87,7 +87,7 @@ export default function ContactSection() {
                 id="contact-heading"
                 className="text-3xl sm:text-4xl font-black text-white font-heading"
               >
-                Solicite seu Diagnostico Gratuito
+                Fale com um Especialista
               </h2>
               <p className="text-metal-gray text-base sm:text-lg leading-relaxed max-w-lg">
                 Preencha o formulario e nossa equipe preparara uma analise
@@ -224,7 +224,7 @@ export default function ContactSection() {
                     Enviando...
                   </>
                 ) : (
-                  "Enviar Diagnostico"
+                  "Enviar Mensagem"
                 )}
               </button>
             </form>

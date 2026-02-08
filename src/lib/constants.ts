@@ -142,19 +142,19 @@ export const FOOTER_LINKS: FooterLinkGroup[] = [
   {
     title: "Links Rapidos",
     links: [
-      { label: "Home", href: "#" },
+      { label: "Home", href: "/" },
+      { label: "Solucoes", href: "/solucoes" },
       { label: "Cases", href: "#cases" },
       { label: "Sobre Nos", href: "#why" },
-      { label: "Carreiras", href: "#" },
     ],
   },
   {
     title: "Servicos",
     links: [
-      { label: "Web Development", href: "#services" },
-      { label: "Agentes IA", href: "#services" },
-      { label: "UI/UX Design", href: "#services" },
-      { label: "Cloud Systems", href: "#services" },
+      { label: "Presenca Digital", href: "/solucoes/presenca-digital" },
+      { label: "Growth AI", href: "/solucoes/growth-ai" },
+      { label: "Sistemas Corporativos", href: "/solucoes/sistemas-corporativos" },
+      { label: "Micro SaaS", href: "/solucoes/micro-saas" },
     ],
   },
 ];

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Code2, Mail, MapPin } from "lucide-react";
 import { FOOTER_LINKS, SOCIAL_LINKS } from "@/lib/constants";
 
@@ -8,12 +9,12 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12 mb-16">
           {/* Brand column */}
           <div className="col-span-2 space-y-6">
-            <div className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2 w-fit">
               <div className="size-6 bg-primary rounded flex items-center justify-center">
                 <Code2 className="size-4 text-white" />
               </div>
               <span className="text-xl font-black text-white">NEXALUME</span>
-            </div>
+            </Link>
             <p className="text-metal-gray text-sm leading-relaxed max-w-xs">
               Elevando o padrao tecnologico de empresas atraves de inteligencia
               artificial aplicada e sistemas de alta performance.
@@ -44,12 +45,21 @@ export default function Footer() {
               <ul className="space-y-4 text-sm text-metal-gray">
                 {group.links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </a>
+                    {link.href.startsWith("/") ? (
+                      <Link
+                        href={link.href}
+                        className="hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -74,7 +84,10 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-metal-gray/50">
-          <p>&copy; 2026 Nexalume Digital Solutions. Todos os direitos reservados.</p>
+          <p>
+            &copy; 2026 Nexalume Digital Solutions. Todos os direitos
+            reservados.
+          </p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">
               Termos de Uso

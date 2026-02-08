@@ -44,3 +44,34 @@ export interface DiagnosticFormData {
   empresa: string;
   mensagem: string;
 }
+
+// Mega Menu & Service Pages Types
+export interface NavItemWithDropdown extends NavLink {
+  hasDropdown?: boolean;
+}
+
+export type ServiceIconName =
+  | "Monitor"
+  | "Database"
+  | "TrendingUp"
+  | "Layers"
+  | "Zap"
+  | "Settings";
+
+export interface ServiceDetail {
+  slug: string;
+  iconName: ServiceIconName;
+  title: string;
+  shortDescription: string;
+  fullDescription: string;
+  features: string[];
+  benefits: string[];
+  technologies: string[];
+}
+
+export interface ServiceCategory {
+  id: string;
+  title: string;
+  description: string;
+  services: ServiceDetail[];
+}
