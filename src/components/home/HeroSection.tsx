@@ -5,14 +5,27 @@ import { ArrowRight } from "lucide-react";
 import { heroTextReveal, fadeIn, staggerContainer } from "@/lib/animations";
 import { HERO_IMAGE_URL } from "@/lib/constants";
 import Button from "@/components/ui/Button";
+import { AuroraBackground } from "@/components/ui/aceternity/aurora-background";
+import { TextGenerateEffect } from "@/components/ui/aceternity/text-generate-effect";
+import { SparklesCore } from "@/components/ui/aceternity/sparkles";
 
 export default function HeroSection() {
   return (
     <section
-      className="relative hero-gradient overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32"
+      className="relative overflow-hidden"
       aria-labelledby="hero-heading"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      {/* Aurora Background - hidden on mobile for performance */}
+      <div className="hidden md:block absolute inset-0 z-0">
+        <AuroraBackground showRadialGradient={true} className="!min-h-0 h-full">
+          <div />
+        </AuroraBackground>
+      </div>
+
+      {/* Fallback gradient for mobile */}
+      <div className="md:hidden absolute inset-0 hero-gradient z-0" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center pt-12 pb-20 lg:pt-20 lg:pb-32">
         {/* Text Content */}
         <motion.div
           className="relative z-10 space-y-6 lg:space-y-8"
@@ -20,26 +33,44 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
         >
-          {/* Badge */}
+          {/* Badge with Sparkles */}
           <motion.div
             variants={heroTextReveal}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest"
+            className="relative inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest"
           >
+            {/* Sparkles effect */}
+            <div className="absolute inset-0 overflow-hidden rounded-full">
+              <SparklesCore
+                particleDensity={30}
+                minSize={0.5}
+                maxSize={1.5}
+                speed={1.5}
+                particleColor="#00E5FF"
+                className="w-full h-full"
+              />
+            </div>
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
             </span>
-            Inovacao em IA &amp; Automacao
+            <span className="relative">Inovacao em IA &amp; Automacao</span>
           </motion.div>
 
-          {/* Heading */}
+          {/* Heading with Text Generate Effect */}
           <motion.h1
             id="hero-heading"
             variants={heroTextReveal}
             className="text-3xl sm:text-5xl lg:text-7xl font-black leading-[1.08] text-white font-heading"
           >
             Transformamos presenca digital em{" "}
-            <span className="gradient-highlight-text">resultados reais.</span>
+            <span className="gradient-highlight-text">
+              <TextGenerateEffect
+                words="resultados reais."
+                duration={0.8}
+                filter={true}
+                className="gradient-highlight-text"
+              />
+            </span>
           </motion.h1>
 
           {/* Subtitle */}

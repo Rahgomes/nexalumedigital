@@ -4,15 +4,21 @@ import { motion } from "framer-motion";
 import { fadeIn } from "@/lib/animations";
 import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from "@/lib/constants";
 import Button from "@/components/ui/Button";
+import { BackgroundBeams } from "@/components/ui/aceternity/background-beams";
 
 export default function CTASection() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
   return (
     <section
-      className="cta-background py-16 md:py-24"
+      className="cta-background py-16 md:py-24 relative overflow-hidden"
       aria-labelledby="cta-heading"
     >
+      {/* Background Beams - hidden on mobile for performance */}
+      <div className="hidden md:block">
+        <BackgroundBeams />
+      </div>
+
       <motion.div
         className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6 md:space-y-10"
         variants={fadeIn}

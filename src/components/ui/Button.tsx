@@ -11,6 +11,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: LucideIcon;
   iconPosition?: "left" | "right";
   children: ReactNode;
+  shimmer?: boolean;
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
@@ -30,14 +31,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconPosition = "right",
       children,
       className = "",
+      shimmer = true,
       ...props
     },
     ref
   ) => {
+    const showShimmer = shimmer && variant === "primary";
+
     return (
       <button
         ref={ref}
         className={`
+          group relative overflow-hidden
           inline-flex items-center justify-center gap-2.5
           px-6 py-3 sm:px-8 sm:py-4 rounded-xl text-sm sm:text-base
           transition-all duration-300 cursor-pointer
@@ -48,9 +53,18 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         `}
         {...props}
       >
-        {Icon && iconPosition === "left" && <Icon className="size-5" />}
-        {children}
-        {Icon && iconPosition === "right" && <Icon className="size-5" />}
+        {/* Shimmer effect */}
+        {showShimmer && (
+          <span
+            className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out bg-linear-to-r from-transparent via-white/20 to-transparent"
+            aria-hidden="true"
+          />
+        )}
+        <span className="relative z-10 inline-flex items-center gap-2.5">
+          {Icon && iconPosition === "left" && <Icon className="size-5" />}
+          {children}
+          {Icon && iconPosition === "right" && <Icon className="size-5" />}
+        </span>
       </button>
     );
   }
