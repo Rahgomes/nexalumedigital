@@ -76,7 +76,7 @@ export default function Carousel<T>({ items, renderItem }: CarouselProps<T>) {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Carousel container */}
-      <div className="overflow-hidden">
+      <div className="overflow-hidden p-2.5">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={currentIndex}

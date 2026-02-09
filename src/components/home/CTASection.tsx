@@ -28,14 +28,14 @@ export default function CTASection() {
       >
         <h2
           id="cta-heading"
-          className="text-3xl sm:text-4xl md:text-5xl font-black text-white font-heading"
+          className="text-3xl sm:text-4xl md:text-5xl font-black text-white font-heading uppercase"
         >
-          Pronto para o proximo passo?
+          Pronto para o próximo passo?
         </h2>
 
         <p className="text-metal-gray text-base sm:text-lg max-w-2xl mx-auto">
-          Agende uma consultoria tecnica gratuita e descubra como a Nexalume
-          pode acelerar sua transformacao digital.
+          Agende uma consultoria técnica gratuita e descubra como a Nexalume
+          pode acelerar sua transformação digital.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
@@ -59,7 +59,7 @@ export default function CTASection() {
           </a>
 
           <a href="#contact" className="w-full sm:w-auto">
-            <Button variant="primary">Preencher Formulario</Button>
+            <Button variant="primary">Preencher Formulário</Button>
           </a>
         </div>
       </motion.div>

@@ -4,17 +4,12 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Loader2, Clock, MessageSquare, ShieldCheck } from "lucide-react";
-import { fadeIn, staggerContainer, staggerItem } from "@/lib/animations";
+import { Loader2 } from "lucide-react";
+import { fadeIn } from "@/lib/animations";
+import { SparklesCore } from "@/components/ui/aceternity/sparkles";
 import { diagnosticFormSchema } from "@/lib/schemas";
 import type { DiagnosticFormSchema } from "@/lib/schemas";
 import { useToast } from "@/components/ui/Toast";
-
-const TRUST_SIGNALS = [
-  { icon: MessageSquare, text: "Consultoria gratuita" },
-  { icon: Clock, text: "Retorno em 24h" },
-  { icon: ShieldCheck, text: "Sem compromisso" },
-];
 
 export default function ContactSection() {
   const { toast } = useToast();
@@ -45,7 +40,7 @@ export default function ContactSection() {
         variant: "success",
         title: "Enviado com sucesso!",
         description:
-          "Recebemos sua mensagem. Nossa equipe entrara em contato em ate 24 horas.",
+          "Recebemos sua mensagem. Nossa equipe entrará em contato em até 24 horas.",
       });
       reset();
     } catch {
@@ -80,47 +75,31 @@ export default function ContactSection() {
             viewport={{ once: true, margin: "-80px" }}
           >
             <div className="space-y-4">
-              <h3 className="text-accent-cyan font-bold tracking-[0.2em] uppercase text-sm">
-                Fale Conosco
-              </h3>
+              <div className="relative inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest">
+                <div className="absolute inset-0 overflow-hidden rounded-full">
+                  <SparklesCore
+                    particleDensity={30}
+                    minSize={0.5}
+                    maxSize={1.5}
+                    speed={1.5}
+                    particleColor="#00E5FF"
+                    className="w-full h-full"
+                  />
+                </div>
+                <span className="relative">Fale Conosco</span>
+              </div>
               <h2
                 id="contact-heading"
-                className="text-3xl sm:text-4xl font-black text-white font-heading"
+                className="text-3xl sm:text-4xl font-black text-white font-heading uppercase"
               >
                 Fale com um Especialista
               </h2>
               <p className="text-metal-gray text-base sm:text-lg leading-relaxed max-w-lg">
-                Preencha o formulario e nossa equipe preparara uma analise
-                personalizada para o seu negocio. Sem compromisso.
+                Preencha o formulário e nossa equipe preparará uma análise
+                personalizada para o seu negócio. Sem compromisso.
               </p>
             </div>
 
-            {/* Trust signals */}
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 sm:gap-8"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              {TRUST_SIGNALS.map((signal) => {
-                const Icon = signal.icon;
-                return (
-                  <motion.div
-                    key={signal.text}
-                    variants={staggerItem}
-                    className="flex items-center gap-3"
-                  >
-                    <div className="size-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                      <Icon className="size-5 text-primary" />
-                    </div>
-                    <span className="text-sm font-medium text-white">
-                      {signal.text}
-                    </span>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
           </motion.div>
 
           {/* Right column - Form card */}

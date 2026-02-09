@@ -5,7 +5,6 @@ import { ArrowRight } from "lucide-react";
 import { heroTextReveal, staggerContainer } from "@/lib/animations";
 import Button from "@/components/ui/Button";
 import { AuroraBackground } from "@/components/ui/aceternity/aurora-background";
-import { TextGenerateEffect } from "@/components/ui/aceternity/text-generate-effect";
 import { SparklesCore } from "@/components/ui/aceternity/sparkles";
 
 export default function HeroSection() {
@@ -33,12 +32,48 @@ export default function HeroSection() {
         xmlns="http://www.w3.org/2000/svg"
         className="pointer-events-none absolute inset-x-0 top-0 z-1 aspect-square h-25 w-full md:h-50"
       >
-        <line y1="-0.5" x2="406" y2="-0.5" transform="matrix(0 1 1 0 1 -108)" stroke="url(#heroTopLine0)" />
-        <line y1="-0.5" x2="406" y2="-0.5" transform="matrix(0 1 1 0 34 -108)" stroke="url(#heroTopLine1)" />
-        <line y1="-0.5" x2="406" y2="-0.5" transform="matrix(0 1 1 0 67 -108)" stroke="url(#heroTopLine2)" />
-        <line y1="-0.5" x2="406" y2="-0.5" transform="matrix(0 1 1 0 100 -108)" stroke="url(#heroTopLine3)" />
-        <line y1="-0.5" x2="406" y2="-0.5" transform="matrix(0 1 1 0 133 -108)" stroke="url(#heroTopLine4)" />
-        <line y1="-0.5" x2="406" y2="-0.5" transform="matrix(0 1 1 0 166 -108)" stroke="url(#heroTopLine5)" />
+        <line
+          y1="-0.5"
+          x2="406"
+          y2="-0.5"
+          transform="matrix(0 1 1 0 1 -108)"
+          stroke="url(#heroTopLine0)"
+        />
+        <line
+          y1="-0.5"
+          x2="406"
+          y2="-0.5"
+          transform="matrix(0 1 1 0 34 -108)"
+          stroke="url(#heroTopLine1)"
+        />
+        <line
+          y1="-0.5"
+          x2="406"
+          y2="-0.5"
+          transform="matrix(0 1 1 0 67 -108)"
+          stroke="url(#heroTopLine2)"
+        />
+        <line
+          y1="-0.5"
+          x2="406"
+          y2="-0.5"
+          transform="matrix(0 1 1 0 100 -108)"
+          stroke="url(#heroTopLine3)"
+        />
+        <line
+          y1="-0.5"
+          x2="406"
+          y2="-0.5"
+          transform="matrix(0 1 1 0 133 -108)"
+          stroke="url(#heroTopLine4)"
+        />
+        <line
+          y1="-0.5"
+          x2="406"
+          y2="-0.5"
+          transform="matrix(0 1 1 0 166 -108)"
+          stroke="url(#heroTopLine5)"
+        />
         <defs>
           {[0, 1, 2, 3, 4, 5].map((i) => (
             <linearGradient
@@ -66,12 +101,48 @@ export default function HeroSection() {
         xmlns="http://www.w3.org/2000/svg"
         className="pointer-events-none absolute inset-x-0 -bottom-20 z-20 aspect-square h-37.5 w-full md:h-75"
       >
-        <line x1="139.5" y1="418" x2="139.5" y2="12" stroke="url(#heroBotLine0)" />
-        <line x1="172.5" y1="418" x2="172.5" y2="12" stroke="url(#heroBotLine1)" />
-        <line x1="205.5" y1="418" x2="205.5" y2="12" stroke="url(#heroBotLine2)" />
-        <line x1="238.5" y1="418" x2="238.5" y2="12" stroke="url(#heroBotLine3)" />
-        <line x1="271.5" y1="418" x2="271.5" y2="12" stroke="url(#heroBotLine4)" />
-        <line x1="304.5" y1="418" x2="304.5" y2="12" stroke="url(#heroBotLine5)" />
+        <line
+          x1="139.5"
+          y1="418"
+          x2="139.5"
+          y2="12"
+          stroke="url(#heroBotLine0)"
+        />
+        <line
+          x1="172.5"
+          y1="418"
+          x2="172.5"
+          y2="12"
+          stroke="url(#heroBotLine1)"
+        />
+        <line
+          x1="205.5"
+          y1="418"
+          x2="205.5"
+          y2="12"
+          stroke="url(#heroBotLine2)"
+        />
+        <line
+          x1="238.5"
+          y1="418"
+          x2="238.5"
+          y2="12"
+          stroke="url(#heroBotLine3)"
+        />
+        <line
+          x1="271.5"
+          y1="418"
+          x2="271.5"
+          y2="12"
+          stroke="url(#heroBotLine4)"
+        />
+        <line
+          x1="304.5"
+          y1="418"
+          x2="304.5"
+          y2="12"
+          stroke="url(#heroBotLine5)"
+        />
         <path
           d="M1 149L109.028 235.894C112.804 238.931 115 243.515 115 248.361V417"
           stroke="url(#heroBotPath0)"
@@ -158,19 +229,47 @@ export default function HeroSection() {
           strokeWidth="1.5"
         />
         <defs>
-          <linearGradient id="heroCorner0" x1="26.41" y1="1" x2="211.33" y2="175.17" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="heroCorner0"
+            x1="26.41"
+            y1="1"
+            x2="211.33"
+            y2="175.17"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop offset="0.48" stopColor="#1FA2FF" />
             <stop offset="1" stopColor="#1FA2FF" stopOpacity="0" />
           </linearGradient>
-          <linearGradient id="heroCorner1" x1="1355.59" y1="1" x2="1170.67" y2="175.17" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="heroCorner1"
+            x1="1355.59"
+            y1="1"
+            x2="1170.67"
+            y2="175.17"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop offset="0.48" stopColor="#1FA2FF" />
             <stop offset="1" stopColor="#1FA2FF" stopOpacity="0" />
           </linearGradient>
-          <linearGradient id="heroCorner2" x1="26.41" y1="369" x2="211.33" y2="194.83" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="heroCorner2"
+            x1="26.41"
+            y1="369"
+            x2="211.33"
+            y2="194.83"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop offset="0.48" stopColor="#1FA2FF" />
             <stop offset="1" stopColor="#1FA2FF" stopOpacity="0" />
           </linearGradient>
-          <linearGradient id="heroCorner3" x1="1355.59" y1="369" x2="1170.67" y2="194.83" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="heroCorner3"
+            x1="1355.59"
+            y1="369"
+            x2="1170.67"
+            y2="194.83"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop offset="0.48" stopColor="#1FA2FF" />
             <stop offset="1" stopColor="#1FA2FF" stopOpacity="0" />
           </linearGradient>
@@ -278,28 +377,17 @@ export default function HeroSection() {
                 className="w-full h-full"
               />
             </div>
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
-            </span>
-            <span className="relative">Inovacao em IA &amp; Automacao</span>
+            <span className="relative">Inovação em IA &amp; Automação</span>
           </motion.div>
 
           {/* Heading with Text Generate Effect */}
           <motion.h1
             id="hero-heading"
             variants={heroTextReveal}
-            className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.08] text-white font-heading text-center"
+            className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.08] text-white font-heading text-center uppercase"
           >
-            Transformamos presenca digital em{" "}
-            <span className="gradient-highlight-text">
-              <TextGenerateEffect
-                words="resultados reais."
-                duration={0.8}
-                filter={true}
-                className="gradient-highlight-text"
-              />
-            </span>
+            Transformamos presença digital em{" "}
+            <span className="gradient-highlight-text">resultados reais</span>
           </motion.h1>
 
           {/* Subtitle */}
@@ -308,14 +396,21 @@ export default function HeroSection() {
             className="text-base sm:text-lg lg:text-xl text-metal-gray max-w-2xl leading-relaxed text-center"
           >
             Sistemas inteligentes e interfaces de alta performance projetados
-            para escalar seu negocio com o poder da inteligencia artificial.
+            para escalar seu negócio com o poder da inteligência artificial.
           </motion.p>
 
           {/* CTAs */}
-          <motion.div variants={heroTextReveal} className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <motion.div
+            variants={heroTextReveal}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+          >
             <a href="#contact">
-              <Button variant="primary" icon={ArrowRight} className="w-full sm:w-auto">
-                Comecar Agora
+              <Button
+                variant="primary"
+                icon={ArrowRight}
+                className="w-full sm:w-auto"
+              >
+                Começar Agora
               </Button>
             </a>
             <a href="#services">

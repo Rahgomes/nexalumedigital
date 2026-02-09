@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer, staggerItem } from "@/lib/animations";
+import { SparklesCore } from "@/components/ui/aceternity/sparkles";
 import { CASES } from "@/lib/constants";
 
 export default function CasesSection() {
@@ -20,10 +21,20 @@ export default function CasesSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
         >
-          <h3 className="text-accent-cyan font-bold tracking-[0.2em] uppercase text-sm mb-4">
-            Sucesso Comprovado
-          </h3>
-          <h2 id="cases-heading" className="text-3xl sm:text-4xl font-black text-white font-heading">
+          <div className="relative inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="absolute inset-0 overflow-hidden rounded-full">
+              <SparklesCore
+                particleDensity={30}
+                minSize={0.5}
+                maxSize={1.5}
+                speed={1.5}
+                particleColor="#00E5FF"
+                className="w-full h-full"
+              />
+            </div>
+            <span className="relative">Sucesso Comprovado</span>
+          </div>
+          <h2 id="cases-heading" className="text-3xl sm:text-4xl font-black text-white font-heading uppercase">
             Resultados que Falam
           </h2>
         </motion.div>

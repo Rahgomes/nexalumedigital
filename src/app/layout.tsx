@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Poppins, Inter } from "next/font/google";
+import { Roboto_Condensed, Inter } from "next/font/google";
 import { ToastProvider } from "@/components/ui/Toast";
 import { Chatbot } from "@/components/chatbot/Chatbot";
 import "./globals.css";
 
-const poppins = Poppins({
+const robotoCondensed = Roboto_Condensed({
   subsets: ["latin"],
   weight: ["600", "700", "800", "900"],
   variable: "--font-heading",
@@ -51,7 +51,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="dark">
       <body
-        className={`${poppins.variable} ${inter.variable} antialiased bg-background-dark text-white`}
+        className={`${robotoCondensed.variable} ${inter.variable} antialiased bg-background-dark text-white`}
       >
         <ToastProvider>{children}</ToastProvider>
         <Chatbot />
