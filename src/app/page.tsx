@@ -4,8 +4,8 @@ import HeroSection from "@/components/home/HeroSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import WhyNexalumeSection from "@/components/home/WhyNexalumeSection";
 import CasesSection from "@/components/home/CasesSection";
-import ContactSection from "@/components/home/ContactSection";
-import CTASection from "@/components/home/CTASection";
+import ContactSection from "@/components/layout/ContactSection";
+import CTASection from "@/components/layout/CTASection";
 import WhatsAppFloatingButton from "@/components/ui/WhatsAppFloatingButton";
 import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 

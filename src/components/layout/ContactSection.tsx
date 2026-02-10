@@ -34,7 +34,7 @@ export default function ContactSection() {
     try {
       await axios.post(
         "https://n8n.ramongomessilva.com.br/webhook/contato",
-        data
+        data,
       );
       toast({
         variant: "success",
@@ -96,10 +96,9 @@ export default function ContactSection() {
               </h2>
               <p className="text-metal-gray text-base sm:text-lg leading-relaxed max-w-lg">
                 Preencha o formulário e nossa equipe preparará uma análise
-                personalizada para o seu negócio. Sem compromisso.
+                personalizada para o seu negócio.
               </p>
             </div>
-
           </motion.div>
 
           {/* Right column - Form card */}

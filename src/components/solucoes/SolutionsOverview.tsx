@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { fadeIn, staggerContainer, staggerItem } from "@/lib/animations";
+import { SparklesCore } from "@/components/ui/aceternity/sparkles";
+import { scrollToContact } from "@/lib/utils";
 import { SERVICE_CATEGORIES, SERVICE_ICONS } from "@/lib/services-data";
 
 export default function SolutionsOverview() {
@@ -16,16 +18,26 @@ export default function SolutionsOverview() {
           initial="hidden"
           animate="visible"
         >
-          <h3 className="text-accent-cyan font-bold tracking-[0.2em] uppercase text-sm mb-4">
-            Nossas Solucoes
-          </h3>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white font-heading mb-6">
+          <div className="relative inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+            <div className="absolute inset-0 overflow-hidden rounded-full">
+              <SparklesCore
+                particleDensity={30}
+                minSize={0.5}
+                maxSize={1.5}
+                speed={1.5}
+                particleColor="#00E5FF"
+                className="w-full h-full"
+              />
+            </div>
+            <span className="relative">Nossas Soluções</span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white font-heading mb-6 uppercase">
             Tecnologia que{" "}
-            <span className="gradient-highlight-text">transforma</span> negocios
+            <span className="gradient-highlight-text">transforma</span> negócios
           </h1>
           <p className="text-metal-gray text-lg leading-relaxed">
-            Oferecemos solucoes completas de tecnologia para impulsionar o
-            crescimento da sua empresa. Do desenvolvimento web a inteligencia
+            Oferecemos soluções completas de tecnologia para impulsionar o
+            crescimento da sua empresa. Do desenvolvimento web à inteligência
             artificial.
           </p>
         </motion.div>
@@ -42,7 +54,7 @@ export default function SolutionsOverview() {
             >
               {/* Category Header */}
               <div className="mb-8">
-                <h2 className="text-2xl font-bold text-white font-heading">
+                <h2 className="text-2xl font-black text-white font-heading uppercase">
                   {category.title}
                 </h2>
                 <p className="text-metal-gray mt-1">{category.description}</p>
@@ -111,14 +123,15 @@ export default function SolutionsOverview() {
           viewport={{ once: true }}
         >
           <p className="text-metal-gray mb-6">
-            Nao sabe qual solucao e ideal para voce?
+            Não sabe qual solução é ideal para você?
           </p>
-          <Link
+          <a
             href="#contact"
+            onClick={scrollToContact}
             className="inline-flex items-center btn-gradient px-8 py-4 rounded-xl font-bold neon-glow-primary hover:opacity-90 transition-all"
           >
             Fale com um Especialista
-          </Link>
+          </a>
         </motion.div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MessageCircle } from "lucide-react";
 import { fadeIn } from "@/lib/animations";
 import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from "@/lib/constants";
 import Button from "@/components/ui/Button";
@@ -8,6 +9,12 @@ import { BackgroundBeams } from "@/components/ui/aceternity/background-beams";
 
 export default function CTASection() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
+  function handleOpenChat() {
+    if (typeof window !== "undefined") {
+      (window as unknown as { Typebot?: { open: () => void } }).Typebot?.open();
+    }
+  }
 
   return (
     <section
@@ -58,9 +65,17 @@ export default function CTASection() {
             </Button>
           </a>
 
-          <a href="#contact" className="w-full sm:w-auto">
-            <Button variant="primary">Preencher Formulário</Button>
-          </a>
+          <div className="w-full sm:w-auto">
+            <Button
+              variant="primary"
+              icon={MessageCircle}
+              iconPosition="left"
+              onClick={handleOpenChat}
+              aria-label="Iniciar chat"
+            >
+              Iniciar Chat
+            </Button>
+          </div>
         </div>
       </motion.div>
     </section>

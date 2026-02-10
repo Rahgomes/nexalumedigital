@@ -32,66 +32,66 @@ export const SERVICES: ServiceCardData[] = [
     icon: Monitor,
     title: "Presença Digital",
     description:
-      "UX/UI Design de vanguarda e Web Development focado em conversão e experiência do usuário.",
+      "Colocamos sua marca na frente das pessoas certas, com sites, conteúdo e estrutura pensados para gerar negócios.",
     features: [
-      "Sites Institucionais",
-      "E-commerce de Performance",
-      "Portais & Landing Pages",
+      "Sites institucionais rápidos e responsivos",
+      "Páginas de captura e portais otimizados",
+      "SEO básico e preparo para campanhas",
     ],
   },
   {
     icon: Database,
     title: "Sistemas Corporativos",
     description:
-      "Sistemas robustos e arquitetura escalável para gerenciar processos complexos com segurança.",
+      "Desenvolvemos sistemas sob medida para organizar processos, dados e operações do seu negócio.",
     features: [
-      "ERPs Customizados",
-      "Gestão de APIs",
-      "Infraestrutura Cloud",
+      "ERPs e CRMs personalizados",
+      "Gestão e orquestração de APIs",
+      "Infraestrutura em cloud segura e escalável",
     ],
   },
   {
     icon: TrendingUp,
-    title: "Growth AI",
+    title: "Growth & IA",
     description:
-      "Automação inteligente e modelos de IA personalizados para otimizar vendas e atendimento.",
+      "Usamos automação e IA para aumentar conversão, melhorar atendimento e apoiar decisões com dados.",
     features: [
-      "Agentes IA de Atendimento",
-      "Automação de Workflows",
-      "Data Intelligence",
+      "Assistentes de atendimento com IA",
+      "Automação de funis e rotinas de vendas",
+      "Análises e dashboards orientados a dados",
     ],
   },
   {
     icon: Layers,
     title: "Micro SaaS sob Demanda",
     description:
-      "Soluções SaaS personalizadas para nichos específicos, do zero ao produto com modelo de negócio.",
+      "Criamos produtos digitais recorrentes para nichos específicos, prontos para escalar e gerar receita.",
     features: [
-      "Do zero ao produto com modelo de negócio",
-      "Infraestrutura completa e escalável",
-      "Interface amigável com lógica de recorrência",
+      "Do conceito ao primeiro produto utilizável (MVP)",
+      "Arquitetura SaaS pronta para crescer",
+      "Modelos de assinatura e cobrança recorrente",
     ],
   },
   {
     icon: Zap,
-    title: "Integrações e Automações",
+    title: "Integrações & Automações",
     description:
-      "Conecte sistemas e automatize processos com eficiência usando n8n e APIs modernas.",
+      "Fazemos seus sistemas conversarem entre si, eliminando tarefas manuais e retrabalho.",
     features: [
-      "Especialistas em Notion API e n8n",
-      "Automação de processos complexos",
-      "Integração entre plataformas e sistemas",
+      "Fluxos avançados com n8n e APIs",
+      "Sincronização de dados entre plataformas",
+      "Automação de processos internos e atendimento",
     ],
   },
   {
     icon: Settings,
     title: "Software Sob Medida",
     description:
-      "Sistemas criados para resolver desafios específicos da sua operação.",
+      "Aplicações web desenhadas para o seu fluxo de trabalho, sem excesso nem falta de funcionalidade.",
     features: [
-      "Plataformas web, CRMs, ERPs e dashboards",
-      "Arquitetura segura, escalável e com foco em UX",
-      "Tecnologias modernas adequadas ao seu projeto",
+      "Portais, painéis, CRMs e ERPs personalizados",
+      "Experiência do usuário pensada com o time de operação",
+      "Stack moderna alinhada à realidade do projeto",
     ],
   },
 ];
@@ -99,21 +99,21 @@ export const SERVICES: ServiceCardData[] = [
 export const DIFFERENTIALS: DifferentialData[] = [
   {
     icon: Shield,
-    title: "Infraestrutura Resiliente",
+    title: "Base Sólida e Segura",
     description:
-      "Segurança de dados e alta disponibilidade em todos os níveis do seu projeto digital.",
+      "Construímos a fundação digital do seu negócio com infraestrutura robusta, segurança de dados e alta disponibilidade.",
   },
   {
     icon: Brain,
-    title: "Cérebro Artificial",
+    title: "Inteligência Aplicada",
     description:
-      "Não apenas código, mas lógica aplicada para prever demandas e otimizar conversões.",
+      "Vamos além do código: usamos IA para analisar dados, otimizar processos e criar soluções que geram resultados reais.",
   },
   {
     icon: Handshake,
-    title: "Parceria Estratégica",
+    title: "Parceria de Valor",
     description:
-      "Atuamos como seu braço tecnológico, focando no ROI e crescimento escalável.",
+      "Somos seu time de tecnologia e marketing, focados em crescimento, ROI e na evolução contínua do seu projeto.",
   },
 ];
 
@@ -153,7 +153,10 @@ export const FOOTER_LINKS: FooterLinkGroup[] = [
     links: [
       { label: "Presença Digital", href: "/solucoes/presenca-digital" },
       { label: "Growth AI", href: "/solucoes/growth-ai" },
-      { label: "Sistemas Corporativos", href: "/solucoes/sistemas-corporativos" },
+      {
+        label: "Sistemas Corporativos",
+        href: "/solucoes/sistemas-corporativos",
+      },
       { label: "Micro SaaS", href: "/solucoes/micro-saas" },
     ],
   },

@@ -78,21 +78,14 @@ export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
               </div>
 
               {/* Footer CTA */}
-              <div className="mt-8 pt-6 border-t border-white/10 flex justify-between items-center">
+              <div className="mt-8 pt-6 border-t border-white/10">
                 <Link
                   href="/solucoes"
                   onClick={onClose}
                   className="text-primary text-sm font-medium hover:text-accent-cyan transition-colors flex items-center gap-2"
                 >
-                  Ver todas as solucoes
+                  Ver todas as soluções
                   <span className="text-lg">→</span>
-                </Link>
-                <Link
-                  href="#contact"
-                  onClick={onClose}
-                  className="btn-gradient px-5 py-2.5 rounded-lg text-sm font-bold neon-glow-primary hover:opacity-90 transition-all"
-                >
-                  Fale com um Especialista
                 </Link>
               </div>
             </div>

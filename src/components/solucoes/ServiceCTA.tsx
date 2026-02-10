@@ -13,7 +13,7 @@ interface ServiceCTAProps {
 
 export default function ServiceCTA({ service }: ServiceCTAProps) {
   const whatsappMessage = encodeURIComponent(
-    `Ola! Gostaria de saber mais sobre ${service.title}.`
+    `Olá! Gostaria de saber mais sobre ${service.title}.`
   );
   const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
 
@@ -27,8 +27,8 @@ export default function ServiceCTA({ service }: ServiceCTAProps) {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading mb-6">
-            Pronto para comecar?
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white font-heading uppercase mb-6">
+            Pronto para começar?
           </h2>
           <p className="text-metal-gray text-lg mb-10 max-w-2xl mx-auto">
             Entre em contato conosco e descubra como podemos ajudar sua empresa

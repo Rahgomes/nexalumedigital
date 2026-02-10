@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { heroTextReveal, staggerContainer } from "@/lib/animations";
+import { scrollToContact } from "@/lib/utils";
 import Button from "@/components/ui/Button";
 import { AuroraBackground } from "@/components/ui/aceternity/aurora-background";
 import { SparklesCore } from "@/components/ui/aceternity/sparkles";
@@ -404,7 +405,7 @@ export default function HeroSection() {
             variants={heroTextReveal}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
           >
-            <a href="#contact">
+            <a href="#contact" onClick={scrollToContact}>
               <Button
                 variant="primary"
                 icon={ArrowRight}

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { scrollToContact } from "@/lib/utils";
 import { SERVICE_CATEGORIES, SERVICE_ICONS } from "@/lib/services-data";
 
 interface MobileMenuProps {
@@ -31,7 +32,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 onClick={() => setSolucoesExpanded(!solucoesExpanded)}
                 className="flex items-center justify-between w-full py-3 text-base font-medium text-white"
               >
-                <span>Solucoes</span>
+                <span>Soluções</span>
                 <ChevronDown
                   className={`size-5 text-metal-gray transition-transform duration-200 ${
                     solucoesExpanded ? "rotate-180" : ""
@@ -80,7 +81,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                         onClick={onClose}
                         className="block pl-2 py-2 text-sm text-primary font-medium hover:text-accent-cyan transition-colors"
                       >
-                        Ver todas as solucoes →
+                        Ver todas as soluções →
                       </Link>
                     </div>
                   </motion.div>
@@ -94,7 +95,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onClick={onClose}
               className="block py-3 text-base font-medium text-metal-gray hover:text-white transition-colors"
             >
-              Sobre Nos
+              Sobre Nós
             </Link>
             <Link
               href="#cases"
@@ -103,22 +104,22 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             >
               Cases
             </Link>
-            <Link
+            <a
               href="#contact"
-              onClick={onClose}
+              onClick={(e) => { scrollToContact(e); onClose(); }}
               className="block py-3 text-base font-medium text-metal-gray hover:text-white transition-colors"
             >
               Contato
-            </Link>
+            </a>
 
             {/* CTA Button */}
-            <Link
+            <a
               href="#contact"
-              onClick={onClose}
+              onClick={(e) => { scrollToContact(e); onClose(); }}
               className="block w-full btn-gradient px-6 py-3 rounded-lg font-bold text-sm tracking-wide neon-glow-primary hover:opacity-90 transition-all mt-4 text-center"
             >
               Fale com um Especialista
-            </Link>
+            </a>
           </div>
         </motion.div>
       )}

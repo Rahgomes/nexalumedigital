@@ -5,7 +5,8 @@ import Footer from "@/components/layout/Footer";
 import ServiceHero from "@/components/solucoes/ServiceHero";
 import ServiceFeatures from "@/components/solucoes/ServiceFeatures";
 import ServiceBenefits from "@/components/solucoes/ServiceBenefits";
-import ServiceCTA from "@/components/solucoes/ServiceCTA";
+import ContactSection from "@/components/layout/ContactSection";
+import CTASection from "@/components/layout/CTASection";
 import WhatsAppFloatingButton from "@/components/ui/WhatsAppFloatingButton";
 import {
   getServiceBySlug,
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const service = getServiceBySlug(slug);
 
   if (!service) {
-    return { title: "Servico nao encontrado | Nexalume Digital" };
+    return { title: "Serviço não encontrado | Nexalume Digital" };
   }
 
   return {
@@ -51,7 +52,8 @@ export default async function ServicePage({ params }: Props) {
         <ServiceHero service={service} category={category} />
         <ServiceFeatures service={service} />
         <ServiceBenefits service={service} />
-        <ServiceCTA service={service} />
+        <ContactSection />
+        <CTASection />
       </main>
       <Footer />
       <WhatsAppFloatingButton />

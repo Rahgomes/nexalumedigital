@@ -23,29 +23,29 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   {
     id: "digital-web",
     title: "Digital & Web",
-    description: "Presenca digital e experiencia do usuario",
+    description: "Presença digital e experiência do usuário",
     services: [
       {
         slug: "presenca-digital",
         iconName: "Monitor",
-        title: "Presenca Digital",
+        title: "Presença Digital",
         shortDescription:
-          "UX/UI Design e Web Development focado em conversao",
+          "UX/UI Design e Web Development focado em conversão",
         fullDescription:
-          "Criamos experiencias digitais que convertem. Nosso time de designers e desenvolvedores trabalha em conjunto para entregar sites e plataformas que nao apenas impressionam visualmente, mas geram resultados reais para o seu negocio.",
+          "Criamos experiências digitais que convertem. Nosso time de designers e desenvolvedores trabalha em conjunto para entregar sites e plataformas que não apenas impressionam visualmente, mas geram resultados reais para o seu negócio.",
         features: [
           "Sites Institucionais modernos e responsivos",
           "E-commerce de alta performance",
-          "Landing Pages otimizadas para conversao",
+          "Landing Pages otimizadas para conversão",
           "Portais corporativos e intranets",
           "PWAs (Progressive Web Apps)",
           "Design System personalizado",
         ],
         benefits: [
-          "Aumento de ate 3x na taxa de conversao",
-          "Experiencia do usuario otimizada",
+          "Aumento de até 3x na taxa de conversão",
+          "Experiência do usuário otimizada",
           "Performance e SEO de primeira linha",
-          "Design exclusivo e memoravel",
+          "Design exclusivo e memorável",
         ],
         technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Figma", "Framer Motion"],
       },
@@ -54,22 +54,22 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         iconName: "Settings",
         title: "Software Sob Medida",
         shortDescription:
-          "Sistemas criados para resolver desafios especificos",
+          "Sistemas criados para resolver desafios específicos",
         fullDescription:
-          "Desenvolvemos solucoes personalizadas que se adaptam perfeitamente aos processos da sua empresa. Cada linha de codigo e pensada para resolver os desafios unicos do seu negocio, com arquitetura escalavel e segura.",
+          "Desenvolvemos soluções personalizadas que se adaptam perfeitamente aos processos da sua empresa. Cada linha de código é pensada para resolver os desafios únicos do seu negócio, com arquitetura escalável e segura.",
         features: [
           "Plataformas web customizadas",
           "CRMs e ERPs sob medida",
-          "Dashboards e paineis administrativos",
-          "Sistemas de gestao interna",
+          "Dashboards e painéis administrativos",
+          "Sistemas de gestão interna",
           "Portais de autoatendimento",
-          "Aplicacoes multi-tenant",
+          "Aplicações multi-tenant",
         ],
         benefits: [
-          "Solucao 100% adaptada ao seu negocio",
+          "Solução 100% adaptada ao seu negócio",
           "Escalabilidade garantida",
-          "Integracao com sistemas existentes",
-          "Suporte e evolucao continua",
+          "Integração com sistemas existentes",
+          "Suporte e evolução contínua",
         ],
         technologies: ["Node.js", "Python", "PostgreSQL", "Docker", "AWS", "Kubernetes"],
       },
@@ -78,7 +78,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   {
     id: "sistemas-infra",
     title: "Sistemas & Infraestrutura",
-    description: "Arquitetura robusta e escalavel",
+    description: "Arquitetura robusta e escalável",
     services: [
       {
         slug: "sistemas-corporativos",
@@ -87,44 +87,44 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         shortDescription:
           "ERPs, APIs e infraestrutura Cloud de alta performance",
         fullDescription:
-          "Construimos a espinha dorsal tecnologica da sua empresa. Sistemas corporativos robustos, APIs bem documentadas e infraestrutura cloud que garante disponibilidade 24/7 e seguranca em todos os niveis.",
+          "Construímos a espinha dorsal tecnológica da sua empresa. Sistemas corporativos robustos, APIs bem documentadas e infraestrutura cloud que garante disponibilidade 24/7 e segurança em todos os níveis.",
         features: [
-          "ERPs customizados para sua operacao",
+          "ERPs customizados para sua operação",
           "APIs RESTful e GraphQL",
           "Infraestrutura Cloud (AWS, GCP, Azure)",
-          "Microsservicos e arquitetura distribuida",
+          "Microsserviços e arquitetura distribuída",
           "Monitoramento e observabilidade",
           "DevOps e CI/CD automatizado",
         ],
         benefits: [
           "Alta disponibilidade (99.9% uptime)",
-          "Seguranca enterprise-grade",
+          "Segurança enterprise-grade",
           "Escalabilidade horizontal",
-          "Reducao de custos operacionais",
+          "Redução de custos operacionais",
         ],
         technologies: ["AWS", "Docker", "Kubernetes", "Terraform", "PostgreSQL", "Redis"],
       },
       {
         slug: "integracoes-automacoes",
         iconName: "Zap",
-        title: "Integracoes e Automacoes",
+        title: "Integrações e Automações",
         shortDescription:
           "Conecte sistemas e automatize processos com n8n e APIs",
         fullDescription:
           "Eliminamos trabalho manual e conectamos suas ferramentas. Somos especialistas em n8n e Notion API, criando fluxos automatizados que economizam horas de trabalho e reduzem erros humanos.",
         features: [
-          "Automacoes com n8n e Make",
-          "Integracoes via Notion API",
+          "Automações com n8n e Make",
+          "Integrações via Notion API",
           "Conectores personalizados",
           "Webhooks e event-driven architecture",
-          "ETL e sincronizacao de dados",
-          "Bots e notificacoes automaticas",
+          "ETL e sincronização de dados",
+          "Bots e notificações automáticas",
         ],
         benefits: [
-          "Economia de ate 20h semanais em tarefas manuais",
+          "Economia de até 20h semanais em tarefas manuais",
           "Zero erros em processos repetitivos",
           "Dados sincronizados em tempo real",
-          "ROI mensuravel e imediato",
+          "ROI mensurável e imediato",
         ],
         technologies: ["n8n", "Notion API", "Zapier", "Make", "Node.js", "REST APIs"],
       },
@@ -132,30 +132,30 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
   },
   {
     id: "ia-inovacao",
-    title: "IA & Inovacao",
-    description: "Inteligencia artificial e produtos digitais",
+    title: "IA & Inovação",
+    description: "Inteligência artificial e produtos digitais",
     services: [
       {
         slug: "growth-ai",
         iconName: "TrendingUp",
         title: "Growth AI",
         shortDescription:
-          "Agentes IA, automacao inteligente e Data Intelligence",
+          "Agentes IA, automação inteligente e Data Intelligence",
         fullDescription:
-          "Colocamos a inteligencia artificial a servico do seu crescimento. Desenvolvemos agentes de IA para atendimento, automacoes inteligentes e solucoes de Data Intelligence que transformam dados em decisoes estrategicas.",
+          "Colocamos a inteligência artificial a serviço do seu crescimento. Desenvolvemos agentes de IA para atendimento, automações inteligentes e soluções de Data Intelligence que transformam dados em decisões estratégicas.",
         features: [
-          "Agentes IA de atendimento (chatbots avancados)",
-          "Automacao inteligente de workflows",
-          "Analise preditiva e Data Intelligence",
+          "Agentes IA de atendimento (chatbots avançados)",
+          "Automação inteligente de workflows",
+          "Análise preditiva e Data Intelligence",
           "Processamento de linguagem natural (NLP)",
-          "Machine Learning aplicado a negocios",
-          "Integracao com ChatGPT, Claude e outros LLMs",
+          "Machine Learning aplicado a negócios",
+          "Integração com ChatGPT, Claude e outros LLMs",
         ],
         benefits: [
           "Atendimento 24/7 sem aumentar equipe",
-          "Decisoes baseadas em dados reais",
+          "Decisões baseadas em dados reais",
           "Aumento de produtividade em 40%",
-          "Personalizacao em escala",
+          "Personalização em escala",
         ],
         technologies: ["OpenAI", "LangChain", "Python", "TensorFlow", "Anthropic Claude", "Vector DBs"],
       },
@@ -166,20 +166,20 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         shortDescription:
           "Produtos SaaS personalizados do zero ao mercado",
         fullDescription:
-          "Transformamos sua ideia em um produto SaaS pronto para o mercado. Do MVP a plataforma completa, cuidamos de tudo: desenvolvimento, infraestrutura, modelo de negocio e estrategia de go-to-market.",
+          "Transformamos sua ideia em um produto SaaS pronto para o mercado. Do MVP à plataforma completa, cuidamos de tudo: desenvolvimento, infraestrutura, modelo de negócio e estratégia de go-to-market.",
         features: [
-          "Desenvolvimento de MVP rapido",
+          "Desenvolvimento de MVP rápido",
           "Arquitetura multi-tenant",
           "Sistema de billing e assinaturas",
-          "Dashboard de metricas e analytics",
-          "Onboarding e documentacao",
-          "Infraestrutura escalavel inclusa",
+          "Dashboard de métricas e analytics",
+          "Onboarding e documentação",
+          "Infraestrutura escalável inclusa",
         ],
         benefits: [
           "Time-to-market acelerado",
           "Modelo de receita recorrente pronto",
           "Escalabilidade desde o dia 1",
-          "Suporte tecnico e evolucao continua",
+          "Suporte técnico e evolução contínua",
         ],
         technologies: ["Next.js", "Stripe", "Supabase", "Vercel", "PostgreSQL", "Resend"],
       },

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, Code2, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { scrollToContact } from "@/lib/utils";
 import MegaMenu from "./MegaMenu";
 import MobileMenu from "./MobileMenu";
 
@@ -94,7 +95,7 @@ export default function Header() {
               aria-expanded={megaMenuOpen}
               aria-haspopup="menu"
             >
-              Solucoes
+              Soluções
               <ChevronDown
                 className={`size-4 transition-transform duration-200 ${
                   megaMenuOpen ? "rotate-180" : ""
@@ -107,7 +108,7 @@ export default function Header() {
             href="#why"
             className="text-sm font-medium text-metal-gray hover:text-white transition-colors"
           >
-            Sobre Nos
+            Sobre Nós
           </Link>
           <Link
             href="#cases"
@@ -115,22 +116,24 @@ export default function Header() {
           >
             Cases
           </Link>
-          <Link
+          <a
             href="#contact"
+            onClick={scrollToContact}
             className="text-sm font-medium text-metal-gray hover:text-white transition-colors"
           >
             Contato
-          </Link>
+          </a>
         </div>
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <Link
+          <a
             href="#contact"
+            onClick={scrollToContact}
             className="btn-gradient px-6 py-2.5 rounded-lg font-bold text-sm tracking-wide neon-glow-primary hover:opacity-90 transition-all"
           >
             Fale com um Especialista
-          </Link>
+          </a>
         </div>
 
         {/* Mobile Hamburger */}

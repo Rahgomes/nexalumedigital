@@ -1,11 +1,15 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer, staggerItem } from "@/lib/animations";
 import { SparklesCore } from "@/components/ui/aceternity/sparkles";
 import { CASES } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 
 export default function CasesSection() {
+  const [hovered, setHovered] = useState<number | null>(null);
+
   return (
     <section
       id="cases"
@@ -47,11 +51,16 @@ export default function CasesSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
         >
-          {CASES.map((caseItem) => (
+          {CASES.map((caseItem, index) => (
             <motion.article
               key={caseItem.client}
               variants={staggerItem}
-              className="group relative rounded-2xl overflow-hidden aspect-[16/9] bg-surface-dark border border-white/10"
+              onMouseEnter={() => setHovered(index)}
+              onMouseLeave={() => setHovered(null)}
+              className={cn(
+                "group relative rounded-2xl overflow-hidden aspect-[16/9] bg-surface-dark border border-white/10 transition-all duration-300 ease-out",
+                hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
+              )}
             >
               {/* Background Image */}
               <div
@@ -64,8 +73,16 @@ export default function CasesSection() {
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/40 to-transparent" />
 
+              {/* Focus overlay (escurecimento no hover) */}
+              <div
+                className={cn(
+                  "absolute inset-0 bg-black/30 transition-opacity duration-300",
+                  hovered === index ? "opacity-100" : "opacity-0"
+                )}
+              />
+
               {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8">
+              <div className="absolute z-10 bottom-0 left-0 right-0 p-5 sm:p-8">
                 <div className="inline-block px-3 py-1 rounded-full bg-accent-cyan/20 border border-accent-cyan/30 text-accent-cyan text-xs font-black mb-3 sm:mb-4">
                   {caseItem.metric}
                 </div>

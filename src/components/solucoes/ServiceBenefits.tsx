@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Sparkles, TrendingUp, Shield, Zap } from "lucide-react";
 import { fadeIn, staggerContainer, staggerItem } from "@/lib/animations";
+import { SparklesCore } from "@/components/ui/aceternity/sparkles";
 import type { ServiceDetail } from "@/lib/types";
 
 interface ServiceBenefitsProps {
@@ -23,11 +24,21 @@ export default function ServiceBenefits({ service }: ServiceBenefitsProps) {
         >
           {/* Section Header */}
           <motion.div variants={staggerItem} className="text-center mb-12">
-            <h3 className="text-accent-cyan font-bold tracking-[0.2em] uppercase text-sm mb-4">
-              Por que escolher
-            </h3>
-            <h2 className="text-3xl sm:text-4xl font-black text-white font-heading">
-              Beneficios para seu negocio
+            <div className="relative inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-widest mb-4">
+              <div className="absolute inset-0 overflow-hidden rounded-full">
+                <SparklesCore
+                  particleDensity={30}
+                  minSize={0.5}
+                  maxSize={1.5}
+                  speed={1.5}
+                  particleColor="#00E5FF"
+                  className="w-full h-full"
+                />
+              </div>
+              <span className="relative">Por que escolher</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-white font-heading uppercase">
+              Benefícios para seu negócio
             </h2>
           </motion.div>
 

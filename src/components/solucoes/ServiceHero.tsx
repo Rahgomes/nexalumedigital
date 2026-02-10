@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { heroTextReveal } from "@/lib/animations";
+import { scrollToContact } from "@/lib/utils";
 import { SERVICE_ICONS } from "@/lib/services-data";
 import type { ServiceDetail, ServiceCategory } from "@/lib/types";
 
@@ -37,7 +38,7 @@ export default function ServiceHero({ service, category }: ServiceHeroProps) {
             </Link>
             <span>/</span>
             <Link href="/solucoes" className="hover:text-white transition-colors">
-              Solucoes
+              Soluções
             </Link>
             <span>/</span>
             <span className="text-accent-cyan">{category.title}</span>
@@ -73,12 +74,13 @@ export default function ServiceHero({ service, category }: ServiceHeroProps) {
           </div>
 
           {/* CTA */}
-          <Link
+          <a
             href="#contact"
+            onClick={scrollToContact}
             className="inline-flex items-center btn-gradient px-8 py-4 rounded-xl font-bold neon-glow-primary hover:opacity-90 transition-all"
           >
-            Solicitar Orcamento
-          </Link>
+            Solicitar Orçamento
+          </a>
         </motion.div>
       </div>
     </section>

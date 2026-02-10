@@ -16,8 +16,8 @@ export default function Footer() {
               <span className="text-xl font-black text-white">NEXALUME</span>
             </Link>
             <p className="text-metal-gray text-sm leading-relaxed max-w-xs">
-              Elevando o padrao tecnologico de empresas atraves de inteligencia
-              artificial aplicada e sistemas de alta performance.
+              Transformando empresas com inteligência artificial e tecnologia
+              eficiente.
             </p>
             <div className="flex gap-4">
               {SOCIAL_LINKS.map((social) => {
@@ -76,7 +76,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="size-4 text-primary mt-0.5 shrink-0" />
-                Sao Paulo, BR
+                São Paulo, BR
               </li>
             </ul>
           </div>
