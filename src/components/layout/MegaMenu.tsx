@@ -31,9 +31,10 @@ export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             className="absolute top-full left-0 w-full z-50 glass-nav border-t border-primary/20 shadow-2xl"
+            style={{ background: "rgba(11, 28, 45, 0.95)" }}
           >
-            <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8">
-              <div className="grid grid-cols-3 gap-8">
+            <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8 max-h-[80vh] overflow-y-auto">
+              <div className="grid grid-cols-3 gap-x-8 gap-y-10">
                 {SERVICE_CATEGORIES.map((category) => (
                   <div key={category.id} className="space-y-4">
                     {/* Category Header */}

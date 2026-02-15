@@ -56,7 +56,12 @@ export type ServiceIconName =
   | "TrendingUp"
   | "Layers"
   | "Zap"
-  | "Settings";
+  | "Settings"
+  | "Share2"
+  | "Target"
+  | "Megaphone"
+  | "Palette"
+  | "Video";
 
 export interface ServiceDetail {
   slug: string;

@@ -9,7 +9,7 @@ import WhatsAppFloatingButton from "@/components/ui/WhatsAppFloatingButton";
 export const metadata: Metadata = {
   title: "Soluções | Nexalume Digital",
   description:
-    "Conheça todas as soluções digitais da Nexalume: sistemas corporativos, IA, automação, desenvolvimento web e muito mais.",
+    "Conheça todas as soluções da Nexalume: sites, marketing digital, tráfego pago, design gráfico, produção de conteúdo, sistemas corporativos, IA e muito mais.",
 };
 
 export default function SolucoesPage() {

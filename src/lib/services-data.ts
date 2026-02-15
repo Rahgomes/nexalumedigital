@@ -5,6 +5,11 @@ import {
   Layers,
   Zap,
   Settings,
+  Share2,
+  Target,
+  Megaphone,
+  Palette,
+  Video,
   type LucideIcon,
 } from "lucide-react";
 import type { ServiceCategory, ServiceDetail, ServiceIconName } from "./types";
@@ -17,6 +22,11 @@ export const SERVICE_ICONS: Record<ServiceIconName, LucideIcon> = {
   Layers,
   Zap,
   Settings,
+  Share2,
+  Target,
+  Megaphone,
+  Palette,
+  Video,
 };
 
 export const SERVICE_CATEGORIES: ServiceCategory[] = [
@@ -30,24 +40,24 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         iconName: "Monitor",
         title: "Presença Digital",
         shortDescription:
-          "UX/UI Design e Web Development focado em conversão",
+          "Sites, lojas virtuais, aplicativos e Google Meu Negócio",
         fullDescription:
-          "Criamos experiências digitais que convertem. Nosso time de designers e desenvolvedores trabalha em conjunto para entregar sites e plataformas que não apenas impressionam visualmente, mas geram resultados reais para o seu negócio.",
+          "Criamos experiências digitais que convertem. Nosso time de designers e desenvolvedores trabalha em conjunto para entregar sites, lojas virtuais, aplicativos e páginas de captura que não apenas impressionam visualmente, mas geram resultados reais para o seu negócio. Também cuidamos do seu cadastro e gestão no Google Meu Negócio para garantir presença local.",
         features: [
-          "Sites Institucionais modernos e responsivos",
-          "E-commerce de alta performance",
-          "Landing Pages otimizadas para conversão",
-          "Portais corporativos e intranets",
-          "PWAs (Progressive Web Apps)",
+          "Sites institucionais modernos e responsivos",
+          "Lojas virtuais e e-commerce completo",
+          "Landing pages otimizadas para conversão",
+          "Aplicativos mobile (PWA e nativos)",
+          "Cadastro e gestão de Google Meu Negócio",
           "Design System personalizado",
         ],
         benefits: [
           "Aumento de até 3x na taxa de conversão",
           "Experiência do usuário otimizada",
           "Performance e SEO de primeira linha",
-          "Design exclusivo e memorável",
+          "Presença garantida no Google Maps e buscas locais",
         ],
-        technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Figma", "Framer Motion"],
+        technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Figma", "Google Business"],
       },
       {
         slug: "software-sob-medida",
@@ -72,6 +82,140 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
           "Suporte e evolução contínua",
         ],
         technologies: ["Node.js", "Python", "PostgreSQL", "Docker", "AWS", "Kubernetes"],
+      },
+    ],
+  },
+  {
+    id: "marketing-trafego",
+    title: "Marketing & Tráfego",
+    description: "Mídias sociais, anúncios e divulgação digital",
+    services: [
+      {
+        slug: "gestao-midias-sociais",
+        iconName: "Share2",
+        title: "Gestão de Mídias Sociais",
+        shortDescription:
+          "Gestão estratégica de Facebook e Instagram para engajar e converter",
+        fullDescription:
+          "Cuidamos da presença da sua marca nas redes sociais com planejamento estratégico, criação de conteúdo e gestão de comunidade. Transformamos seguidores em clientes com posts que engajam e campanhas que convertem.",
+        features: [
+          "Planejamento e calendário editorial",
+          "Criação de posts e stories profissionais",
+          "Gestão de comunidade e SAC social",
+          "Relatórios de performance e engajamento",
+          "Estratégias de crescimento orgânico",
+          "Monitoramento de concorrência",
+        ],
+        benefits: [
+          "Presença consistente nas redes sociais",
+          "Aumento de engajamento e seguidores qualificados",
+          "Economia de tempo com gestão profissional",
+          "Conteúdo alinhado à identidade da marca",
+        ],
+        technologies: ["Meta Business Suite", "Canva Pro", "Instagram API", "Facebook API", "Hootsuite", "ChatGPT"],
+      },
+      {
+        slug: "trafego-pago",
+        iconName: "Target",
+        title: "Tráfego Pago & Performance",
+        shortDescription:
+          "Campanhas de Google Ads e Meta Ads que geram resultados reais",
+        fullDescription:
+          "Planejamos, executamos e otimizamos campanhas de anúncios pagos no Google e nas redes sociais da Meta. Cada real investido é monitorado para garantir o máximo retorno sobre investimento e crescimento sustentável.",
+        features: [
+          "Campanhas no Google Ads (Search, Display, YouTube)",
+          "Anúncios no Facebook e Instagram (Meta Ads)",
+          "Remarketing e públicos personalizados",
+          "Otimização contínua de campanhas",
+          "Landing pages otimizadas para conversão",
+          "Relatórios detalhados de ROI",
+        ],
+        benefits: [
+          "Resultados mensuráveis desde o primeiro mês",
+          "Segmentação precisa do público-alvo",
+          "Otimização constante para reduzir custo por lead",
+          "Escalabilidade controlada do investimento",
+        ],
+        technologies: ["Google Ads", "Meta Ads Manager", "Google Analytics", "Google Tag Manager", "Hotjar", "Data Studio"],
+      },
+      {
+        slug: "divulgacao-alcance",
+        iconName: "Megaphone",
+        title: "Divulgação & Alcance Digital",
+        shortDescription:
+          "Amplie sua visibilidade com divulgação em massa no WhatsApp e Facebook",
+        fullDescription:
+          "Levamos sua marca para milhares de pessoas através de estratégias de divulgação em massa em grupos de WhatsApp e Facebook. Ampliamos o alcance e a visibilidade de empresas, produtos e serviços de forma eficiente e escalável.",
+        features: [
+          "Divulgação em grupos de WhatsApp segmentados",
+          "Marketing em grupos de Facebook",
+          "Criação de materiais otimizados para compartilhamento",
+          "Segmentação por região e interesse",
+          "Agendamento e automação de publicações",
+          "Relatórios de alcance e engajamento",
+        ],
+        benefits: [
+          "Alcance massivo com investimento acessível",
+          "Visibilidade imediata para seu negócio",
+          "Segmentação por nicho e localização",
+          "Resultados rápidos e mensuráveis",
+        ],
+        technologies: ["WhatsApp Business API", "Facebook Groups", "Canva", "Automação de mensagens", "Ferramentas de agendamento", "Analytics"],
+      },
+    ],
+  },
+  {
+    id: "design-conteudo",
+    title: "Design & Conteúdo",
+    description: "Identidade visual e produção de conteúdo",
+    services: [
+      {
+        slug: "identidade-visual",
+        iconName: "Palette",
+        title: "Identidade Visual & Design Gráfico",
+        shortDescription:
+          "Logo, identidade visual completa e materiais gráficos profissionais",
+        fullDescription:
+          "Criamos a identidade visual completa da sua marca, do logotipo aos materiais impressos e digitais. Cada peça é pensada para transmitir profissionalismo, confiança e fortalecer o reconhecimento da sua marca no mercado.",
+        features: [
+          "Criação de logotipo profissional",
+          "Identidade visual completa (cores, tipografia, padrões)",
+          "Cartões de visita e papelaria",
+          "Flyers, panfletos e catálogos personalizados",
+          "Banners digitais e para redes sociais",
+          "Manual de marca e guidelines",
+        ],
+        benefits: [
+          "Marca profissional e memorável",
+          "Materiais prontos para impressão e digital",
+          "Consistência visual em todos os canais",
+          "Diferenciação competitiva no mercado",
+        ],
+        technologies: ["Adobe Illustrator", "Adobe Photoshop", "Figma", "Canva Pro", "Adobe InDesign", "Midjourney"],
+      },
+      {
+        slug: "producao-conteudo",
+        iconName: "Video",
+        title: "Produção de Conteúdo Visual",
+        shortDescription:
+          "Criação e edição profissional de imagens e vídeos com IA",
+        fullDescription:
+          "Produzimos conteúdo visual de alto impacto combinando técnicas tradicionais de edição com o poder da inteligência artificial. De vídeos institucionais a posts para redes sociais, entregamos qualidade profissional com agilidade.",
+        features: [
+          "Edição profissional de vídeos institucionais e comerciais",
+          "Criação de imagens com inteligência artificial",
+          "Edição e tratamento avançado de fotos",
+          "Motion graphics e animações",
+          "Vídeos otimizados para redes sociais (Reels, Stories, TikTok)",
+          "Thumbnails e capas para YouTube",
+        ],
+        benefits: [
+          "Conteúdo visual de alto impacto",
+          "Produção ágil com auxílio de IA",
+          "Vídeos otimizados para cada plataforma",
+          "Qualidade profissional com custo acessível",
+        ],
+        technologies: ["Adobe Premiere", "DaVinci Resolve", "After Effects", "Midjourney", "Runway ML", "CapCut Pro"],
       },
     ],
   },
