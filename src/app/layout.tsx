@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto_Condensed, Inter } from "next/font/google";
 import { ToastProvider } from "@/components/ui/Toast";
 import { Chatbot } from "@/components/chatbot/Chatbot";
+import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 import "./globals.css";
 
 const robotoCondensed = Roboto_Condensed({
@@ -54,6 +55,7 @@ export default function RootLayout({
         className={`${robotoCondensed.variable} ${inter.variable} antialiased bg-background-dark text-white`}
       >
         <ToastProvider>{children}</ToastProvider>
+        <ScrollToTopButton />
         <Chatbot />
       </body>
     </html>

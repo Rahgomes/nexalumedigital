@@ -257,7 +257,7 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
         fullDescription:
           "Eliminamos trabalho manual e conectamos suas ferramentas. Somos especialistas em n8n e Notion API, criando fluxos automatizados que economizam horas de trabalho e reduzem erros humanos.",
         features: [
-          "Automações com n8n e Make",
+          "Automações com n8n",
           "Integrações via Notion API",
           "Conectores personalizados",
           "Webhooks e event-driven architecture",

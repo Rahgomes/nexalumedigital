@@ -61,18 +61,6 @@ export default function ServiceHero({ service, category }: ServiceHeroProps) {
             {service.fullDescription}
           </p>
 
-          {/* Technologies */}
-          <div className="flex flex-wrap gap-2 mb-10">
-            {service.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-metal-gray"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
-
           {/* CTA */}
           <a
             href="#contact"
