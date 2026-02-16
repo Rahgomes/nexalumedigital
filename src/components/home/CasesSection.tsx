@@ -6,6 +6,8 @@ import { fadeIn, staggerContainer, staggerItem } from "@/lib/animations";
 import { SparklesCore } from "@/components/ui/aceternity/sparkles";
 import { CASES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function CasesSection() {
   const [hovered, setHovered] = useState<number | null>(null);
@@ -95,6 +97,22 @@ export default function CasesSection() {
               </div>
             </motion.article>
           ))}
+        </motion.div>
+
+        <motion.div
+          className="mt-10 text-center"
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <Link
+            href="/cases"
+            className="inline-flex items-center gap-2 text-primary font-medium hover:text-accent-cyan transition-colors group"
+          >
+            Veja todos os resultados
+            <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </motion.div>
       </div>
     </section>

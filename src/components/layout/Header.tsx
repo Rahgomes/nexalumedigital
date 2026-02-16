@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, Code2, ChevronDown } from "lucide-react";
 import Link from "next/link";
-import { scrollToContact } from "@/lib/utils";
 import MegaMenu from "./MegaMenu";
 import MobileMenu from "./MobileMenu";
 
@@ -105,35 +104,33 @@ export default function Header() {
           </div>
 
           <Link
-            href="#why"
+            href="/sobre"
             className="text-sm font-medium text-metal-gray hover:text-white transition-colors"
           >
             Sobre Nós
           </Link>
           <Link
-            href="#cases"
+            href="/cases"
             className="text-sm font-medium text-metal-gray hover:text-white transition-colors"
           >
             Cases
           </Link>
-          <a
-            href="#contact"
-            onClick={scrollToContact}
+          <Link
+            href="/contato"
             className="text-sm font-medium text-metal-gray hover:text-white transition-colors"
           >
             Contato
-          </a>
+          </Link>
         </div>
 
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <a
-            href="#contact"
-            onClick={scrollToContact}
+          <Link
+            href="/contato"
             className="btn-gradient px-6 py-2.5 rounded-lg font-bold text-sm tracking-wide neon-glow-primary hover:opacity-90 transition-all"
           >
             Fale com um Especialista
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Hamburger */}

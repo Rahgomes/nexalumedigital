@@ -4,7 +4,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
-import { scrollToContact } from "@/lib/utils";
 import { SERVICE_CATEGORIES, SERVICE_ICONS } from "@/lib/services-data";
 
 interface MobileMenuProps {
@@ -91,35 +90,35 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
             {/* Other Links */}
             <Link
-              href="#why"
+              href="/sobre"
               onClick={onClose}
               className="block py-3 text-base font-medium text-metal-gray hover:text-white transition-colors"
             >
               Sobre Nós
             </Link>
             <Link
-              href="#cases"
+              href="/cases"
               onClick={onClose}
               className="block py-3 text-base font-medium text-metal-gray hover:text-white transition-colors"
             >
               Cases
             </Link>
-            <a
-              href="#contact"
-              onClick={(e) => { scrollToContact(e); onClose(); }}
+            <Link
+              href="/contato"
+              onClick={onClose}
               className="block py-3 text-base font-medium text-metal-gray hover:text-white transition-colors"
             >
               Contato
-            </a>
+            </Link>
 
             {/* CTA Button */}
-            <a
-              href="#contact"
-              onClick={(e) => { scrollToContact(e); onClose(); }}
+            <Link
+              href="/contato"
+              onClick={onClose}
               className="block w-full btn-gradient px-6 py-3 rounded-lg font-bold text-sm tracking-wide neon-glow-primary hover:opacity-90 transition-all mt-4 text-center"
             >
               Fale com um Especialista
-            </a>
+            </Link>
           </div>
         </motion.div>
       )}

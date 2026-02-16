@@ -80,3 +80,33 @@ export interface ServiceCategory {
   description: string;
   services: ServiceDetail[];
 }
+
+// Sobre page types
+export interface DifferentialExpandedData extends DifferentialData {
+  expandedDescription: string;
+  details: string[];
+}
+
+export interface ValueData {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+export interface TimelineData {
+  year: string;
+  title: string;
+  description: string;
+}
+
+// Cases page types
+export interface CaseExpandedData extends CaseCardData {
+  challenge: string;
+  solution: string;
+  results: string[];
+}
+
+export interface MetricData {
+  value: string;
+  label: string;
+}

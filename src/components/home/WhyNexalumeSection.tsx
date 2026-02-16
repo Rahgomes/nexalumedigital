@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { staggerContainer, staggerItem } from "@/lib/animations";
+import { staggerContainer, staggerItem, fadeIn } from "@/lib/animations";
 import { DIFFERENTIALS } from "@/lib/constants";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const GRID_HIGHLIGHTS = [
   [
@@ -140,6 +142,22 @@ export default function WhyNexalumeSection() {
               );
             })}
           </div>
+        </motion.div>
+
+        <motion.div
+          className="mt-10 text-center"
+          variants={fadeIn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <Link
+            href="/sobre"
+            className="inline-flex items-center gap-2 text-primary font-medium hover:text-accent-cyan transition-colors group"
+          >
+            Saiba mais sobre a Nexalume
+            <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </motion.div>
       </div>
     </section>
