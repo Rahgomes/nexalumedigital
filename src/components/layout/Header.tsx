@@ -69,15 +69,21 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-3 group">
           <Image
-            src="/logo-small.png"
+            src="/icon.png"
             alt="Nexa Lume Digital"
-            width={160}
-            height={50}
-            className="h-10 sm:h-12 w-auto object-contain"
+            width={48}
+            height={48}
+            className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
             priority
           />
+          <span className="text-xl sm:text-2xl font-black tracking-tighter text-white">
+            NEXA
+            <span className="text-primary group-hover:text-accent-cyan transition-colors">
+              LUME
+            </span>
+          </span>
         </Link>
 
         {/* Desktop Nav */}
