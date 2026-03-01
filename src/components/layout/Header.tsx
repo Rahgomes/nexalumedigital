@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Menu, X, Code2, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import MegaMenu from "./MegaMenu";
 import MobileMenu from "./MobileMenu";
 
@@ -69,15 +70,14 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="size-8 bg-primary rounded-lg flex items-center justify-center neon-glow-primary">
-            <Code2 className="size-5 text-white" />
-          </div>
-          <span className="text-xl sm:text-2xl font-black tracking-tighter text-white">
-            NEXA
-            <span className="text-primary group-hover:text-accent-cyan transition-colors">
-              LUME
-            </span>
-          </span>
+          <Image
+            src="/logo-small.png"
+            alt="Nexa Lume Digital"
+            width={160}
+            height={50}
+            className="h-10 sm:h-12 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}

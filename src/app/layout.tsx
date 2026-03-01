@@ -20,27 +20,43 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Nexalume Digital | Presenca Digital, Sistemas e IA",
+  title: "Nexa Lume Digital | Presença Digital, Sistemas e IA",
   description:
-    "Transformamos presenca digital, sistemas e IA em resultados reais. Da marca ao sistema corporativo, tudo em um so lugar. Nexalume Digital Solutions.",
+    "Transformamos presença digital, sistemas e IA em resultados reais. Da marca ao sistema corporativo, tudo em um só lugar. Nexa Lume Digital Solutions.",
   keywords: [
     "marketing digital",
     "sistemas corporativos",
-    "inteligencia artificial",
-    "automacao",
+    "inteligência artificial",
+    "automação",
     "desenvolvimento web",
-    "Nexalume Digital",
+    "Nexa Lume Digital",
     "UX UI design",
     "ERP customizado",
     "agentes IA",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/icon-192.png",
+  },
   openGraph: {
-    title: "Nexalume Digital | Presenca Digital, Sistemas e IA",
+    title: "Nexa Lume Digital | Presença Digital, Sistemas e IA",
     description:
-      "Transformamos presenca digital, sistemas e IA em resultados reais. Da marca ao sistema corporativo, tudo em um so lugar.",
-    siteName: "Nexalume Digital",
+      "Transformamos presença digital, sistemas e IA em resultados reais. Da marca ao sistema corporativo, tudo em um só lugar.",
+    siteName: "Nexa Lume Digital",
     locale: "pt_BR",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 500,
+        height: 500,
+        alt: "Nexa Lume Digital",
+      },
+    ],
   },
 };
 
