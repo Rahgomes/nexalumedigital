@@ -145,7 +145,7 @@ export default function ContactSection() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="contact-telefone" className={labelStyles}>
-                    Telefone
+                    WhatsApp
                   </label>
                   <input
                     id="contact-telefone"
