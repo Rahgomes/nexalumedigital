@@ -6,13 +6,16 @@ import Link from "next/link";
 import Image from "next/image";
 import MegaMenu from "./MegaMenu";
 import MobileMenu from "./MobileMenu";
+import EspecialidadesMegaMenu from "./EspecialidadesMegaMenu";
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
+  const [espMenuOpen, setEspMenuOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const lastScrollYRef = useRef(0);
   const megaMenuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const espMenuTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Scroll hide/show logic
   useEffect(() => {
@@ -40,13 +43,18 @@ export default function Header() {
       if (megaMenuTimeoutRef.current) {
         clearTimeout(megaMenuTimeoutRef.current);
       }
+      if (espMenuTimeoutRef.current) {
+        clearTimeout(espMenuTimeoutRef.current);
+      }
     };
   }, []);
 
+  // Soluções menu handlers
   const handleMouseEnter = () => {
     if (megaMenuTimeoutRef.current) {
       clearTimeout(megaMenuTimeoutRef.current);
     }
+    setEspMenuOpen(false); // Fecha o outro menu
     setMegaMenuOpen(true);
   };
 
@@ -58,6 +66,25 @@ export default function Header() {
 
   const closeMegaMenu = () => {
     setMegaMenuOpen(false);
+  };
+
+  // Especialidades menu handlers
+  const handleEspMouseEnter = () => {
+    if (espMenuTimeoutRef.current) {
+      clearTimeout(espMenuTimeoutRef.current);
+    }
+    setMegaMenuOpen(false); // Fecha o outro menu
+    setEspMenuOpen(true);
+  };
+
+  const handleEspMouseLeave = () => {
+    espMenuTimeoutRef.current = setTimeout(() => {
+      setEspMenuOpen(false);
+    }, 150);
+  };
+
+  const closeEspMenu = () => {
+    setEspMenuOpen(false);
   };
 
   return (
@@ -121,12 +148,26 @@ export default function Header() {
           >
             Cases
           </Link>
-          <Link
-            href="/especialidades"
-            className="text-sm font-medium text-metal-gray hover:text-white transition-colors"
+          {/* Especialidades with Mega Menu */}
+          <div
+            className="relative"
+            onMouseEnter={handleEspMouseEnter}
+            onMouseLeave={handleEspMouseLeave}
           >
-            Especialidades
-          </Link>
+            <button
+              className="flex items-center gap-1 text-sm font-medium text-metal-gray hover:text-white transition-colors"
+              onClick={() => setEspMenuOpen(!espMenuOpen)}
+              aria-expanded={espMenuOpen}
+              aria-haspopup="menu"
+            >
+              Especialidades
+              <ChevronDown
+                className={`size-4 transition-transform duration-200 ${
+                  espMenuOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+          </div>
           <Link
             href="/contato"
             className="text-sm font-medium text-metal-gray hover:text-white transition-colors"
@@ -156,12 +197,20 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mega Menu (Desktop) */}
+      {/* Mega Menu Soluções (Desktop) */}
       <div
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         <MegaMenu isOpen={megaMenuOpen} onClose={closeMegaMenu} />
+      </div>
+
+      {/* Mega Menu Especialidades (Desktop) */}
+      <div
+        onMouseEnter={handleEspMouseEnter}
+        onMouseLeave={handleEspMouseLeave}
+      >
+        <EspecialidadesMegaMenu isOpen={espMenuOpen} onClose={closeEspMenu} />
       </div>
 
       {/* Mobile Menu */}
