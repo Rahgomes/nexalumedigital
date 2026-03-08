@@ -19,6 +19,7 @@ export default function Footer() {
               Transformando empresas com inteligência artificial e tecnologia
               eficiente.
             </p>
+            {/* TODO: Descomentar quando criar perfis oficiais no LinkedIn e Instagram
             <div className="flex gap-4">
               {SOCIAL_LINKS.map((social) => {
                 const Icon = social.icon;
@@ -36,6 +37,7 @@ export default function Footer() {
                 );
               })}
             </div>
+            */}
           </div>
 
           {/* Link groups */}
@@ -89,12 +91,12 @@ export default function Footer() {
             reservados.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">
+            <Link href="/termos-de-uso" className="hover:text-white transition-colors">
               Termos de Uso
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
+            </Link>
+            <Link href="/politica-privacidade" className="hover:text-white transition-colors">
               Privacidade
-            </a>
+            </Link>
           </div>
         </div>
       </div>
