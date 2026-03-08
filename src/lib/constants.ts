@@ -236,15 +236,16 @@ export const FOOTER_LINKS: FooterLinkGroup[] = [
   },
 ];
 
+// TODO: Atualizar com os perfis oficiais da Nexa Lume Digital
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: "LinkedIn",
-    href: "https://linkedin.com",
+    href: "https://linkedin.com/company/nexalumedigital", // Atualizar quando criar perfil
     icon: Linkedin,
   },
   {
     label: "Instagram",
-    href: "https://instagram.com",
+    href: "https://instagram.com/nexalumedigital", // Atualizar quando criar perfil
     icon: Instagram,
   },
 ];
@@ -427,8 +428,8 @@ export const CONTACT_CHANNELS = [
   {
     icon: Mail,
     title: "E-mail",
-    detail: "contato@nexalume.com",
-    href: "mailto:contato@nexalume.com",
+    detail: "contato@nexalumedigital.com.br",
+    href: "mailto:contato@nexalumedigital.com.br",
   },
   {
     icon: Phone,

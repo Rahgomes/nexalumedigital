@@ -72,7 +72,7 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-metal-gray">
               <li className="flex items-start gap-2">
                 <Mail className="size-4 text-primary mt-0.5 shrink-0" />
-                contato@nexalume.com
+                contato@nexalumedigital.com.br
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="size-4 text-primary mt-0.5 shrink-0" />

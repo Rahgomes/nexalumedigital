@@ -1,0 +1,9 @@
+# robots.txt - Nexa Lume Digital
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://nexalumedigital.com.br/sitemap.xml
+
+# Block admin/internal paths (none for now)
+# Disallow: /admin/
