@@ -65,7 +65,7 @@ export default function EspecialidadeSidebar({ currentSlug }: Props) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        href="https://wa.me/5511981308127?text=Olá! Vi a página de especialidades e gostaria de saber mais."
+        href={`https://wa.me/5511981308127?text=${encodeURIComponent('Olá! Vi a página de Especialidades e gostaria de saber mais sobre os serviços da Nexa Lume Digital.')}`}
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center gap-2 w-full bg-green-600 text-white font-semibold py-3 px-6 rounded-full hover:bg-green-700 transition-colors"

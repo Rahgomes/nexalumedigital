@@ -101,7 +101,7 @@ export default function EspecialidadeHero({ especialidade }: Props) {
               <ArrowRight className="size-5" />
             </Link>
             <a
-              href="https://wa.me/5511981308127"
+              href={`https://wa.me/5511981308127?text=${encodeURIComponent('Olá! Vi a página de Especialidades e gostaria de saber mais sobre os serviços da Nexa Lume Digital.')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/20 transition-all duration-300"
