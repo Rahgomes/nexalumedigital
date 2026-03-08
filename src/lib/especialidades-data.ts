@@ -955,7 +955,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Sites profissionais para startups. Design moderno, landing pages de conversão, pitch para investidores e captação de usuários. Escale rápido!",
     keywords: ["site para startup", "landing page startup", "site empresa tecnologia", "marketing para startups"],
     categoria: "sites",
-    heroText: "Startups mudam o mundo, mas precisam sobreviver primeiro. Seu SITE PARA STARTUP precisa comunicar a disrupção que você está criando e atrair quem quer fazer parte dessa jornada: usuários early adopters, investidores visionários, talentos que querem impactar. Landing pages de alta conversão, pitch digital para investidores, blog para thought leadership — cada elemento otimizado para growth.",
+    heroText: "Startups mudam o mundo, mas precisam sobreviver e escalar primeiro. Seu SITE PARA STARTUP precisa comunicar a disrupção que você está criando no mercado e atrair quem quer fazer parte dessa jornada transformadora: usuários early adopters que adoram testar novidades, investidores visionários buscando o próximo unicórnio, e talentos excepcionais que querem causar impacto real. Landing pages de alta conversão, pitch digital para investidores, blog para thought leadership e ferramentas de growth hacking — cada elemento meticulosamente otimizado para métricas que importam: CAC, conversão e tração.",
     sections: [
       {
         titulo: "O site como ferramenta essencial de growth",
@@ -972,6 +972,10 @@ export const ESPECIALIDADES: Especialidade[] = [
       {
         titulo: "Área para investidores, imprensa e talent acquisition",
         conteudo: "Data room simplificado e elegante para investidores interessados: pitch deck acessível online ou via download controlado, métricas de tração atualizadas (MRR, ARR, growth rate, churn, NPS), apresentação da equipe fundadora e key hires, advisors e board members de peso, FAQ de investimento que antecipa perguntas de due diligence, formulário de contato direto com os founders. Para rodadas ativas, landing page dedicada da captação com tese de investimento clara. Press kit profissional para jornalistas e veículos de mídia: logotipos em todos os formatos e resoluções (PNG, SVG, versões clara e escura), biografias oficiais dos founders com fotos profissionais, screenshots e vídeos do produto para matérias, releases anteriores e conquistas notáveis, dados de mercado e posicionamento para contextualização. Facilite a vida de quem quer escrever sobre vocês — quanto mais fácil, mais coverage. Para talent acquisition, página de carreiras que vende a cultura e missão da startup para os melhores talentos do mercado: vagas abertas, benefícios, depoimentos de colaboradores, como é o dia a dia e por que trabalhar nessa startup é oportunidade única de impactar o mundo.",
+      },
+      {
+        titulo: "Investimento e prazo para seu site de startup",
+        conteudo: "Quanto custa um SITE PARA STARTUP profissional? O investimento típico varia de R$8.000 a R$25.000 dependendo da complexidade, número de landing pages, integrações necessárias e funcionalidades específicas. Startups em estágio seed podem começar com pacotes mais enxutos focados no MVP de presença digital, evoluindo conforme captam investimento e crescem. Prazo de entrega típico é de 3-6 semanas para sites completos. Oferecemos condições especiais para startups em programas de aceleração reconhecidos, com possibilidade de pagamento parcelado ou participação em equity para casos excepcionais.",
       },
     ],
     beneficios: [
@@ -995,7 +999,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Desenvolvimento de lojas virtuais profissionais. Checkout otimizado, integração pagamentos e logística, SEO para produtos. Venda online!",
     keywords: ["criar loja virtual", "e-commerce profissional", "loja online", "desenvolvimento ecommerce"],
     categoria: "sites",
-    heroText: "Sua loja nunca fecha quando você tem um E-COMMERCE profissional. É a expansão estratégica que permite vender para o Brasil inteiro sem ampliar seu espaço físico, sem aumentar equipe proporcionalmente e sem as limitações geográficas do varejo tradicional. Quanto vale um cliente que compra às 3h da manhã enquanto você dorme? O e-commerce captura essa demanda.",
+    heroText: "Sua loja nunca fecha quando você tem um E-COMMERCE profissional funcionando 24 horas por dia, 7 dias por semana, 365 dias por ano. É a expansão estratégica que permite vender para o Brasil inteiro sem ampliar seu espaço físico, sem aumentar equipe proporcionalmente e sem as limitações geográficas do varejo tradicional que aprisionam seu potencial de crescimento. Quanto vale um cliente que compra às 3h da manhã de domingo enquanto você dorme tranquilamente? O e-commerce captura essa demanda silenciosa que antes simplesmente não existia para seu negócio.",
     sections: [
       {
         titulo: "O poder do e-commerce brasileiro em crescimento",
@@ -1012,6 +1016,10 @@ export const ESPECIALIDADES: Especialidade[] = [
       {
         titulo: "SEO para produtos e presença no Google Shopping",
         conteudo: "Otimizamos cada página de produto para ranquear organicamente no Google quando potenciais clientes pesquisam o que você vende. Títulos de produto estruturados com palavras-chave que as pessoas realmente buscam, descrições únicas e detalhadas que informam e convencem, imagens otimizadas com alt text descritivo que também aparecem no Google Imagens, dados estruturados (schema markup) que geram rich snippets com preço, disponibilidade e avaliações diretamente nos resultados de busca. Configuramos e otimizamos Google Merchant Center para que seus produtos apareçam no Google Shopping — tanto nos resultados orgânicos gratuitos quanto prontos para campanhas pagas quando você decidir investir. Para categorias e coleções, criamos páginas de lista otimizadas que competem por termos mais amplos. Implementamos estratégia de conteúdo complementar: guias de compra, comparativos, tutoriais de uso que atraem tráfego no topo do funil e estabelecem autoridade. Seu e-commerce não fica refém apenas de anúncios pagos — constrói patrimônio de tráfego orgânico que reduz CAC e aumenta margem ao longo do tempo.",
+      },
+      {
+        titulo: "Quanto custa criar uma loja virtual profissional",
+        conteudo: "O investimento em uma LOJA VIRTUAL E-COMMERCE varia conforme complexidade e necessidades específicas. Lojas com catálogo simples (até 100 produtos) partem de R$8.000-15.000. E-commerces médios com funcionalidades avançadas (variações de produto, cupons, fidelidade) ficam entre R$15.000-30.000. Operações robustas com integrações complexas, múltiplos estoques e customizações específicas podem superar R$40.000. O prazo típico de entrega é de 4-8 semanas. Incluímos treinamento para sua equipe gerenciar produtos, pedidos e clientes, além de suporte técnico contínuo para resolver dúvidas e evoluir a loja. O ROI de uma loja virtual bem construída é comprovadamente alto: você vende 24 horas, alcança clientes em todo Brasil, e escala sem precisar aumentar equipe proporcionalmente.",
       },
     ],
     beneficios: [
@@ -1035,7 +1043,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Sites profissionais para construtoras e incorporadoras. Portfólio de obras, lançamentos imobiliários e captação de leads. Orçamento grátis!",
     keywords: ["site para construtora", "site incorporadora", "site empreendimentos", "marketing para construtoras"],
     categoria: "sites",
-    heroText: "Construtoras constroem sonhos e patrimônios de famílias inteiras. Seu SITE PARA CONSTRUTORA precisa materializar a solidez, qualidade construtiva e confiabilidade que você entrega em cada obra e empreendimento. Compradores pesquisam histórico, reputação e obras entregues antes de investir centenas de milhares de reais. Apareça com autoridade quando eles buscarem.",
+    heroText: "Construtoras não constroem apenas prédios — constroem sonhos, patrimônios familiares e legados que atravessam gerações. Seu SITE PARA CONSTRUTORA precisa materializar digitalmente a solidez estrutural, a qualidade construtiva impecável e a confiabilidade inabalável que você entrega em cada obra, em cada empreendimento concluído no prazo. Compradores pesquisam extensivamente histórico, reputação, obras entregues e índice de satisfação de clientes antes de investir centenas de milhares ou milhões de reais na realização do sonho da casa própria. Apareça com autoridade máxima quando eles buscarem construtoras confiáveis na sua região.",
     sections: [
       {
         titulo: "A presença digital essencial de construtoras",
@@ -1079,7 +1087,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Sites profissionais para imobiliárias. Catálogo de imóveis com busca avançada, integração com portais e captação de leads. Orçamento!",
     keywords: ["site para imobiliária", "site imobiliário", "portal de imóveis", "marketing imobiliário"],
     categoria: "sites",
-    heroText: "Imobiliárias de sucesso dominam o digital. Seu site é onde compradores e locatários encontram o lar dos sonhos.",
+    heroText: "Imobiliárias de sucesso dominam absolutamente o mercado digital porque entendem que a jornada de compra ou locação começa online, muito antes de qualquer visita presencial. Seu SITE PARA IMOBILIÁRIA profissional é o lugar onde compradores e locatários encontram o lar dos sonhos, comparam opções, filtram por preferências específicas e entram em contato com corretores qualificados. Quanto custa perder clientes para concorrentes com portais mais modernos e funcionais? Cada dia sem presença digital forte é receita perdida que nunca voltará.",
     sections: [
       {
         titulo: "O mercado imobiliário é definitivamente digital",
@@ -1096,6 +1104,10 @@ export const ESPECIALIDADES: Especialidade[] = [
       {
         titulo: "Captação de leads e CRM imobiliário integrado",
         conteudo: "Formulários de contato estrategicamente posicionados em cada página de imóvel capturam leads qualificados com informações que permitem abordagem personalizada: nome, telefone, email, interesse específico (visita, mais informações, negociação), se precisa de financiamento, prazo para decisão. Cada formulário preenchido gera lead automaticamente no CRM da imobiliária com informações completas do imóvel de interesse e histórico de navegação do cliente (outros imóveis que visualizou). Distribuição automática de leads para corretores baseada em regras definidas: por região de atuação, por tipo de imóvel, por rodízio ou por performance. Tracking completo de follow-up com lembretes de próximo contato, registro de interações (ligações, WhatsApp, visitas realizadas) e status atualizado de cada lead no funil. Relatórios gerenciais mostram volume de leads por período, taxa de conversão por corretor, por tipo de imóvel, por fonte de tráfego. Seu site alimenta o pipeline de vendas constantemente com leads qualificados e rastreáveis.",
+      },
+      {
+        titulo: "Por que escolher a Nexa Lume para seu site imobiliário",
+        conteudo: "O mercado imobiliário digital exige especialização que poucos fornecedores possuem. Não basta saber criar sites bonitos — é preciso entender profundamente a jornada do comprador e locatário de imóveis, as particularidades do fluxo de trabalho de corretores e equipes comerciais, as integrações necessárias com portais e sistemas de gestão específicos do setor. Nossa equipe já desenvolveu dezenas de portais imobiliários para imobiliárias de diferentes portes e especialidades, acumulando conhecimento prático sobre o que funciona e o que não funciona nesse mercado específico. Conhecemos as melhores práticas de UX para busca de imóveis, sabemos quais informações convertem visitantes em leads qualificados, dominamos as integrações XML com portais como ZAP, Viva Real, OLX e outros canais relevantes. Mais importante: entendemos que seu site precisa ser ferramenta de trabalho para corretores, não apenas vitrine institucional. Por isso, oferecemos treinamento completo para sua equipe, painel administrativo intuitivo que qualquer pessoa consegue operar, e suporte técnico em português que resolve problemas rapidamente.",
       },
     ],
     beneficios: [
@@ -1119,7 +1131,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Sites profissionais para hotéis e pousadas. Motor de reservas direto, galeria de fotos e SEO para turismo. Reduza comissões de OTAs!",
     keywords: ["site para hotel", "site pousada", "motor de reservas hotel", "marketing hoteleiro"],
     categoria: "sites",
-    heroText: "Cada reserva direta é lucro que fica com você. Seu site pode ser mais atrativo que Booking ou Airbnb.",
+    heroText: "Cada reserva direta é lucro puro que fica integralmente com você, sem intermediários levando fatia generosa da sua margem. Seu SITE PARA HOTEL OU POUSADA bem construído pode ser significativamente mais atrativo que Booking, Expedia ou Airbnb porque oferece experiência personalizada, preços melhores para o hóspede e relacionamento direto que fideliza. Quanto você paga de comissão para OTAs por mês? E se metade disso ficasse no seu caixa enquanto hóspedes pagassem menos e ficassem mais satisfeitos? Esse é o poder da reserva direta bem implementada.",
     sections: [
       {
         titulo: "Reservas diretas: a batalha estratégica contra as OTAs",
@@ -1136,6 +1148,10 @@ export const ESPECIALIDADES: Especialidade[] = [
       {
         titulo: "SEO para turismo e conteúdo sobre a região",
         conteudo: "Otimizamos seu site para as buscas cruciais que viajantes fazem durante o planejamento: 'pousada em [destino]', 'hotel perto de [atração principal]', 'onde ficar em [cidade]', 'hospedagem romântica em [região]', 'hotel com piscina [destino]'. Essas são buscas com altíssima intenção: quem pesquisa está ativamente planejando viagem e pronto para reservar. Aparecer organicamente para essas buscas significa tráfego qualificado gratuito, reduzindo dependência de anúncios pagos e OTAs. Além da otimização técnica das páginas de quartos, criamos estratégia de conteúdo sobre a região que atrai viajantes em fase inicial de planejamento: guias completos de atrações turísticas locais, melhores restaurantes e bares, roteiros de passeios por número de dias, dicas práticas sobre transporte e melhor época para visitar, eventos e festivais sazonais. Esse conteúdo posiciona seu hotel como autoridade local, atrai tráfego orgânico de pessoas pesquisando o destino (antes mesmo de decidirem hospedagem), e naturalmente apresenta seu estabelecimento como a melhor opção de onde ficar. É inbound marketing aplicado ao turismo.",
+      },
+      {
+        titulo: "Resultados esperados e diferenciais Nexa Lume",
+        conteudo: "Quanto custa desenvolver um site para hotel ou pousada com motor de reservas? O investimento típico varia de R$8.000 a R$25.000 dependendo da complexidade, número de quartos, integrações necessárias e funcionalidades específicas. Mas a pergunta mais importante é: quanto você economiza? Considere: se seu hotel fatura R$50.000/mês e 30% vem de OTAs com comissão média de 20%, você paga R$3.000/mês em comissões. Converter metade dessas reservas para diretas economiza R$1.500/mês — o site se paga em poucos meses e continua gerando economia por anos. Nossos clientes do setor hoteleiro tipicamente observam aumento de 40-60% nas reservas diretas após 12 meses de operação do novo site, combinado com estratégias de incentivo como desconto exclusivo para reserva direta, melhor política de cancelamento, ou benefícios adicionais. Oferecemos treinamento completo para sua equipe de recepção gerenciar o motor de reservas, suporte técnico em português com tempo de resposta garantido, e evolução contínua do site conforme seu negócio cresce. A parceria é de longo prazo, não apenas entrega de projeto.",
       },
     ],
     beneficios: [
@@ -1159,7 +1175,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Sites profissionais para clínicas de estética. Apresentação de tratamentos, antes/depois, agendamento online e SEO. Atraia mais pacientes!",
     keywords: ["site para clínica de estética", "site estética", "marketing para clínicas estética", "site harmonização facial"],
     categoria: "sites",
-    heroText: "Beleza e bem-estar começam com confiança. Seu site precisa transmitir a excelência que você entrega em cada procedimento.",
+    heroText: "Beleza e bem-estar começam com confiança absoluta no profissional que vai cuidar da sua aparência. Seu SITE PARA CLÍNICA DE ESTÉTICA precisa transmitir digitalmente a excelência técnica, a sofisticação do ambiente e os resultados impressionantes que você entrega em cada procedimento realizado. Pacientes que buscam harmonização facial, preenchimentos, botox ou tratamentos corporais pesquisam extensivamente antes de escolher onde investir na própria autoestima. Seu site é a vitrine digital que conquista ou perde esse paciente em segundos.",
     sections: [
       {
         titulo: "O mercado de estética em expansão constante",
@@ -1176,6 +1192,10 @@ export const ESPECIALIDADES: Especialidade[] = [
       {
         titulo: "Confiança, segurança e credenciais profissionais",
         conteudo: "Procedimentos estéticos envolvem saúde e aparência — pacientes precisam de absoluta confiança antes de entregar seu rosto ou corpo a um profissional. Destacamos de forma proeminente todos os elementos que constroem essa confiança: registros profissionais ativos (CRM para médicos, CRBM para biomédicos, outros conselhos quando aplicável), especializações e títulos de especialista, formação acadêmica em instituições reconhecidas, cursos de atualização e certificações de técnicas específicas, participação em congressos e publicações científicas. Apresentamos o ambiente da clínica com fotos profissionais que mostram instalações modernas, limpas e acolhedoras, equipamentos de última geração de marcas reconhecidas internacionalmente, salas de procedimento com padrão hospitalar de higiene. Depoimentos em vídeo de pacientes satisfeitas que falam sobre toda a experiência — desde o primeiro contato até os resultados — humanizam a clínica e criam prova social irrefutável. Exibimos selos de certificações relevantes, parcerias com laboratórios e fornecedores premium, e cobertura na mídia quando houver. Cada elemento reforça a mensagem: sua clínica é escolha segura, profissional e que entrega resultados excepcionais.",
+      },
+      {
+        titulo: "SEO para estética e captação de pacientes qualificados",
+        conteudo: "O mercado de estética é altamente competitivo, com milhares de clínicas disputando a atenção de pacientes cada vez mais informados e exigentes. Otimizamos seu SITE PARA CLÍNICA DE ESTÉTICA para as buscas que realmente trazem pacientes qualificados: 'harmonização facial [cidade]', 'preenchimento labial preço', 'botox perto de mim', 'clínica de estética [bairro]', 'skincare profissional'. Cada procedimento tem página própria otimizada com conteúdo original que responde às dúvidas mais frequentes dos pacientes. Configuramos e otimizamos Google Meu Negócio para aparecer em buscas locais com fotos profissionais, avaliações de pacientes satisfeitos e informações precisas. Integramos sistema de agendamento online que permite que pacientes marquem avaliação 24 horas por dia, eliminando a barreira de ter que ligar ou esperar retorno. Formulários estratégicos capturam interessados em procedimentos específicos com informações que permitem qualificação e priorização. O resultado é um fluxo constante de pacientes pré-qualificados que chegam ao consultório já informados sobre o procedimento de interesse, prontos para discutir detalhes e agendar.",
       },
     ],
     beneficios: [
@@ -1204,7 +1224,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Desenvolvemos sistemas CRM sob medida para sua empresa. Gestão de leads, funil de vendas, automações e integrações. Orçamento grátis!",
     keywords: ["sistema crm", "crm personalizado", "desenvolvimento crm", "crm para empresas"],
     categoria: "sistemas",
-    heroText: "Clientes são seu maior ativo. Um CRM sob medida organiza, automatiza e potencializa cada relacionamento.",
+    heroText: "Clientes são definitivamente seu maior ativo — mais valioso que equipamentos, estoque ou instalações físicas. Um SISTEMA CRM desenvolvido sob medida para seu negócio organiza cada interação, automatiza follow-ups que seriam esquecidos, e potencializa cada relacionamento comercial da sua empresa. Quanto custa perder um cliente por falta de acompanhamento adequado? Quanto vale reconquistar clientes inativos com campanhas segmentadas? Um CRM profissional transforma esses cenários em realidade mensurável e lucrativa para seu negócio crescer de forma sustentável.",
     sections: [
       {
         titulo: "Por que investir em um CRM personalizado?",
@@ -1221,6 +1241,10 @@ export const ESPECIALIDADES: Especialidade[] = [
       {
         titulo: "Integrações profundas com seu ecossistema",
         conteudo: "Um CRM isolado é um CRM subutilizado. Conectamos seu CRM com todas as ferramentas relevantes do seu dia a dia para criar um hub central de relacionamento. WhatsApp integrado registra automaticamente conversas no histórico do cliente — vendedores não precisam copiar e colar mensagens importantes. Emails são sincronizados bidirecionalmente: emails enviados pelo Outlook ou Gmail aparecem no CRM, e emails enviados pelo CRM chegam na caixa de saída normal. Seu ERP sincroniza clientes e pedidos, evitando cadastro duplo e permitindo que vendedores vejam histórico de compras diretamente no CRM. Ferramentas de marketing como RD Station ou MailChimp passam leads qualificados automaticamente. Telefonia VoIP permite ligações com um clique, gravação automática e registro de chamadas. Agenda Google ou Outlook sincroniza reuniões. Cada integração elimina digitação dupla, reduz erros e garante que a informação certa esteja no lugar certo. O CRM se torna a fonte única de verdade sobre seus clientes.",
+      },
+      {
+        titulo: "Resultados mensuráveis e ROI do CRM personalizado",
+        conteudo: "Quanto custa um SISTEMA CRM personalizado? E mais importante: quanto ele traz de retorno? O investimento inicial em um CRM sob medida é tipicamente maior que assinar uma ferramenta SaaS por alguns meses, mas a economia de longo prazo é substancial. Não há mensalidades por usuário que explodem conforme sua equipe cresce — para empresas com 10+ vendedores, a economia anual pode superar o custo total do desenvolvimento em 2-3 anos. Além da economia financeira direta, há ganhos de produtividade imensos: vendedores passam menos tempo em tarefas administrativas e mais tempo vendendo, leads não são mais perdidos por falta de follow-up, oportunidades são identificadas mais cedo através de automações inteligentes. Nossos clientes tipicamente reportam aumento de 20-40% na taxa de conversão de leads após implementação de CRM bem estruturado. Oferecemos treinamento completo para sua equipe, migração de dados existentes de planilhas ou sistemas anteriores, e suporte técnico contínuo para resolver dúvidas e evoluir o sistema conforme seu negócio cresce.",
       },
     ],
     beneficios: [
@@ -1332,7 +1356,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Sistema de delivery próprio. Cardápio online, gestão de pedidos, app para entregadores e roteirização. Livre-se das taxas de apps!",
     keywords: ["sistema delivery", "plataforma delivery próprio", "sistema para entregas", "app delivery"],
     categoria: "sistemas",
-    heroText: "iFood e similares cobram até 27% de comissão sobre cada pedido, corroendo suas margens drasticamente. Com um sistema de delivery próprio, você fica com 100% da receita, tem os dados dos clientes para marketing direto e constrói relacionamento direto que fideliza de verdade.",
+    heroText: "iFood, Rappi e apps similares cobram até 27% de comissão sobre cada pedido, corroendo suas margens drasticamente e transformando lucro em taxa de intermediação paga para empresas estrangeiras. Com um SISTEMA DE DELIVERY próprio profissional, você fica com 100% da receita, tem os dados completos dos clientes para marketing direto e campanhas de fidelização, e constrói relacionamento genuíno que transforma clientes ocasionais em fãs que pedem semanalmente. Quanto você paga de comissão por mês? Esse valor pode estar no seu bolso em poucos meses de operação própria.",
     sections: [
       {
         titulo: "A necessidade estratégica de independência dos marketplaces",
@@ -1349,6 +1373,10 @@ export const ESPECIALIDADES: Especialidade[] = [
       {
         titulo: "Aplicativo para entregadores e otimização de rotas",
         conteudo: "A última milha é crítica para experiência do cliente. Desenvolvemos aplicativo móvel para sua equipe de entregadores — próprios ou terceirizados — que profissionaliza e otimiza a operação de entregas. Cada entregador visualiza sua lista de entregas pendentes, aceita corridas com um toque, e recebe navegação GPS integrada até o endereço do cliente. Para operações com múltiplas entregas simultâneas, algoritmos de roteirização inteligente calculam o melhor percurso considerando tempo, distância e horários prometidos, reduzindo quilometragem rodada e garantindo entregas no prazo. A confirmação de entrega pode incluir foto do local de entrega para proteção contra alegações falsas de não recebimento. Registro de ocorrências (cliente ausente, endereço incorreto, problema com pedido) fica documentado no sistema. Você acompanha em tempo real onde cada entregador está e qual pedido está carregando. Métricas de performance por entregador — tempo médio de entrega, avaliações de clientes, ocorrências — permitem gestão de qualidade da frota. Para quem usa entregadores terceirizados via apps, integramos com as principais plataformas para despacho automático.",
+      },
+      {
+        titulo: "Investimento, ROI e implantação do sistema de delivery",
+        conteudo: "Quanto custa ter um SISTEMA DE DELIVERY próprio? O investimento típico varia de R$15.000 a R$50.000 dependendo da complexidade, integrações necessárias e funcionalidades específicas do seu negócio. Mas a conta que realmente importa é outra: se você fatura R$100.000/mês via iFood pagando 20% de comissão média, são R$20.000/mês indo para terceiros. Converter 50% desse volume para pedidos diretos economiza R$10.000/mês — o sistema se paga em poucos meses e continua gerando economia indefinidamente. Além da economia direta, há valor estratégico: você tem os dados dos clientes para campanhas de marketing, pode criar programa de fidelidade que incentiva recompra, constrói marca própria em vez de marca do marketplace. Nossa implantação inclui treinamento completo da equipe operacional, migração de cardápio, configuração de áreas de entrega e taxas, integração com meios de pagamento, e acompanhamento dedicado nas primeiras semanas de operação para ajustar o que for necessário. Suporte técnico em português garante que problemas sejam resolvidos rapidamente.",
       },
     ],
     beneficios: [
@@ -1372,7 +1400,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Sistema de gestão de projetos sob medida. Kanban, Gantt, timesheet, recursos e relatórios personalizados. Organize sua operação!",
     keywords: ["sistema gestão projetos", "software projetos", "gestão de tarefas", "kanban empresarial"],
     categoria: "sistemas",
-    heroText: "Projetos no controle total, entregas sempre no prazo e orçamento, equipes produtivas e satisfeitas. Desenvolvemos sistemas de gestão de projetos sob medida que refletem exatamente como sua empresa trabalha, não forçam você a se adaptar a templates genéricos de ferramentas de prateleira.",
+    heroText: "Projetos no controle total com visibilidade de cada tarefa, entregas sempre no prazo e dentro do orçamento planejado, equipes produtivas trabalhando em harmonia e satisfeitas com processos que funcionam. Desenvolvemos SISTEMAS DE GESTÃO DE PROJETOS sob medida que refletem exatamente como sua empresa trabalha na prática, respeitando sua cultura e metodologia, não forçando você e sua equipe a se adaptar a templates genéricos e limitações frustrantes de ferramentas de prateleira que não foram pensadas para seu contexto específico. Quanto custa um projeto atrasado ou estourado?",
     sections: [
       {
         titulo: "Superando as limitações de ferramentas genéricas",
@@ -1416,7 +1444,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Sistema de helpdesk personalizado. Gestão de tickets, SLA, base de conhecimento e relatórios de atendimento. Melhore seu suporte!",
     keywords: ["sistema helpdesk", "software suporte", "sistema de tickets", "atendimento ao cliente"],
     categoria: "sistemas",
-    heroText: "Suporte ao cliente desorganizado frustra clientes, sobrecarrega sua equipe e prejudica a reputação da empresa. Um sistema de helpdesk profissional transforma o caos em processo estruturado, com tickets rastreáveis, SLAs garantidos e base de conhecimento que reduz demanda.",
+    heroText: "Suporte ao cliente desorganizado frustra clientes que esperam respostas rápidas e consistentes, sobrecarrega sua equipe que trabalha apagando incêndios sem parar, e prejudica gravemente a reputação da empresa em avaliações públicas. Um SISTEMA DE HELPDESK profissional transforma o caos em processo estruturado e rastreável, com tickets organizados por prioridade e responsável, SLAs garantidos com alertas automáticos, e base de conhecimento robusta que reduz demanda ao empoderar clientes a resolverem questões simples sozinhos. Quanto custa perder um cliente por atendimento ruim?",
     sections: [
       {
         titulo: "O impacto estratégico do suporte eficiente",
@@ -1460,7 +1488,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Sistema PDV completo para varejo. Frente de caixa, NFC-e, controle de estoque, múltiplas formas de pagamento. Para lojas e comércios!",
     keywords: ["sistema pdv", "ponto de venda", "software para loja", "sistema para comércio"],
     categoria: "sistemas",
-    heroText: "Vendas rápidas sem filas, fechamento de caixa sem dor de cabeça, estoque sempre correto sem inventários surpresa. Desenvolvemos sistemas PDV sob medida que simplificam a operação do seu comércio, integram com estoque e financeiro, e emitem NFC-e automaticamente.",
+    heroText: "Vendas rápidas e fluidas sem filas que irritam clientes, fechamento de caixa preciso sem dor de cabeça ou discrepâncias inexplicáveis, estoque sempre correto e atualizado sem necessidade de inventários surpresa que param a operação. Desenvolvemos SISTEMAS PDV sob medida que simplificam radicalmente a operação diária do seu comércio, integram perfeitamente com estoque, financeiro e contabilidade, e emitem NFC-e automaticamente a cada venda sem intervenção adicional. Quanto tempo sua equipe perde com processos manuais que poderiam ser automatizados?",
     sections: [
       {
         titulo: "O PDV como coração pulsante do varejo",
@@ -1754,7 +1782,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Gestão profissional de Meta Ads. Campanhas em Facebook e Instagram que convertem. Segmentação avançada e otimização contínua. Orçamento!",
     keywords: ["gestão meta ads", "anúncios facebook", "anúncios instagram", "tráfego pago facebook"],
     categoria: "marketing",
-    heroText: "Facebook e Instagram sabem tudo sobre seus usuários. Usamos esse conhecimento para encontrar seus clientes ideais.",
+    heroText: "Facebook e Instagram sabem absolutamente tudo sobre seus mais de 3 bilhões de usuários: interesses, comportamentos, eventos de vida, poder de compra, localização em tempo real. Usamos esse conhecimento privilegiado de forma estratégica para encontrar exatamente seus clientes ideais no momento perfeito, com mensagens que ressoam profundamente e geram ação imediata. GESTÃO DE META ADS profissional transforma investimento em mídia em máquina previsível de leads e vendas, não em experimentos caros sem retorno mensurável.",
     sections: [
       {
         titulo: "O poder de segmentação da Meta",
@@ -1775,6 +1803,10 @@ export const ESPECIALIDADES: Especialidade[] = [
       {
         titulo: "Por que escolher a Nexa Lume para Meta Ads",
         conteudo: "O mercado está cheio de 'gestores de tráfego' que fizeram um curso de fim de semana e se dizem especialistas. A diferença está nos resultados comprovados e na profundidade do trabalho. Nossa equipe gerencia mais de R$500 mil mensais em investimento em Meta Ads para clientes de diversos setores — sabemos o que funciona para e-commerce, serviços locais, infoprodutos, B2B, aplicativos. Temos acesso a benchmarks de mercado que nos permitem saber se seu CPA está bom ou se há espaço para melhoria. Não terceirizamos a criação de anúncios para freelancers baratos — temos equipe interna de copywriters e designers que entendem tanto a plataforma quanto persuasão. Investimos continuamente em educação: Meta Blueprint, cursos avançados, comunidades de gestores de tráfego de elite. E mais importante: somos transparentes. Você tem acesso total à sua conta, entende cada decisão que tomamos, participa da estratégia. Quando o resultado vem, você sabe exatamente como foi construído.",
+      },
+      {
+        titulo: "Quanto investir e resultados esperados",
+        conteudo: "Quanto devo investir em META ADS para ter resultados? Não existe resposta única — depende do seu mercado, ticket médio, margem e objetivos. Mas podemos dar parâmetros: para negócios locais, investimentos a partir de R$1.500-3.000/mês já permitem testes significativos e geração de leads consistente. Para e-commerces, R$5.000-10.000/mês é ponto de partida para campanhas de conversão com escala. Para captação massiva de leads ou vendas de alto volume, R$20.000+ mensais permitem estratégias mais agressivas e diversificadas. O que realmente importa não é quanto você investe, mas qual o retorno. Cobramos fee de gestão transparente baseado no investimento em mídia, não escondemos nada. Relatórios semanais mostram exatamente onde cada real foi investido e o que gerou de retorno. Reuniões mensais de alinhamento discutem resultados, aprendizados e estratégia para o próximo período. Não trabalhamos com contratos de fidelidade longos — nossa retenção vem de resultados, não de amarras contratuais. Se não estiver satisfeito, pode cancelar a qualquer momento.",
       },
     ],
     beneficios: [
@@ -1842,7 +1874,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Marketing de conteúdo que gera resultados. Blog, ebooks, vídeos e redes sociais com estratégia de SEO e conversão. Atraia clientes ideais!",
     keywords: ["marketing de conteúdo", "estratégia de conteúdo", "conteúdo para blog", "inbound marketing"],
     categoria: "marketing",
-    heroText: "Conteúdo não é sobre falar de você. É sobre resolver problemas do seu cliente. Aí a venda acontece naturalmente.",
+    heroText: "MARKETING DE CONTEÚDO eficaz não é sobre falar de você, seus produtos ou suas conquistas — é sobre resolver problemas reais e urgentes do seu cliente ideal, educá-lo sobre soluções possíveis, e posicionar sua empresa como autoridade indiscutível no assunto. Quando você genuinamente ajuda antes de pedir algo em troca, a venda acontece naturalmente como consequência da confiança construída. Conteúdo estratégico é patrimônio digital que atrai visitantes qualificados por anos, diferente de anúncios que param de funcionar no instante em que você para de pagar.",
     sections: [
       {
         titulo: "Conteúdo como ativo de negócio que se valoriza",
@@ -1863,6 +1895,10 @@ export const ESPECIALIDADES: Especialidade[] = [
       {
         titulo: "Processo de produção: qualidade em escala",
         conteudo: "Conteúdo medíocre não gera resultados — a internet está saturada de artigos genéricos escritos para SEO sem valor real. Nosso processo garante qualidade consistente: começamos com brief detalhado que define objetivo, persona alvo, keywords principais e secundárias, estrutura sugerida e referências. Redatores especializados no setor do cliente produzem o conteúdo — não usamos IA para escrever, apenas como ferramenta auxiliar de pesquisa. Cada peça passa por revisão editorial que verifica qualidade, tom de voz e aderência à estratégia. Designers criam elementos visuais que complementam o texto: imagens customizadas, infográficos, ilustrações. Especialista SEO otimiza tecnicamente: títulos, meta descriptions, estrutura de headings, alt texts, links internos. Antes de publicar, aprovamos com você para garantir que representa sua marca corretamente. Esse processo permite produzir 8-20 peças de conteúdo por mês com qualidade que realmente posiciona e engaja, não enchimento de linguiça para cumprir calendário.",
+      },
+      {
+        titulo: "Quanto custa marketing de conteúdo e qual o prazo para resultados",
+        conteudo: "MARKETING DE CONTEÚDO é investimento de médio prazo que se acumula ao longo do tempo. Diferente de anúncios que geram resultado imediato enquanto você paga, conteúdo leva tipicamente 3-6 meses para começar a ranquear bem no Google e gerar tráfego orgânico significativo. Mas depois que posiciona, continua gerando visitas e leads por anos sem custo adicional por clique. O investimento mensal varia conforme volume de produção: pacotes básicos com 4-8 conteúdos/mês partem de R$3.000-5.000, pacotes intermediários com 8-15 conteúdos/mês ficam entre R$5.000-10.000, e operações robustas com produção diária podem superar R$15.000/mês. Cada real investido se transforma em patrimônio digital que valoriza com o tempo. Oferecemos contratos flexíveis com avaliação trimestral de resultados — se não estiver funcionando, ajustamos estratégia ou paramos. Mas na grande maioria dos casos, clientes que persistem por 6-12 meses reportam que marketing de conteúdo se torna um dos canais mais rentáveis de aquisição, com CAC (Custo de Aquisição de Cliente) significativamente menor que canais pagos.",
       },
     ],
     beneficios: [
@@ -1886,7 +1922,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Branding digital estratégico. Identidade visual, posicionamento, tom de voz e presença digital consistente. Destaque sua marca!",
     keywords: ["branding digital", "identidade de marca", "posicionamento de marca", "marca digital"],
     categoria: "marketing",
-    heroText: "Produtos podem ser copiados. Marcas fortes são inimitáveis. Branding é o que faz clientes escolherem você, não o concorrente mais barato.",
+    heroText: "Produtos podem ser facilmente copiados por concorrentes com orçamento suficiente. Funcionalidades podem ser replicadas em meses. Preços podem ser igualados ou superados. Mas marcas fortes são absolutamente inimitáveis porque existem na mente e no coração dos clientes, não apenas no mercado. BRANDING DIGITAL estratégico é exatamente o que faz clientes escolherem você conscientemente em vez do concorrente mais barato ou mais conveniente. É o que justifica preços premium e cria lealdade que sobrevive a erros ocasionais. Quanto vale ter clientes que defendem sua marca?",
     sections: [
       {
         titulo: "Marca: o ativo intangível mais valioso do seu negócio",
@@ -1907,6 +1943,10 @@ export const ESPECIALIDADES: Especialidade[] = [
       {
         titulo: "Nosso processo de branding: metodologia comprovada",
         conteudo: "Branding improvisado produz marcas fracas. Seguimos metodologia estruturada que combina rigor estratégico com criatividade. Fase 1 - Imersão: entrevistas com fundadores, equipe e clientes para entender história, cultura, diferenciais e aspirações. Análise de concorrentes para identificar espaços de diferenciação. Pesquisa de mercado quando necessário. Fase 2 - Estratégia: definimos propósito (por que existimos), posicionamento (como queremos ser percebidos), personalidade (como nos comportamos), promessa de marca (o que entregamos consistentemente). Documentamos em brand strategy que guia todas as decisões futuras. Fase 3 - Identidade: criamos nome (se necessário), logo, paleta de cores, tipografia, elementos visuais de apoio, estilo fotográfico. Múltiplas direções criativas são apresentadas para escolha. Fase 4 - Ativação: desenvolvemos guidelines completos, templates para todas as aplicações, banco de imagens curado, treinamento da equipe. Sua marca nasce pronta para o mundo, não como esboço que precisa ser 'finalizado depois'. O processo típico leva 6-12 semanas dependendo da complexidade, com sua participação ativa em cada etapa.",
+      },
+      {
+        titulo: "Investimento em branding e retorno esperado",
+        conteudo: "Quanto custa um projeto de BRANDING DIGITAL completo? Projetos de branding variam significativamente conforme escopo: uma identidade visual básica para startup em estágio inicial pode partir de R$5.000-10.000, enquanto projetos completos de rebranding para empresas estabelecidas, incluindo pesquisa, estratégia, identidade visual, guidelines e materiais de aplicação, tipicamente ficam entre R$20.000-50.000 ou mais para projetos de alta complexidade. O retorno do investimento em branding é notoriamente difícil de medir diretamente, mas os sinais são claros: empresas com marcas fortes conseguem cobrar preços premium sem perder vendas para concorrentes mais baratos, têm menor custo de aquisição de clientes porque a marca trabalha por elas, retêm talentos com mais facilidade porque pessoas querem trabalhar em empresas admiradas, e são mais resilientes em crises porque construíram capital de confiança. O branding não é custo — é investimento no ativo intangível mais valioso que sua empresa pode ter. Oferecemos pacotes modulares que permitem começar pelo essencial e evoluir conforme o negócio cresce e a marca amadurece.",
       },
     ],
     beneficios: [
@@ -1930,7 +1970,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Gestão de reputação digital. Monitoramento de menções, gestão de avaliações, resposta a crises e construção de autoridade. Proteja sua marca!",
     keywords: ["gestão de reputação", "reputação online", "monitoramento de marca", "avaliações google"],
     categoria: "marketing",
-    heroText: "Uma avaliação negativa no Google pode custar milhares em vendas perdidas. Gestão de reputação protege e constrói confiança.",
+    heroText: "Uma única avaliação negativa no Google, especialmente se não for respondida profissionalmente, pode custar milhares de reais em vendas perdidas porque 93% das pessoas pesquisam avaliações antes de comprar qualquer coisa significativa. GESTÃO DE REPUTAÇÃO ONLINE profissional protege proativamente o que você construiu ao longo de anos, monitora menções em tempo real, responde crises antes que escalonem, e constrói sistematicamente a percepção positiva que gera confiança e diferenciação competitiva. Quanto vale sua reputação? Quanto custaria reconstruí-la depois de uma crise mal gerenciada?",
     sections: [
       {
         titulo: "Reputação na era digital: seu ativo mais vulnerável",
@@ -1951,6 +1991,10 @@ export const ESPECIALIDADES: Especialidade[] = [
       {
         titulo: "Construção proativa de reputação positiva",
         conteudo: "Gestão de reputação não é apenas defesa — é também construção ativa de percepção positiva. Desenvolvemos estratégias para fortalecer sua imagem antes que problemas aconteçam: programa de incentivo a avaliações positivas de clientes satisfeitos, criação de conteúdo que demonstra expertise e valores da empresa, PR digital para conquistar menções positivas em veículos relevantes, participação em rankings e premiações do setor, construção de presença em comunidades e fóruns onde seu público está. Quando alguém pesquisa sua marca, queremos que encontre um ecossistema de conteúdo positivo que transmita confiança: seu site profissional, avaliações genuínas de clientes satisfeitos, artigos em veículos de mídia, perfis de redes sociais ativos e engajados, respostas cuidadosas a perguntas. Esse 'escudo reputacional' significa que mesmo quando uma crítica eventual aparecer, ela será uma voz minoritária em um mar de positividade. A melhor defesa contra crises é uma reputação tão sólida que problemas isolados não conseguem abalá-la.",
+      },
+      {
+        titulo: "Investimento e resultados da gestão de reputação",
+        conteudo: "Quanto custa GESTÃO DE REPUTAÇÃO ONLINE profissional? Oferecemos planos mensais que variam conforme a complexidade da sua presença digital e o nível de risco do seu setor. Planos básicos de monitoramento e resposta partem de R$1.500-3.000/mês, planos intermediários com gestão ativa de avaliações e construção de conteúdo ficam entre R$3.000-6.000/mês, e operações robustas com PR digital, gestão de crises e múltiplas plataformas podem superar R$10.000/mês. O retorno é direto: uma avaliação 1 estrela respondida profissionalmente pode ser editada pelo cliente para 5 estrelas quando o problema é resolvido. Aumento de 0.5 estrela na média do Google pode significar 5-10% mais cliques e visitas. Prevenção de uma única crise viral justifica meses de investimento em monitoramento. Nossos clientes tipicamente observam melhora de 0.3-0.5 na nota média do Google em 6 meses de trabalho ativo, aumento significativo no volume de avaliações positivas, e redução drástica no tempo de resposta a menções negativas. O investimento em reputação é seguro contra danos que podem custar muito mais para reparar depois.",
       },
     ],
     beneficios: [
@@ -1975,7 +2019,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Desenvolvemos aplicativos móveis para iOS e Android. Apps nativos e híbridos com design intuitivo e performance. Transforme sua ideia em app!",
     keywords: ["criação de aplicativo", "desenvolvimento de app", "aplicativo mobile", "app ios android"],
     categoria: "sistemas",
-    heroText: "Seu negócio disponível na palma da mão dos clientes, 24 horas por dia, em qualquer lugar. Desenvolvemos aplicativos móveis para iOS e Android que engajam usuários, fidelizam clientes e geram resultados mensuráveis — do conceito inicial até publicação nas lojas oficiais e evolução contínua.",
+    heroText: "Seu negócio disponível na palma da mão dos clientes, literalmente 24 horas por dia, em qualquer lugar do mundo com conexão à internet. Desenvolvemos APLICATIVOS MÓVEIS profissionais para iOS e Android que engajam usuários com experiências nativas superiores a qualquer site, fidelizam clientes através de notificações push e conveniência incomparável, e geram resultados mensuráveis que impactam diretamente no faturamento. Do conceito inicial validado até publicação nas lojas oficiais da Apple e Google, passando por design intuitivo e evolução contínua baseada em dados reais de uso.",
     sections: [
       {
         titulo: "Por que ter um aplicativo próprio?",
@@ -2019,7 +2063,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Consultoria para transformação digital de empresas. Diagnóstico, roadmap, implementação de tecnologias e capacitação de equipes. Modernize seu negócio!",
     keywords: ["transformação digital", "consultoria digital", "digitalização de empresas", "modernização tecnológica"],
     categoria: "sistemas",
-    heroText: "Empresas que não abraçam a transformação digital perdem competitividade a cada dia que passa, enquanto concorrentes mais ágeis capturam mercado. Te ajudamos a identificar oportunidades de digitalização, priorizar investimentos em tecnologia por impacto no negócio e implementar mudanças de forma estruturada.",
+    heroText: "Empresas que resistem ou ignoram a TRANSFORMAÇÃO DIGITAL perdem competitividade a cada dia que passa, enquanto concorrentes mais ágeis e adaptáveis capturam fatias crescentes do mercado que antes eram suas. Nossa CONSULTORIA EM TRANSFORMAÇÃO DIGITAL te ajuda a identificar oportunidades concretas de digitalização de processos, priorizar investimentos em tecnologia por impacto real no negócio e não por modismos, e implementar mudanças de forma estruturada que sua equipe consegue absorver. O resultado é uma empresa mais eficiente, mais competitiva e preparada para os desafios dos próximos anos.",
     sections: [
       {
         titulo: "O que é transformação digital verdadeira?",
@@ -2063,7 +2107,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Desenvolvemos micro-SaaS sob medida. Transforme sua ideia em produto digital com receita recorrente. MVP em semanas, não meses!",
     keywords: ["micro saas", "desenvolvimento saas", "criar saas", "software como serviço"],
     categoria: "sistemas",
-    heroText: "Tem uma ideia de software que resolve um problema específico de um nicho? Transformamos essa ideia em produto digital real com modelo de assinatura mensal que gera receita recorrente previsível. Receita recorrente é o sonho de todo empreendedor — e Micro-SaaS é o caminho mais acessível para alcançá-lo.",
+    heroText: "Tem uma ideia de software que resolve um problema específico e recorrente de um nicho de mercado bem definido? Transformamos essa ideia em produto digital real e funcional com modelo de assinatura mensal que gera receita recorrente previsível mês após mês. DESENVOLVIMENTO DE MICRO-SAAS é o sonho de todo empreendedor que quer escapar da troca de tempo por dinheiro — e é o caminho mais acessível e de menor risco para alcançá-lo. MVP funcional em semanas, não meses. Validação antes de investimento pesado. Crescimento sustentável baseado em métricas reais.",
     sections: [
       {
         titulo: "O que é Micro-SaaS e por que é atrativo?",
@@ -2107,7 +2151,7 @@ export const ESPECIALIDADES: Especialidade[] = [
     metaDescription: "Landing pages otimizadas para conversão. Design persuasivo, copywriting estratégico e A/B testing. Aumente suas conversões em até 300%!",
     keywords: ["landing page", "página de conversão", "criação de landing page", "página de vendas"],
     categoria: "sites",
-    heroText: "Uma landing page bem construída pode converter 5 a 10 vezes mais que uma página comum de site institucional. Criamos páginas focadas obsessivamente em um único objetivo: transformar visitantes em leads qualificados ou clientes pagantes, maximizando cada real investido em tráfego.",
+    heroText: "Uma LANDING PAGE DE ALTA CONVERSÃO bem construída pode converter de 5 a 10 vezes mais visitantes que uma página comum de site institucional cheio de distrações e opções competindo por atenção. Criamos páginas focadas obsessivamente em um único objetivo claramente definido: transformar visitantes anônimos em leads qualificados ou clientes pagantes, maximizando absolutamente cada real investido em tráfego pago ou orgânico. Copywriting persuasivo, design que guia o olho, e testes A/B contínuos que refinam performance semana após semana até encontrar a fórmula perfeita para seu público específico.",
     sections: [
       {
         titulo: "O poder estratégico da página de objetivo único",
