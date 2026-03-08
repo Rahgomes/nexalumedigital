@@ -104,6 +104,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               Cases
             </Link>
             <Link
+              href="/especialidades"
+              onClick={onClose}
+              className="block py-3 text-base font-medium text-metal-gray hover:text-white transition-colors"
+            >
+              Especialidades
+            </Link>
+            <Link
               href="/contato"
               onClick={onClose}
               className="block py-3 text-base font-medium text-metal-gray hover:text-white transition-colors"

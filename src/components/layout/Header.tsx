@@ -122,6 +122,12 @@ export default function Header() {
             Cases
           </Link>
           <Link
+            href="/especialidades"
+            className="text-sm font-medium text-metal-gray hover:text-white transition-colors"
+          >
+            Especialidades
+          </Link>
+          <Link
             href="/contato"
             className="text-sm font-medium text-metal-gray hover:text-white transition-colors"
           >
