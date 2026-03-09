@@ -12,7 +12,7 @@ export default function WhatsAppFloatingButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar via WhatsApp"
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 size-12 sm:size-14 rounded-full whatsapp-btn flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 size-12 sm:size-14 rounded-full whatsapp-btn flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1, duration: 0.4, ease: "easeOut" }}
@@ -20,7 +20,7 @@ export default function WhatsAppFloatingButton() {
       whileTap={{ scale: 0.95 }}
     >
       {/* Pulse ring */}
-      <span className="absolute inset-0 rounded-full bg-accent-green/40 animate-pulse-ring" />
+      <span className="absolute inset-0 rounded-full bg-accent-green/40 animate-pulse-ring pointer-events-none" />
 
       {/* WhatsApp brand icon */}
       <svg

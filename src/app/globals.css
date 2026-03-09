@@ -180,3 +180,16 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #00E5FF;
 }
+
+/* Typebot Chatbot - cursor pointer no botão */
+[class*="typebot-bubble-button"],
+[class*="typebot-button"],
+.typebot-bubble-button,
+.typebot-button {
+  cursor: pointer !important;
+}
+
+/* Garantir cursor pointer em todo elemento clicável do Typebot */
+[data-testid="bubble-button"] {
+  cursor: pointer !important;
+}
