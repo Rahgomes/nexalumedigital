@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Otimizações de memória para build
+  experimental: {
+    // Limita workers paralelos
+    cpus: 2,
+  },
 };
 
 export default nextConfig;

@@ -14,12 +14,17 @@ import {
   getCategoryByServiceSlug,
 } from "@/lib/services-data";
 
+// ISR: páginas geradas sob demanda
+export const dynamicParams = true;
+export const revalidate = 3600;
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
+// ISR: gera sob demanda
 export async function generateStaticParams() {
-  return getAllServiceSlugs().map((slug) => ({ slug }));
+  return [];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
