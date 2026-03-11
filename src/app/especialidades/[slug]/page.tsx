@@ -13,12 +13,18 @@ import {
   getAllEspecialidadesSlugs,
 } from "@/lib/especialidades-data";
 
+// ISR: páginas geradas sob demanda e cacheadas por 1 hora
+export const dynamicParams = true;
+export const revalidate = 3600;
+
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
+// Retorna vazio - todas as páginas serão geradas sob demanda (ISR)
+// Isso evita OOM no build com 100+ páginas
 export async function generateStaticParams() {
-  return getAllEspecialidadesSlugs().map((slug) => ({ slug }));
+  return [];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
