@@ -254,7 +254,7 @@ export const WHATSAPP_NUMBER =
   process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5511934449sjsjsj";
 export const WHATSAPP_MESSAGE =
   process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ??
-  "Olá! Gostaria de saber mais sobre os serviços da Nexalume.";
+  "Olá! Gostaria de saber mais sobre os serviços da Nexa Lume.";
 
 export const HERO_IMAGE_URL =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCgME9tbwiSX0sFryq9zwhREgib5eCF7FmoENRzv8Z1qTSc--njgaK7FTHVqnJ9eZhuVqQEo5ZiSGoImolxO8mGDkCwfPqoI_zsekiypmwPaIy0_Rrke8l-_FYtRZWS0ebokxfK4pM51COu5mE18ZBTU4uu47I2tzsnSYQnn-KmLSA72IcF5YEyqU8yKUz6TzQCYJNfCEa-rD3yaIZ7N_b0ro3U383kFPnE4Pl2vDG4kSuYYJbpcSolXiMsEvpsYx0kJjWEq6IV2uOa";
@@ -282,7 +282,7 @@ export const DIFFERENTIALS_EXPANDED: DifferentialExpandedData[] = [
     description:
       "Vamos além do código: usamos IA para analisar dados, otimizar processos e criar soluções que geram resultados reais.",
     expandedDescription:
-      "Inteligência artificial não é buzzword na Nexalume — é ferramenta de trabalho. Usamos IA para automatizar decisões, prever tendências e transformar dados brutos em estratégias acionáveis para o seu negócio.",
+      "Inteligência artificial não é buzzword na Nexa Lume — é ferramenta de trabalho. Usamos IA para automatizar decisões, prever tendências e transformar dados brutos em estratégias acionáveis para o seu negócio.",
     details: [
       "Modelos de machine learning customizados para seu segmento",
       "Automação inteligente de processos repetitivos",
@@ -350,7 +350,7 @@ export const COMPANY_TIMELINE: TimelineData[] = [
     year: "2023",
     title: "O Início",
     description:
-      "A Nexalume nasce com a missão de democratizar o acesso à tecnologia de ponta para pequenas e médias empresas.",
+      "A Nexa Lume nasce com a missão de democratizar o acesso à tecnologia de ponta para pequenas e médias empresas.",
   },
   {
     year: "2024",

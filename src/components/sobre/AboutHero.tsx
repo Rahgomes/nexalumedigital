@@ -54,7 +54,7 @@ export default function AboutHero() {
 
           {/* Description */}
           <p className="text-xl text-metal-gray leading-relaxed">
-            A Nexalume nasceu para conectar empresas às melhores soluções em
+            A Nexa Lume nasceu para conectar empresas às melhores soluções em
             tecnologia, marketing digital e inteligência artificial. Somos um
             time apaixonado por resultados, que transforma desafios complexos em
             estratégias simples e eficientes.

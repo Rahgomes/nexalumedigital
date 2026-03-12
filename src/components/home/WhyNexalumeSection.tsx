@@ -46,7 +46,7 @@ export default function WhyNexalumeSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Por que a Nexalume?
+          Por que a Nexa Lume?
         </motion.h2>
 
         <motion.div
@@ -155,7 +155,7 @@ export default function WhyNexalumeSection() {
             href="/sobre"
             className="inline-flex items-center gap-2 text-primary font-medium hover:text-accent-cyan transition-colors group"
           >
-            Saiba mais sobre a Nexalume
+            Saiba mais sobre a Nexa Lume
             <ArrowRight className="size-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </motion.div>

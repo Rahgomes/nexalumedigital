@@ -41,7 +41,7 @@ export default function CTASection() {
         </h2>
 
         <p className="text-metal-gray text-base sm:text-lg max-w-2xl mx-auto">
-          Agende uma consultoria técnica gratuita e descubra como a Nexalume
+          Agende uma consultoria técnica gratuita e descubra como a Nexa Lume
           pode acelerar sua transformação digital.
         </p>
 
