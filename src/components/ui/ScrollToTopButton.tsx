@@ -26,7 +26,7 @@ export default function ScrollToTopButton() {
         <motion.button
           onClick={scrollToTop}
           aria-label="Voltar ao topo"
-          className="fixed bottom-20 right-4 sm:bottom-24 sm:right-6 z-40 size-10 sm:size-12 rounded-full bg-surface-dark/80 backdrop-blur-sm border border-white/10 flex items-center justify-center shadow-lg hover:bg-surface-dark hover:border-primary/40 transition-colors cursor-pointer"
+          className="fixed bottom-36 right-4 sm:bottom-40 sm:right-6 z-40 size-10 sm:size-12 rounded-full bg-surface-dark/80 backdrop-blur-sm border border-white/10 flex items-center justify-center shadow-lg hover:bg-surface-dark hover:border-primary/40 transition-colors cursor-pointer"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
