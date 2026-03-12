@@ -48,3 +48,16 @@ export const CATEGORIAS_ESPECIALIDADES = {
 import especialidadesJson from './especialidades.json';
 
 export const ESPECIALIDADES: Especialidade[] = especialidadesJson as Especialidade[];
+
+// Funções utilitárias
+export function getEspecialidadeBySlug(slug: string): Especialidade | undefined {
+  return ESPECIALIDADES.find(e => e.slug === slug);
+}
+
+export function getEspecialidadesByCategoria(categoria: string): Especialidade[] {
+  return ESPECIALIDADES.filter(e => e.categoria === categoria);
+}
+
+export function getAllEspecialidadesSlugs(): string[] {
+  return ESPECIALIDADES.map(e => e.slug);
+}
