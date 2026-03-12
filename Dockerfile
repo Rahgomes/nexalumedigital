@@ -14,9 +14,9 @@ RUN npm ci
 # Copy source
 COPY . .
 
-# Build SEM Turbopack (usa Webpack que é mais leve)
+# Build
 ENV NODE_ENV=production
-RUN npm run build -- --no-turbo
+RUN npm run build
 
 # Production stage
 FROM node:22-alpine AS runner
