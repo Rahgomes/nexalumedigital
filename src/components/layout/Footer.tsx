@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Code2, Mail, MapPin } from "lucide-react";
-import { FOOTER_LINKS, SOCIAL_LINKS } from "@/lib/constants";
+import { FOOTER_LINKS } from "@/lib/constants";
+// TODO: Importar SOCIAL_LINKS quando os perfis oficiais forem criados
+// import { SOCIAL_LINKS } from "@/lib/constants";
 
 export default function Footer() {
   return (
