@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import MegaMenu from "./MegaMenu";
 import MobileMenu from "./MobileMenu";
 import EspecialidadesMegaMenu from "./EspecialidadesMegaMenu";
@@ -96,15 +95,7 @@ export default function Header() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <Image
-            src="/icon.png"
-            alt="Nexa Lume Digital"
-            width={48}
-            height={48}
-            className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
-            priority
-          />
+        <Link href="/" className="flex items-center group">
           <span className="text-xl sm:text-2xl font-black tracking-tighter text-white">
             NEXA
             <span className="text-primary group-hover:text-accent-cyan transition-colors">
