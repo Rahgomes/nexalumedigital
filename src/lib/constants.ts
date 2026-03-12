@@ -251,7 +251,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 export const WHATSAPP_NUMBER =
-  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5511999999999";
+  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5511934449sjsjsj";
 export const WHATSAPP_MESSAGE =
   process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ??
   "Olá! Gostaria de saber mais sobre os serviços da Nexalume.";
@@ -435,7 +435,7 @@ export const CONTACT_CHANNELS = [
     icon: Phone,
     title: "WhatsApp",
     detail: "Fale com um especialista",
-    href: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5511999999999"}`,
+    href: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "5511934449sjsjsj"}`,
   },
   {
     icon: MapPin,
