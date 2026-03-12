@@ -5,14 +5,12 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  // Desabilitar SWC minify que pode ter bug com arquivos grandes
   swcMinify: false,
-  // Usar Webpack com opções que ajudam com arquivos grandes
-  webpack: (config) => {
-    config.optimization = {
-      ...config.optimization,
-      minimize: false, // Desabilitar minificação que causa o erro
-    };
+  webpack: (config, { isServer }) => {
+    // Desabilitar minimização que causa "Cannot assign to this" em arquivos grandes
+    if (!isServer) {
+      config.optimization.minimize = false;
+    }
     return config;
   },
 };
