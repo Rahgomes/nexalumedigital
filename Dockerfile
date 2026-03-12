@@ -3,8 +3,8 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
-# Aumentar memória do Node
-ENV NODE_OPTIONS="--max-old-space-size=4096"
+# Aumentar memória do Node para 6GB
+ENV NODE_OPTIONS="--max-old-space-size=6144"
 ENV NEXT_TELEMETRY_DISABLED=1
 
 # Install dependencies
@@ -14,9 +14,9 @@ RUN npm ci
 # Copy source
 COPY . .
 
-# Build
+# Build com Webpack (mais leve que Turbopack)
 ENV NODE_ENV=production
-RUN npm run build
+RUN npm run build -- --webpack
 
 # Production stage
 FROM node:22-alpine AS runner
