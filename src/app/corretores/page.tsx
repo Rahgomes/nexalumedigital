@@ -91,10 +91,10 @@ export default function CorretoresPage() {
           
           <div className="mt-12 p-6 rounded-xl bg-red-500/10 border border-red-500/30 text-center">
             <p className="text-2xl font-bold text-red-400">
-              💸 Comissão perdida: R$ 9.000
+              💸 Comissão perdida: R$ 18.000
             </p>
             <p className="text-slate-400 mt-2">
-              (3% de um imóvel de R$ 300.000)
+              (6% de um imóvel de R$ 300.000)
             </p>
           </div>
         </div>
