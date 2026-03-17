@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function CorretoresPromoSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-background-dark via-orange-950/20 to-background-dark relative overflow-hidden">
+    <section id="corretores-promo" className="py-20 bg-gradient-to-b from-background-dark via-orange-950/20 to-background-dark relative overflow-hidden scroll-mt-24">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl" />

@@ -3,9 +3,38 @@
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import MegaMenu from "./MegaMenu";
 import MobileMenu from "./MobileMenu";
 import EspecialidadesMegaMenu from "./EspecialidadesMegaMenu";
+
+// Componente Novidade - scroll na home ou redirect em outras páginas
+function NovidadeLink() {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleClick = () => {
+    if (pathname === "/") {
+      // Na home: scroll para a seção
+      const section = document.getElementById("corretores-promo");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // Em outras páginas: vai para /corretores
+      router.push("/corretores");
+    }
+  };
+
+  return (
+    <button
+      onClick={handleClick}
+      className="px-3 py-1.5 rounded-full bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-500/40 text-orange-400 text-sm font-medium hover:border-orange-500/70 hover:text-orange-300 transition-all"
+    >
+      🆕 Novidade
+    </button>
+  );
+}
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -165,6 +194,9 @@ export default function Header() {
           >
             Contato
           </Link>
+
+          {/* Novidade - IA para Corretores */}
+          <NovidadeLink />
         </div>
 
         {/* Desktop CTA */}

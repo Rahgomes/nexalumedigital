@@ -301,14 +301,46 @@ export default function CorretoresPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-8 border-t border-slate-800">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <Link href="/" className="text-slate-400 hover:text-white transition-colors">
-            Nexa Lume Digital
-          </Link>
-          <p className="text-slate-600 text-sm mt-2">
-            © 2026 • Transformando presença digital em resultados
-          </p>
+      <footer className="py-12 border-t border-slate-800">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-col items-center gap-6">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="size-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
+                <span className="text-white font-bold text-lg">N</span>
+              </div>
+              <span className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
+                Nexa Lume Digital
+              </span>
+            </Link>
+
+            {/* Links */}
+            <nav className="flex gap-8">
+              <Link 
+                href="/solucoes" 
+                className="text-slate-400 hover:text-white transition-colors text-sm"
+              >
+                Soluções
+              </Link>
+              <Link 
+                href="/sobre" 
+                className="text-slate-400 hover:text-white transition-colors text-sm"
+              >
+                Sobre Nós
+              </Link>
+              <Link 
+                href="/especialidades" 
+                className="text-slate-400 hover:text-white transition-colors text-sm"
+              >
+                Especialidades
+              </Link>
+            </nav>
+
+            {/* Copyright */}
+            <p className="text-slate-600 text-sm">
+              © 2026 • Transformando presença digital em resultados
+            </p>
+          </div>
         </div>
       </footer>
     </main>
