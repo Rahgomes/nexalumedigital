@@ -222,7 +222,7 @@ export default function CorretoresPage() {
                   "Tudo do Pro +",
                   "Integração com 3 plataformas*",
                   "Resposta por email automática",
-                  "Múltiplos corretores na conta",
+                  "Múltiplos corretores (até 3)",
                   "Suporte prioritário",
                 ],
                 highlight: false,
