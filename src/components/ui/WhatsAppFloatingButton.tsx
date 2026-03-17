@@ -12,7 +12,7 @@ export default function WhatsAppFloatingButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar via WhatsApp"
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 size-12 sm:size-14 rounded-full whatsapp-btn flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
+      className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-40 size-12 sm:size-14 rounded-full whatsapp-btn flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1, duration: 0.4, ease: "easeOut" }}

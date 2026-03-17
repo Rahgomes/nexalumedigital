@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto_Condensed, Inter } from "next/font/google";
 import { ToastProvider } from "@/components/ui/Toast";
-import { Chatbot } from "@/components/chatbot/Chatbot";
 import ChatwootWidget from "@/components/chatbot/ChatwootWidget";
+import WhatsAppFloatingButton from "@/components/ui/WhatsAppFloatingButton";
 import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
 import "./globals.css";
 
@@ -73,7 +73,7 @@ export default function RootLayout({
       >
         <ToastProvider>{children}</ToastProvider>
         <ScrollToTopButton />
-        <Chatbot />
+        <WhatsAppFloatingButton />
         <ChatwootWidget />
       </body>
     </html>
