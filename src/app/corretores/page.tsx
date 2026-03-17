@@ -182,9 +182,28 @@ export default function CorretoresPage() {
           <h2 className="text-3xl font-bold text-white text-center mb-4">
             💰 Investimento
           </h2>
-          <p className="text-slate-400 text-center max-w-2xl mx-auto mb-12">
+          <p className="text-slate-400 text-center max-w-2xl mx-auto mb-8">
             Quanto custa perder uma venda por não responder? Compare com nosso investimento.
           </p>
+
+          {/* Destaque Setup + Plataformas */}
+          <div className="bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-500/40 rounded-xl p-6 mb-10">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="size-12 rounded-full bg-orange-500/30 flex items-center justify-center">
+                  <span className="text-2xl">🚀</span>
+                </div>
+                <div>
+                  <p className="text-white font-bold text-lg">Setup Inicial: R$ 200 <span className="text-orange-400">(pagamento único)</span></p>
+                  <p className="text-slate-400 text-sm">Configuração completa + treinamento da IA com seus imóveis</p>
+                </div>
+              </div>
+              <div className="text-left md:text-right">
+                <p className="text-slate-300 text-sm font-medium">Plataformas integradas:</p>
+                <p className="text-orange-400 text-sm">Kenlo • VivaReal • ZAP • OLX • Seu site</p>
+              </div>
+            </div>
+          </div>
           
           <div className="grid md:grid-cols-3 gap-6">
             {[
@@ -247,9 +266,6 @@ export default function CorretoresPage() {
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-white">R$ {plan.price}</span>
                   <span className="text-slate-400">/mês</span>
-                  <p className="text-orange-400 text-sm mt-2 font-medium">
-                    + Setup R$ 200 (pagamento único)
-                  </p>
                 </div>
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((f, j) => (
