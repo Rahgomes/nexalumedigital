@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 // Função para abrir o chat do Chatwoot
 const openChat = () => {
@@ -324,13 +325,14 @@ export default function CorretoresPage() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col items-center gap-6">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="size-10 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">N</span>
-              </div>
-              <span className="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors">
-                Nexa Lume Digital
-              </span>
+            <Link href="/" className="group">
+              <Image
+                src="/logo.png"
+                alt="Nexa Lume Digital"
+                width={180}
+                height={50}
+                className="h-12 w-auto group-hover:opacity-80 transition-opacity"
+              />
             </Link>
 
             {/* Links */}
