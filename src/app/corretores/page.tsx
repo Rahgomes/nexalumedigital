@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 
+// Função para abrir o chat do Chatwoot
+const openChat = () => {
+  if (typeof window !== "undefined" && (window as any).$chatwoot) {
+    (window as any).$chatwoot.toggle("open");
+  }
+};
+
 export default function CorretoresPage() {
-  const whatsappNumber = "5511981308127";
-  const whatsappMessage = encodeURIComponent(
-    "Olá! Vi a página sobre automação para corretores e tenho interesse em saber mais sobre o agente de IA para atendimento 24h."
-  );
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
@@ -33,14 +35,12 @@ export default function CorretoresPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={whatsappLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-lg hover:from-orange-600 hover:to-amber-600 transition-all shadow-lg shadow-orange-500/25"
+              <button
+                onClick={openChat}
+                className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-lg hover:from-orange-600 hover:to-amber-600 transition-all shadow-lg shadow-orange-500/25 cursor-pointer"
               >
                 💬 Quero atender 24 horas
-              </a>
+              </button>
               <a
                 href="#como-funciona"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-lg border border-slate-600 text-slate-300 font-medium hover:bg-slate-800 transition-all"
@@ -256,18 +256,16 @@ export default function CorretoresPage() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`block text-center py-3 rounded-lg font-medium transition-all ${
+                <button
+                  onClick={openChat}
+                  className={`block w-full text-center py-3 rounded-lg font-medium transition-all cursor-pointer ${
                     plan.highlight
                       ? "bg-orange-500 text-white hover:bg-orange-600"
                       : "bg-slate-700 text-slate-300 hover:bg-slate-600"
                   }`}
                 >
                   Começar agora
-                </a>
+                </button>
               </div>
             ))}
           </div>
@@ -290,14 +288,12 @@ export default function CorretoresPage() {
           <p className="text-slate-400 mb-8">
             Enquanto você lê isso, algum cliente pode estar buscando um imóvel e não encontrando resposta.
           </p>
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-10 py-5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-xl hover:from-orange-600 hover:to-amber-600 transition-all shadow-lg shadow-orange-500/25"
+          <button
+            onClick={openChat}
+            className="inline-flex items-center justify-center px-10 py-5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-xl hover:from-orange-600 hover:to-amber-600 transition-all shadow-lg shadow-orange-500/25 cursor-pointer"
           >
             💬 Falar com especialista agora
-          </a>
+          </button>
           <p className="text-slate-500 mt-4 text-sm">
             Resposta em menos de 5 minutos • Consultoria gratuita
           </p>
