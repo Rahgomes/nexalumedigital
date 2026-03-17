@@ -223,7 +223,7 @@ export default function CorretoresPage() {
                   "Integração com 3 plataformas*",
                   "Resposta por email automática",
                   "Múltiplos corretores (até 3)",
-                  "Suporte prioritário",
+                  "Dashboard com métricas e relatórios",
                 ],
                 highlight: false,
               },
