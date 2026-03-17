@@ -221,9 +221,10 @@ export default function CorretoresPage() {
                 features: [
                   "Tudo do Pro +",
                   "Integração com 3 plataformas*",
-                  "Resposta por email automática",
                   "Múltiplos corretores (até 3)",
                   "Dashboard com métricas e relatórios",
+                  "Onboarding assistido",
+                  "Assessoria mensal (reunião + melhorias)",
                 ],
                 highlight: false,
               },
