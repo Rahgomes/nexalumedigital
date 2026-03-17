@@ -77,8 +77,30 @@ export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
                 ))}
               </div>
 
-              {/* Footer CTA */}
+              {/* Destaque IA para Corretores */}
               <div className="mt-8 pt-6 border-t border-white/10">
+                <Link
+                  href="/corretores"
+                  onClick={onClose}
+                  className="group flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-orange-500/10 to-amber-500/10 border border-orange-500/30 hover:border-orange-500/60 transition-all"
+                >
+                  <div className="size-12 rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 flex items-center justify-center shrink-0">
+                    <span className="text-2xl">🏠</span>
+                  </div>
+                  <div className="flex-1">
+                    <span className="text-white font-bold group-hover:text-orange-400 transition-colors block">
+                      IA para Corretores de Imóveis
+                    </span>
+                    <p className="text-metal-gray text-sm mt-0.5">
+                      Atenda seus clientes 24h com agentes inteligentes
+                    </p>
+                  </div>
+                  <span className="text-orange-500 text-xl group-hover:translate-x-1 transition-transform">→</span>
+                </Link>
+              </div>
+
+              {/* Footer CTA */}
+              <div className="mt-4 pt-4 border-t border-white/10">
                 <Link
                   href="/solucoes"
                   onClick={onClose}
