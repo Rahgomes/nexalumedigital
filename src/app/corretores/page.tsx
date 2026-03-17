@@ -205,7 +205,7 @@ export default function CorretoresPage() {
             </div>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-4 md:gap-6 items-center max-w-5xl mx-auto">
             {[
               {
                 name: "Básico",
@@ -250,21 +250,21 @@ export default function CorretoresPage() {
             ].map((plan, i) => (
               <div
                 key={i}
-                className={`p-6 rounded-xl border ${
+                className={`rounded-xl border transition-all ${
                   plan.highlight
-                    ? "bg-gradient-to-b from-orange-500/20 to-amber-500/10 border-orange-500/50"
-                    : "bg-slate-900/50 border-slate-700"
+                    ? "bg-gradient-to-b from-orange-500/20 to-amber-500/10 border-orange-500/50 p-8 md:scale-105 md:-my-4 shadow-xl shadow-orange-500/20 z-10"
+                    : "bg-slate-900/50 border-slate-700 p-6 md:my-4"
                 }`}
               >
                 {plan.highlight && (
-                  <span className="inline-block px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-bold mb-4">
-                    MAIS POPULAR
+                  <span className="inline-block px-4 py-1.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white text-xs font-bold mb-4 shadow-lg">
+                    ⭐ MAIS POPULAR
                   </span>
                 )}
-                <h3 className="text-xl font-bold text-white">{plan.name}</h3>
+                <h3 className={`font-bold text-white ${plan.highlight ? "text-2xl" : "text-xl"}`}>{plan.name}</h3>
                 <p className="text-slate-400 text-sm mb-4">{plan.desc}</p>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold text-white">R$ {plan.price}</span>
+                  <span className={`font-bold text-white ${plan.highlight ? "text-5xl" : "text-4xl"}`}>R$ {plan.price}</span>
                   <span className="text-slate-400">/mês</span>
                 </div>
                 <ul className="space-y-3 mb-6">
@@ -279,7 +279,7 @@ export default function CorretoresPage() {
                   onClick={openChat}
                   className={`block w-full text-center py-3 rounded-lg font-medium transition-all cursor-pointer ${
                     plan.highlight
-                      ? "bg-orange-500 text-white hover:bg-orange-600"
+                      ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white hover:from-orange-600 hover:to-amber-600 shadow-lg"
                       : "bg-slate-700 text-slate-300 hover:bg-slate-600"
                   }`}
                 >
