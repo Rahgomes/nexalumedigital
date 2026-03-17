@@ -191,11 +191,11 @@ export default function CorretoresPage() {
               {
                 name: "Básico",
                 price: "120",
-                desc: "1 portal de imóveis",
+                desc: "1 plataforma",
                 features: [
                   "Agente IA no WhatsApp",
                   "Atendimento 24/7",
-                  "Integração com 1 portal (Kenlo, VivaReal, etc)",
+                  "Integração com 1 plataforma*",
                   "Captura de leads qualificados",
                   "Notificação por email e WhatsApp",
                 ],
@@ -204,10 +204,10 @@ export default function CorretoresPage() {
               {
                 name: "Pro",
                 price: "200",
-                desc: "Até 2 portais",
+                desc: "2 plataformas",
                 features: [
                   "Tudo do Básico +",
-                  "Integração com até 2 portais",
+                  "Integração com 2 plataformas*",
                   "Widget no seu site",
                   "Google Agenda ou Outlook",
                   "Relatórios semanais",
@@ -217,10 +217,10 @@ export default function CorretoresPage() {
               {
                 name: "Premium",
                 price: "350",
-                desc: "Até 5 portais",
+                desc: "3 plataformas",
                 features: [
                   "Tudo do Pro +",
-                  "Integração com até 5 portais",
+                  "Integração com 3 plataformas*",
                   "Resposta por email automática",
                   "Múltiplos corretores na conta",
                   "Suporte prioritário",
@@ -273,6 +273,9 @@ export default function CorretoresPage() {
           
           <p className="text-center text-slate-500 mt-8">
             Setup inicial: R$ 200 (único) • Sem fidelidade • Cancele quando quiser
+          </p>
+          <p className="text-center text-slate-600 text-sm mt-2">
+            *Plataformas: Kenlo, VivaReal, ZAP, OLX, seu site próprio, etc. Mais plataformas? Sob consulta.
           </p>
         </div>
       </section>
