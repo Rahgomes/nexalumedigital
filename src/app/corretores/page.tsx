@@ -329,9 +329,9 @@ export default function CorretoresPage() {
               <Image
                 src="/logo.png"
                 alt="Nexa Lume Digital"
-                width={180}
-                height={50}
-                className="h-12 w-auto group-hover:opacity-80 transition-opacity"
+                width={300}
+                height={80}
+                className="h-20 md:h-24 w-auto group-hover:opacity-90 transition-opacity"
               />
             </Link>
 
