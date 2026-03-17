@@ -247,6 +247,9 @@ export default function CorretoresPage() {
                 <div className="mb-6">
                   <span className="text-4xl font-bold text-white">R$ {plan.price}</span>
                   <span className="text-slate-400">/mês</span>
+                  <p className="text-orange-400 text-sm mt-2 font-medium">
+                    + Setup R$ 200 (pagamento único)
+                  </p>
                 </div>
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((f, j) => (
