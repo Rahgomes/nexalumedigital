@@ -328,10 +328,10 @@ export default function CorretoresPage() {
             <Link href="/" className="group">
               <Image
                 src="/logo-nexalume.png"
-                alt="Nexalume Digital"
-                width={250}
-                height={100}
-                className="h-16 md:h-20 w-auto group-hover:opacity-90 transition-opacity"
+                alt="Nexalume"
+                width={280}
+                height={112}
+                className="h-20 md:h-24 w-auto group-hover:opacity-90 transition-opacity"
               />
             </Link>
 

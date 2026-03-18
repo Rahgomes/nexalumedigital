@@ -15,10 +15,10 @@ export default function Footer() {
             <Link href="/" className="w-fit">
               <Image
                 src="/logo-nexalume.png"
-                alt="Nexalume Digital"
-                width={200}
-                height={80}
-                className="h-16 w-auto hover:opacity-90 transition-opacity"
+                alt="Nexalume"
+                width={280}
+                height={112}
+                className="h-20 md:h-24 w-auto hover:opacity-90 transition-opacity"
               />
             </Link>
             <p className="text-metal-gray text-sm leading-relaxed max-w-xs">
