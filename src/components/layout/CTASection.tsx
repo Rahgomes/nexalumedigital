@@ -11,8 +11,8 @@ export default function CTASection() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
   function handleOpenChat() {
-    if (typeof window !== "undefined") {
-      (window as unknown as { Typebot?: { open: () => void } }).Typebot?.open();
+    if (typeof window !== "undefined" && (window as any).$chatwoot) {
+      (window as any).$chatwoot.toggle("open");
     }
   }
 
