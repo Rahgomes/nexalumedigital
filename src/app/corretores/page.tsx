@@ -364,9 +364,9 @@ export default function CorretoresPage() {
               <Image
                 src="/logo-nexalume.png"
                 alt="Nexalume"
-                width={280}
-                height={112}
-                className="h-20 md:h-24 w-auto group-hover:opacity-90 transition-opacity"
+                width={320}
+                height={128}
+                className="h-24 md:h-28 w-auto group-hover:opacity-90 transition-opacity"
               />
             </Link>
 
