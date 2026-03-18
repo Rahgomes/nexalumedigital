@@ -1,4 +1,5 @@
 "use client";
+import Script from "next/script";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -106,7 +107,7 @@ const formatPrice = (value: number) => {
 };
 
 // Webhook URL do n8n (placeholder - substituir pelo real)
-const N8N_WEBHOOK_URL = "https://n8n.nexalume.com.br/webhook/demo-corretor";
+const N8N_WEBHOOK_URL = "https://n8n.ramongomessilva.com.br/webhook/demo-corretor-lead";
 
 export default function DemoCorretorPage() {
   const [showForm, setShowForm] = useState(false);
@@ -118,7 +119,7 @@ export default function DemoCorretorPage() {
     whatsapp: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showChat, setShowChat] = useState(false);
+  
 
   // Verificar localStorage ao carregar
   useEffect(() => {
@@ -133,7 +134,9 @@ export default function DemoCorretorPage() {
   // Abrir formulário ou chat
   const handleChatClick = () => {
     if (isRegistered) {
-      setShowChat(true);
+      if (typeof window !== 'undefined' && (window as any).$chatwoot) {
+        (window as any).$chatwoot.toggle("open");
+      }
     } else {
       setShowForm(true);
     }
@@ -164,7 +167,7 @@ export default function DemoCorretorPage() {
 
       setIsRegistered(true);
       setShowForm(false);
-      setShowChat(true);
+      if(window.$chatwoot) window.$chatwoot.toggle("open");
     } catch (error) {
       console.error("Erro ao enviar:", error);
     } finally {
@@ -183,7 +186,7 @@ export default function DemoCorretorPage() {
       localStorage.setItem("zoImoveisUser", JSON.stringify({ email: formData.email }));
       setIsRegistered(true);
       setShowForm(false);
-      setShowChat(true);
+      if(window.$chatwoot) window.$chatwoot.toggle("open");
       setIsSubmitting(false);
     }, 800);
   };
@@ -527,119 +530,42 @@ export default function DemoCorretorPage() {
         </div>
       )}
 
-      {/* Widget de Chat (placeholder) */}
-      {showChat && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-          <div
-            className="relative w-full max-w-lg h-[600px] rounded-2xl overflow-hidden border border-white/10 flex flex-col"
-            style={{ backgroundColor: colors.darkCard }}
-          >
-            {/* Header do chat */}
-            <div
-              className="flex items-center justify-between p-4 border-b border-white/10"
-              style={{ backgroundColor: colors.dark }}
-            >
-              <div className="flex items-center gap-3">
-                <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center"
-                  style={{ background: `linear-gradient(135deg, ${colors.blue}, ${colors.cyan})` }}
-                >
-                  <MessageCircle className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <h4 className="text-white font-semibold">Corretor Virtual</h4>
-                  <span className="text-xs text-green-400 flex items-center gap-1">
-                    <span className="w-2 h-2 rounded-full bg-green-400" />
-                    Online
-                  </span>
-                </div>
-              </div>
-              <button
-                onClick={() => setShowChat(false)}
-                className="text-gray-400 hover:text-white transition"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Área de mensagens */}
-            <div className="flex-1 p-4 overflow-y-auto">
-              <div className="flex gap-3 mb-4">
-                <div
-                  className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center"
-                  style={{ background: `linear-gradient(135deg, ${colors.blue}, ${colors.cyan})` }}
-                >
-                  <MessageCircle className="w-4 h-4 text-white" />
-                </div>
-                <div className="bg-white/10 rounded-2xl rounded-tl-none p-4 max-w-[80%]">
-                  <p className="text-white">
-                    Olá{formData.nome ? `, ${formData.nome.split(" ")[0]}` : ""}! 👋
-                  </p>
-                  <p className="text-white mt-2">
-                    Sou o corretor virtual da Zona Oeste Imóveis. Como posso ajudar você hoje?
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-3 mb-4">
-                <div
-                  className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center"
-                  style={{ background: `linear-gradient(135deg, ${colors.blue}, ${colors.cyan})` }}
-                >
-                  <MessageCircle className="w-4 h-4 text-white" />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <button className="bg-white/10 hover:bg-white/20 transition rounded-xl px-4 py-2 text-white text-sm text-left">
-                    🏠 Quero comprar um imóvel
-                  </button>
-                  <button className="bg-white/10 hover:bg-white/20 transition rounded-xl px-4 py-2 text-white text-sm text-left">
-                    🔑 Quero alugar um imóvel
-                  </button>
-                  <button className="bg-white/10 hover:bg-white/20 transition rounded-xl px-4 py-2 text-white text-sm text-left">
-                    💰 Quero vender meu imóvel
-                  </button>
-                  <button className="bg-white/10 hover:bg-white/20 transition rounded-xl px-4 py-2 text-white text-sm text-left">
-                    📍 Ver imóveis disponíveis
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Input de mensagem */}
-            <div className="p-4 border-t border-white/10">
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  placeholder="Digite sua mensagem..."
-                  className="flex-1 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 outline-none focus:border-white/30 transition"
-                />
-                <button
-                  className="px-4 py-3 rounded-xl text-white transition hover:opacity-90"
-                  style={{ background: `linear-gradient(135deg, ${colors.blue}, ${colors.cyan})` }}
-                >
-                  <Check className="w-5 h-5" />
-                </button>
-              </div>
-            </div>
-
-            {/* Badge Nexa Lume */}
-            <div className="text-center py-2 text-xs text-gray-500">
-              Powered by <span style={{ color: colors.cyan }}>Nexa Lume Digital</span>
-            </div>
-          </div>
-        </div>
+      {/* Widget Chatwoot - carrega após registro */}
+      {isRegistered && (
+        <Script
+          id="chatwoot-widget"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(d,t) {
+                var BASE_URL="https://chat.nexalumedigital.com.br";
+                var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+                g.src=BASE_URL+"/packs/js/sdk.js";
+                g.defer = true;
+                g.async = true;
+                s.parentNode.insertBefore(g,s);
+                g.onload=function(){
+                  window.chatwootSDK.run({
+                    websiteToken: 'N1UL15gRqV2t8ciqHVSmFnQM',
+                    baseUrl: BASE_URL
+                  });
+                  window.addEventListener('chatwoot:ready', function() {
+                    const userData = JSON.parse(localStorage.getItem('zoImoveisUser') || '{}');
+                    if (userData.nome) {
+                      window.$chatwoot.setUser(userData.email, {
+                        name: userData.nome,
+                        phone_number: userData.whatsapp
+                      });
+                    }
+                  });
+                }
+              })(document,"script");
+            `,
+          }}
+        />
       )}
 
-      {/* Botão flutuante de chat */}
-      {!showForm && !showChat && (
-        <button
-          onClick={handleChatClick}
-          className="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition hover:scale-110 z-40"
-          style={{ background: `linear-gradient(135deg, ${colors.blue}, ${colors.cyan})` }}
-        >
-          <MessageCircle className="w-6 h-6 text-white" />
-        </button>
-      )}
+      
     </div>
   );
 }
