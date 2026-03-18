@@ -3,12 +3,44 @@
 import Link from "next/link";
 import Image from "next/image";
 
-// Função para abrir o chat do Chatwoot
-const openChat = () => {
+// Mensagens contextuais por ação
+const contextMessages: Record<string, string> = {
+  "24h": "Quero atender meus clientes 24 horas por dia! 🕐",
+  "basico": "Tenho interesse no plano Básico (R$ 120/mês) 📋",
+  "pro": "Tenho interesse no plano Pro (R$ 200/mês) ⭐",
+  "premium": "Tenho interesse no plano Premium (R$ 350/mês) 🚀",
+  "especialista": "Quero falar com um especialista! 💬",
+  "default": "Olá! Gostaria de saber mais sobre as soluções de IA para corretores.",
+};
+
+// Função para abrir o chat com contexto
+const openChatWithContext = (context: string = "default") => {
   if (typeof window !== "undefined" && (window as any).$chatwoot) {
-    (window as any).$chatwoot.toggle("open");
+    const chatwoot = (window as any).$chatwoot;
+    
+    // Abre o widget
+    chatwoot.toggle("open");
+    
+    // Envia a mensagem contextual após um breve delay
+    setTimeout(() => {
+      const message = contextMessages[context] || contextMessages.default;
+      chatwoot.setCustomAttributes({
+        interesse: context,
+        origem: "landing-corretores",
+        plano_interesse: context === "basico" || context === "pro" || context === "premium" ? context : null,
+      });
+      // Preenche o campo de mensagem (o usuário pode editar antes de enviar)
+      const input = document.querySelector('[data-testid="send-message-input"]') as HTMLTextAreaElement;
+      if (input) {
+        input.value = message;
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    }, 500);
   }
 };
+
+// Função simples para abrir chat
+const openChat = () => openChatWithContext("default");
 
 export default function CorretoresPage() {
 
@@ -37,7 +69,7 @@ export default function CorretoresPage() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={openChat}
+                onClick={() => openChatWithContext("24h")}
                 className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-lg hover:from-orange-600 hover:to-amber-600 transition-all shadow-lg shadow-orange-500/25 cursor-pointer"
               >
                 💬 Quero atender 24 horas
@@ -212,6 +244,7 @@ export default function CorretoresPage() {
                 name: "Básico",
                 price: "120",
                 desc: "1 plataforma",
+                context: "basico",
                 features: [
                   "Agente IA no WhatsApp",
                   "Atendimento 24/7",
@@ -225,6 +258,7 @@ export default function CorretoresPage() {
                 name: "Pro",
                 price: "200",
                 desc: "2 plataformas",
+                context: "pro",
                 features: [
                   "Tudo do Básico +",
                   "Integração com 2 plataformas*",
@@ -238,6 +272,7 @@ export default function CorretoresPage() {
                 name: "Premium",
                 price: "350",
                 desc: "3 plataformas",
+                context: "premium",
                 features: [
                   "Tudo do Pro +",
                   "Integração com 3 plataformas*",
@@ -277,7 +312,7 @@ export default function CorretoresPage() {
                   ))}
                 </ul>
                 <button
-                  onClick={openChat}
+                  onClick={() => openChatWithContext(plan.context)}
                   className={`block w-full text-center py-3 rounded-lg font-medium transition-all cursor-pointer ${
                     plan.highlight
                       ? "bg-gradient-to-r from-orange-500 to-amber-500 text-white hover:from-orange-600 hover:to-amber-600 shadow-lg"
@@ -309,7 +344,7 @@ export default function CorretoresPage() {
             Enquanto você lê isso, algum cliente pode estar buscando um imóvel e não encontrando resposta.
           </p>
           <button
-            onClick={openChat}
+            onClick={() => openChatWithContext("especialista")}
             className="inline-flex items-center justify-center px-10 py-5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold text-xl hover:from-orange-600 hover:to-amber-600 transition-all shadow-lg shadow-orange-500/25 cursor-pointer"
           >
             💬 Falar com especialista agora
