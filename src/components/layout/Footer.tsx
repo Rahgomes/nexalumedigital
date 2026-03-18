@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { Code2, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Mail, MapPin } from "lucide-react";
 import { FOOTER_LINKS } from "@/lib/constants";
 // TODO: Importar SOCIAL_LINKS quando os perfis oficiais forem criados
 // import { SOCIAL_LINKS } from "@/lib/constants";
@@ -11,11 +12,14 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-12 mb-16">
           {/* Brand column */}
           <div className="col-span-2 space-y-6">
-            <Link href="/" className="flex items-center gap-2 w-fit">
-              <div className="size-6 bg-primary rounded flex items-center justify-center">
-                <Code2 className="size-4 text-white" />
-              </div>
-              <span className="text-xl font-black text-white">NEXALUME</span>
+            <Link href="/" className="w-fit">
+              <Image
+                src="/logo-nexalume.png"
+                alt="Nexalume Digital"
+                width={200}
+                height={80}
+                className="h-16 w-auto hover:opacity-90 transition-opacity"
+              />
             </Link>
             <p className="text-metal-gray text-sm leading-relaxed max-w-xs">
               Transformando empresas com inteligência artificial e tecnologia

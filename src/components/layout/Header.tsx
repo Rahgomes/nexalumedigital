@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import MegaMenu from "./MegaMenu";
 import MobileMenu from "./MobileMenu";
@@ -125,12 +126,14 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center group">
-          <span className="text-xl sm:text-2xl font-black tracking-tighter text-white">
-            NEXA
-            <span className="text-primary group-hover:text-accent-cyan transition-colors">
-              LUME
-            </span>
-          </span>
+          <Image
+            src="/logo-nexalume.png"
+            alt="Nexalume Digital"
+            width={160}
+            height={64}
+            className="h-10 sm:h-12 w-auto group-hover:opacity-90 transition-opacity"
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}

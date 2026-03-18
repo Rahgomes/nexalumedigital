@@ -327,11 +327,11 @@ export default function CorretoresPage() {
             {/* Logo */}
             <Link href="/" className="group">
               <Image
-                src="/logo.png"
-                alt="Nexa Lume Digital"
-                width={300}
-                height={80}
-                className="h-20 md:h-24 w-auto group-hover:opacity-90 transition-opacity"
+                src="/logo-nexalume.png"
+                alt="Nexalume Digital"
+                width={250}
+                height={100}
+                className="h-16 md:h-20 w-auto group-hover:opacity-90 transition-opacity"
               />
             </Link>
 
