@@ -112,7 +112,7 @@ export default function DemoCorretorPage() {
             <div className="flex items-center gap-2">
               <Building2 className="w-8 h-8 text-indigo-600" />
               <span className="text-xl font-bold text-gray-900">
-                Zona Oeste <span className="text-indigo-600">Imóveis</span>
+                Nexa Demo <span className="text-indigo-600">Imóveis</span>
               </span>
             </div>
             <nav className="hidden md:flex items-center gap-8 text-sm text-gray-600">
@@ -146,13 +146,13 @@ export default function DemoCorretorPage() {
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Encontre seu imóvel ideal na{" "}
+            Encontre seu imóvel ideal em{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600">
-              Zona Oeste
+              São Paulo
             </span>
           </h1>
           <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-            Os melhores apartamentos e casas em Pinheiros, Vila Madalena, Perdizes, Lapa e região.
+            Os melhores apartamentos e casas em São Paulo e Grande SP.
           </p>
 
           {/* Barra de busca */}
@@ -296,7 +296,7 @@ export default function DemoCorretorPage() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2">
               <Building2 className="w-6 h-6 text-indigo-600" />
-              <span className="text-gray-900 font-semibold">Zona Oeste Imóveis</span>
+              <span className="text-gray-900 font-semibold">Nexa Demo Imóveis</span>
             </div>
             <p className="text-gray-500 text-sm">
               Demo desenvolvida por{" "}

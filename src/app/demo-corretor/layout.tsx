@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Zona Oeste Imóveis | Encontre seu imóvel ideal",
-  description: "Os melhores apartamentos e casas em Pinheiros, Vila Madalena, Perdizes, Lapa e região da Zona Oeste de São Paulo.",
+  title: "Nexa Demo Imóveis | Encontre seu imóvel ideal",
+  description: "Os melhores apartamentos e casas em São Paulo e Grande SP. Demo de imobiliária com IA.",
   robots: "noindex, nofollow", // Não indexar página demo
 };
 

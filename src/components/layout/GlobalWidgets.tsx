@@ -5,7 +5,7 @@ import WhatsAppFloatingButton from "@/components/ui/WhatsAppFloatingButton";
 import ChatwootWidget from "@/components/chatbot/ChatwootWidget";
 
 // Rotas que têm widgets próprios (não mostrar os globais)
-const EXCLUDED_ROUTES = ["/corretores"];
+const EXCLUDED_ROUTES = ["/corretores", "/demo-corretor"];
 
 export default function GlobalWidgets() {
   const pathname = usePathname();
