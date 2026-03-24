@@ -33,7 +33,7 @@ export default function ContactSection() {
   const onSubmit = async (data: DiagnosticFormSchema) => {
     try {
       await axios.post(
-        "https://n8n.ramongomessilva.com.br/webhook/contato",
+        "https://n8n.nexalumedigital.com.br/webhook/contato",
         data,
       );
       toast({

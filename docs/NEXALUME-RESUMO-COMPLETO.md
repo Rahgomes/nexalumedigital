@@ -250,7 +250,7 @@ Agente de IA que atende clientes de corretores imobiliários 24/7 via WhatsApp.
 - **Landing Corretores:** https://nexalumedigital.com.br/corretores
 - **Soluções:** https://nexalumedigital.com.br/solucoes
 - **Chatwoot:** https://chat.nexalumedigital.com.br
-- **n8n:** https://n8n.ramongomessilva.com.br
+- **n8n:** https://n8n.nexalumedigital.com.br
 
 ---
 
