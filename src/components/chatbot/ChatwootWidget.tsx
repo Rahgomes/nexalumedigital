@@ -37,15 +37,28 @@ function cleanupChatwoot() {
     }
   }
 
-  // Remove elementos do DOM
+  // Fechar o widget se estiver aberto
+  if (window.$chatwoot?.toggle) {
+    try {
+      window.$chatwoot.toggle("close");
+    } catch (e) {
+      // Ignora erros
+    }
+  }
+
+  // Remove elementos do DOM (mais seletores para garantir)
   const selectors = [
     ".woot-widget-holder",
     ".woot-widget-bubble", 
     ".woot--bubble-holder",
     ".woot-widget-container",
+    ".woot-widget-wrap",
+    ".woot--close",
     "#chatwoot-widget-script",
     'script[src*="chatwoot"]',
     'script[src*="chat.nexalumedigital"]',
+    'iframe[src*="chatwoot"]',
+    'iframe[src*="chat.nexalumedigital"]',
   ];
   
   selectors.forEach(selector => {
@@ -56,49 +69,50 @@ function cleanupChatwoot() {
   delete window.$chatwoot;
   delete window.chatwootSDK;
   delete window.chatwootSettings;
+  
+  // Remove event listeners do Chatwoot se existirem
+  try {
+    window.removeEventListener("chatwoot:ready", () => {});
+    window.removeEventListener("chatwoot:error", () => {});
+  } catch (e) {
+    // Ignora
+  }
 }
 
 /**
  * Carrega o SDK do Chatwoot
  */
 function loadChatwoot(token: string, launcherTitle: string = "Fale conosco") {
-  // Define configurações antes de carregar o script
-  window.chatwootSettings = {
-    position: "right",
-    type: "standard",
-    launcherTitle,
-  };
-
-  // Verifica se o script já existe
-  const existingScript = document.getElementById("chatwoot-widget-script");
-  if (existingScript) {
-    // Se já existe, apenas roda com o novo token
-    if (window.chatwootSDK) {
-      window.chatwootSDK.run({
-        websiteToken: token,
-        baseUrl: BASE_URL,
-      });
-    }
-    return;
-  }
-
-  // Cria e adiciona o script
-  const script = document.createElement("script");
-  script.id = "chatwoot-widget-script";
-  script.src = `${BASE_URL}/packs/js/sdk.js`;
-  script.async = true;
-  script.defer = true;
+  // Garante cleanup antes de carregar
+  cleanupChatwoot();
   
-  script.onload = () => {
-    if (window.chatwootSDK) {
-      window.chatwootSDK.run({
-        websiteToken: token,
-        baseUrl: BASE_URL,
-      });
-    }
-  };
-  
-  document.body.appendChild(script);
+  // Pequeno delay para garantir que o cleanup terminou
+  setTimeout(() => {
+    // Define configurações antes de carregar o script
+    window.chatwootSettings = {
+      position: "right",
+      type: "standard",
+      launcherTitle,
+    };
+
+    // Cria e adiciona o script (sempre novo após cleanup)
+    const script = document.createElement("script");
+    script.id = "chatwoot-widget-script";
+    script.src = `${BASE_URL}/packs/js/sdk.js`;
+    script.async = true;
+    script.defer = true;
+    
+    script.onload = () => {
+      if (window.chatwootSDK) {
+        window.chatwootSDK.run({
+          websiteToken: token,
+          baseUrl: BASE_URL,
+        });
+      }
+    };
+    
+    document.body.appendChild(script);
+  }, 50);
 }
 
 interface ChatwootWidgetProps {
