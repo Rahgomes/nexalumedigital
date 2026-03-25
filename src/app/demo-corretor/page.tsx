@@ -1,9 +1,9 @@
 "use client";
 
-import Script from "next/script";
 import Image from "next/image";
 import { Search, MapPin, Bed, Ruler, MessageCircle, ChevronDown, Building2, Home, Sparkles } from "lucide-react";
 import { openChatwoot } from "@/lib/chatwoot";
+import ChatwootWidget from "@/components/chatbot/ChatwootWidget";
 
 // Cores claras - estilo grandes imobiliárias
 const colors = {
@@ -310,28 +310,10 @@ export default function DemoCorretorPage() {
         </div>
       </footer>
 
-      {/* Widget Chatwoot - sempre disponível */}
-      <Script
-        id="chatwoot-widget"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            (function(d,t) {
-              var BASE_URL="https://chat.nexalumedigital.com.br";
-              var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-              g.src=BASE_URL+"/packs/js/sdk.js";
-              g.defer = true;
-              g.async = true;
-              s.parentNode.insertBefore(g,s);
-              g.onload=function(){
-                window.chatwootSDK.run({
-                  websiteToken: 'N1UL15gRqV2t8ciqHVSmFnQM',
-                  baseUrl: BASE_URL
-                });
-              }
-            })(document,"script");
-          `,
-        }}
+      {/* Widget Chatwoot - Demo Corretor */}
+      <ChatwootWidget 
+        token="N1UL15gRqV2t8ciqHVSmFnQM" 
+        launcherTitle="Fale com o corretor" 
       />
     </div>
   );
