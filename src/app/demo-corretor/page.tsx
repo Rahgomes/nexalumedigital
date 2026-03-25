@@ -3,6 +3,7 @@
 import Script from "next/script";
 import Image from "next/image";
 import { Search, MapPin, Bed, Ruler, MessageCircle, ChevronDown, Building2, Home, Sparkles } from "lucide-react";
+import { openChatwoot } from "@/lib/chatwoot";
 
 // Cores claras - estilo grandes imobiliárias
 const colors = {
@@ -95,12 +96,8 @@ const formatPrice = (value: number) => {
   }).format(value);
 };
 
-// Abrir Chatwoot
-const openChat = () => {
-  if (typeof window !== "undefined" && (window as any).$chatwoot) {
-    (window as any).$chatwoot.toggle("open");
-  }
-};
+// Função para abrir o chat (usa utilitário com retry)
+const openChat = () => openChatwoot();
 
 export default function DemoCorretorPage() {
   return (

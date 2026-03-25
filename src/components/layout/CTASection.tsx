@@ -6,13 +6,16 @@ import { fadeIn } from "@/lib/animations";
 import { WHATSAPP_NUMBER, WHATSAPP_MESSAGE } from "@/lib/constants";
 import Button from "@/components/ui/Button";
 import { BackgroundBeams } from "@/components/ui/aceternity/background-beams";
+import { openChatwoot } from "@/lib/chatwoot";
 
 export default function CTASection() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
-  function handleOpenChat() {
-    if (typeof window !== "undefined" && (window as any).$chatwoot) {
-      (window as any).$chatwoot.toggle("open");
+  async function handleOpenChat() {
+    const opened = await openChatwoot();
+    if (!opened) {
+      // Fallback: redireciona para WhatsApp se o chat não carregar
+      window.open(whatsappUrl, "_blank");
     }
   }
 

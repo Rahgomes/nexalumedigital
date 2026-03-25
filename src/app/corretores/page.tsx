@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { openChatwoot } from "@/lib/chatwoot";
 
 // Mensagens contextuais por ação
 const contextMessages: Record<string, string> = {
@@ -13,13 +14,12 @@ const contextMessages: Record<string, string> = {
   "default": "Olá! Gostaria de saber mais sobre as soluções de IA para corretores.",
 };
 
-// Função para abrir o chat com contexto
-const openChatWithContext = (context: string = "default") => {
-  if (typeof window !== "undefined" && (window as any).$chatwoot) {
+// Função para abrir o chat com contexto (com retry automático)
+const openChatWithContext = async (context: string = "default") => {
+  const opened = await openChatwoot();
+  
+  if (opened && typeof window !== "undefined" && (window as any).$chatwoot) {
     const chatwoot = (window as any).$chatwoot;
-    
-    // Abre o widget
-    chatwoot.toggle("open");
     
     // Envia a mensagem contextual após um breve delay
     setTimeout(() => {
@@ -40,7 +40,7 @@ const openChatWithContext = (context: string = "default") => {
 };
 
 // Função simples para abrir chat
-const openChat = () => openChatWithContext("default");
+const openChat = () => openChatwoot();
 
 export default function CorretoresPage() {
 
