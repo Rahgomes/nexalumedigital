@@ -161,7 +161,7 @@ export default function ContactSection() {
                   <input
                     id="contact-telefone"
                     type="tel"
-                    placeholder="(11) 99999-9999"
+                    placeholder="(11) 9 9999-9999"
                     className={inputStyles}
                     {...register("telefone")}
                   />

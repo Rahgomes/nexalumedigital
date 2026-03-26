@@ -1,7 +1,8 @@
 import { z } from "zod";
 
-// Regex para telefone brasileiro: (XX) 9XXXX-XXXX ou variações
-const phoneRegex = /^\(?[1-9]{2}\)?\s?9?\d{4}[-\s]?\d{4}$/;
+// Regex para WhatsApp brasileiro: (XX) 9XXXX-XXXX (celular com 9)
+// Aceita: (11) 99999-9999, 11999999999, 11 99999-9999
+const whatsappRegex = /^\(?[1-9]{2}\)?\s?9\d{4}[-\s]?\d{4}$/;
 
 export const diagnosticFormSchema = z.object({
   nome: z
@@ -19,9 +20,10 @@ export const diagnosticFormSchema = z.object({
       (val) => {
         if (!val || val.trim() === "") return true; // Opcional
         const cleaned = val.replace(/\D/g, "");
-        return cleaned.length >= 10 && cleaned.length <= 11 && phoneRegex.test(val);
+        // WhatsApp = celular = 11 dígitos (DDD + 9 + 8 dígitos)
+        return cleaned.length === 11 && whatsappRegex.test(val);
       },
-      "Telefone invalido. Use formato: (11) 99999-9999"
+      "WhatsApp invalido. Use formato: (11) 99999-9999"
     ),
   empresa: z
     .string()
