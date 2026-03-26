@@ -27,6 +27,7 @@ export default function ContactSection() {
       telefone: "",
       empresa: "",
       mensagem: "",
+      website: "", // Honeypot
     },
   });
 
@@ -110,6 +111,16 @@ export default function ContactSection() {
             viewport={{ once: true, margin: "-80px" }}
           >
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+              {/* Honeypot - campo invisível anti-bot */}
+              <input
+                type="text"
+                {...register("website")}
+                className="absolute opacity-0 pointer-events-none"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+              />
+              
               <div>
                 <label htmlFor="contact-nome" className={labelStyles}>
                   Nome *
