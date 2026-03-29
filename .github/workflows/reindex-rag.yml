@@ -1,0 +1,35 @@
+name: Re-index RAG após Deploy
+
+on:
+  workflow_run:
+    workflows: ["Deploy to Coolify"]
+    types:
+      - completed
+  workflow_dispatch:  # Permite executar manualmente
+
+jobs:
+  reindex:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    
+    steps:
+      - name: Trigger RAG Re-indexação
+        run: |
+          echo "🔄 Iniciando re-indexação do RAG..."
+          
+          # Chamar webhook no servidor para re-indexar
+          # O script usa content_hash então só atualiza páginas modificadas
+          curl -X POST "https://n8n.ramongomessilva.com.br/webhook/reindex-rag" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.RAG_WEBHOOK_TOKEN }}" \
+            -d '{"source": "github-action", "repo": "${{ github.repository }}", "commit": "${{ github.sha }}"}'
+          
+          echo "✅ Re-indexação solicitada!"
+
+      - name: Aguardar conclusão
+        run: |
+          echo "⏳ Aguardando 30s para processamento..."
+          sleep 30
+          
+          # Verificar status (opcional)
+          curl -s "https://n8n.ramongomessilva.com.br/webhook/rag-status" || true
