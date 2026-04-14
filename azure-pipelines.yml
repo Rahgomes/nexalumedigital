@@ -162,6 +162,62 @@ stages:
               TELEGRAM_BOT_TOKEN: $(TELEGRAM_BOT_TOKEN)
               TELEGRAM_CHAT_ID: $(TELEGRAM_CHAT_ID)
 
+  # ==================== AUTO PR (develop → main) ====================
+  - stage: CreatePR
+    displayName: "Create PR to PROD"
+    dependsOn: DeployDev
+    condition: succeeded()
+    jobs:
+      - job: CreatePRJob
+        displayName: "Open PR develop → main"
+        steps:
+          - checkout: self
+            displayName: "Checkout source code"
+
+          - script: |
+              set -euo pipefail
+              COMMIT_SHORT=$(git rev-parse --short HEAD)
+              COMMIT_MSG=$(git log -1 --pretty=%s)
+
+              # Check if PR already exists
+              EXISTING_PR=$(curl -s \
+                -H "Authorization: token $(GITHUB_PAT)" \
+                "https://api.github.com/repos/Rahgomes/nexalumedigital/pulls?state=open&head=Rahgomes:develop&base=main" \
+                | python3 -c "import json,sys; prs=json.load(sys.stdin); print(prs[0]['number'] if prs else '')" 2>/dev/null || echo "")
+
+              if [ -n "$EXISTING_PR" ]; then
+                echo "PR #$EXISTING_PR already open — skipping creation"
+                PR_URL="https://github.com/Rahgomes/nexalumedigital/pull/$EXISTING_PR"
+              else
+                echo "Creating PR develop → main..."
+                PR_URL=$(curl -s -X POST \
+                  -H "Authorization: token $(GITHUB_PAT)" \
+                  -H "Content-Type: application/json" \
+                  "https://api.github.com/repos/Rahgomes/nexalumedigital/pulls" \
+                  -d "{
+                    \"title\": \"Deploy PROD — $COMMIT_MSG\",
+                    \"body\": \"## Deploy para Producao\n\nCommit: \`$COMMIT_SHORT\` — $COMMIT_MSG\n\nDEV validado com sucesso em https://dev.nexalumedigital.com.br\n\n> Aprovar e mergear para acionar deploy em PROD.\",
+                    \"head\": \"develop\",
+                    \"base\": \"main\"
+                  }" | python3 -c "import json,sys; print(json.load(sys.stdin).get('html_url',''))")
+                echo "PR created: $PR_URL"
+              fi
+
+              # Notify on Telegram
+              curl -s -X POST \
+                "https://api.telegram.org/bot$(TELEGRAM_BOT_TOKEN)/sendMessage" \
+                -H "Content-Type: application/json" \
+                -d "{
+                  \"chat_id\": \"$(TELEGRAM_CHAT_ID)\",
+                  \"text\": \"📋 <b>PR CRIADO — $(APP_NAME)</b>\nDEV ok. Aprovar para deploy em PROD:\n$PR_URL\",
+                  \"parse_mode\": \"HTML\"
+                }" > /dev/null
+            displayName: "Create or update PR"
+            env:
+              GITHUB_PAT: $(GITHUB_PAT)
+              TELEGRAM_BOT_TOKEN: $(TELEGRAM_BOT_TOKEN)
+              TELEGRAM_CHAT_ID: $(TELEGRAM_CHAT_ID)
+
   # ==================== DEPLOY PROD ====================
   - stage: DeployProd
     displayName: "Deploy PROD"
@@ -238,6 +294,63 @@ stages:
                 }" > /dev/null
             displayName: "Notify PROD deploy result"
             condition: always()
+            env:
+              TELEGRAM_BOT_TOKEN: $(TELEGRAM_BOT_TOKEN)
+              TELEGRAM_CHAT_ID: $(TELEGRAM_CHAT_ID)
+
+  # ==================== SYNC develop (after direct PROD deploy) ====================
+  - stage: SyncDevelop
+    displayName: "Sync develop ← main"
+    dependsOn: DeployProd
+    condition: succeeded()
+    jobs:
+      - job: SyncJob
+        displayName: "Sync develop with main"
+        steps:
+          - checkout: self
+            persistCredentials: true
+            displayName: "Checkout source code"
+
+          - script: |
+              set -euo pipefail
+              git config user.name "Azure DevOps Pipeline"
+              git config user.email "pipeline@rahz1n.dev"
+
+              echo "Fetching all branches..."
+              git fetch origin
+
+              echo "Checking out develop..."
+              git checkout develop
+              git pull origin develop
+
+              echo "Merging main into develop..."
+              if git merge origin/main --no-edit; then
+                git push origin develop
+                echo "develop synced with main successfully"
+
+                curl -s -X POST \
+                  "https://api.telegram.org/bot$(TELEGRAM_BOT_TOKEN)/sendMessage" \
+                  -H "Content-Type: application/json" \
+                  -d "{
+                    \"chat_id\": \"$(TELEGRAM_CHAT_ID)\",
+                    \"text\": \"🔄 <b>SYNC — $(APP_NAME)</b>\nBranch develop sincronizada com main.\",
+                    \"parse_mode\": \"HTML\"
+                  }" > /dev/null
+              else
+                echo "Merge conflict — manual resolution needed"
+                git merge --abort
+
+                curl -s -X POST \
+                  "https://api.telegram.org/bot$(TELEGRAM_BOT_TOKEN)/sendMessage" \
+                  -H "Content-Type: application/json" \
+                  -d "{
+                    \"chat_id\": \"$(TELEGRAM_CHAT_ID)\",
+                    \"text\": \"⚠️ <b>SYNC FALHOU — $(APP_NAME)</b>\nConflito ao mergear main → develop. Resolver manualmente.\",
+                    \"parse_mode\": \"HTML\"
+                  }" > /dev/null
+                exit 1
+              fi
+            displayName: "Merge main into develop"
             env:
               TELEGRAM_BOT_TOKEN: $(TELEGRAM_BOT_TOKEN)
               TELEGRAM_CHAT_ID: $(TELEGRAM_CHAT_ID)
