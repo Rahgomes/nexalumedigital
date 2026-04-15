@@ -46,6 +46,7 @@ stages:
 
           - script: |
               set -euo pipefail
+              REGISTRY="registry.ramongomessilva.com.br"
               BRANCH=$(Build.SourceBranchName)
               if [ "$BRANCH" = "main" ]; then
                 IMAGE_NAME="nexalume-prod"
@@ -55,9 +56,18 @@ stages:
               echo "##vso[task.setvariable variable=IMAGE_NAME]$IMAGE_NAME"
               echo "Building Docker image: $IMAGE_NAME..."
               docker build -t $IMAGE_NAME:$(Build.BuildId) -t $IMAGE_NAME:latest .
-              echo "Build completed successfully"
+
+              echo "Tagging for registry: $REGISTRY/$IMAGE_NAME..."
+              docker tag $IMAGE_NAME:$(Build.BuildId) $REGISTRY/$IMAGE_NAME:$(Build.BuildId)
+              docker tag $IMAGE_NAME:latest $REGISTRY/$IMAGE_NAME:latest
+
+              echo "Pushing to registry..."
+              docker push $REGISTRY/$IMAGE_NAME:$(Build.BuildId)
+              docker push $REGISTRY/$IMAGE_NAME:latest
+
+              echo "Build and push completed successfully"
               docker images $IMAGE_NAME --format "table {{.Tag}}\t{{.Size}}\t{{.CreatedAt}}" | head -5
-            displayName: "Build Docker image"
+            displayName: "Build and push Docker image"
 
   # ==================== DEPLOY DEV ====================
   - stage: DeployDev
