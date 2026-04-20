@@ -22,99 +22,51 @@ resources:
 variables:
   - group: Telegram-Rah-Automation-Notifier-Credentials
   - group: NexaLume-Credentials
+  - group: RagNexalume-Credentials
   - name: APP_NAME
     value: "NexaLume"
   - name: IS_MAIN
     value: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
   - name: IS_DEVELOP
     value: $[eq(variables['Build.SourceBranch'], 'refs/heads/develop')]
+  - name: imageTagSuffix
+    value: $[ replace(replace(variables['Build.SourceBranch'], 'refs/heads/', ''), '/', '-') ]
 
 stages:
   # ==================== BUILD ====================
-  - stage: Build
-    displayName: "Build Docker Image"
-    jobs:
-      - job: BuildJob
-        displayName: "Build"
-        steps:
-          - checkout: self
-            displayName: "Checkout source code"
+  - template: templates/stage-build.yml@templates
+    parameters:
+      appName: NexaLume
+      imageName: nexalumedigital
+      envLabel: ${{ variables.imageTagSuffix }}
 
-          - template: templates/notify-start.yml@templates
-            parameters:
-              appName: NexaLume
-
-          - script: |
-              set -euo pipefail
-              REGISTRY="registry.ramongomessilva.com.br"
-              BRANCH=$(Build.SourceBranchName)
-              if [ "$BRANCH" = "main" ]; then
-                IMAGE_NAME="nexalume-prod"
-              else
-                IMAGE_NAME="nexalume-dev"
-              fi
-              echo "##vso[task.setvariable variable=IMAGE_NAME]$IMAGE_NAME"
-              echo "Building Docker image: $IMAGE_NAME..."
-              docker build -t $IMAGE_NAME:$(Build.BuildId) -t $IMAGE_NAME:latest .
-
-              echo "Tagging for registry: $REGISTRY/$IMAGE_NAME..."
-              docker tag $IMAGE_NAME:$(Build.BuildId) $REGISTRY/$IMAGE_NAME:$(Build.BuildId)
-              docker tag $IMAGE_NAME:latest $REGISTRY/$IMAGE_NAME:latest
-
-              echo "Pushing to registry..."
-              docker push $REGISTRY/$IMAGE_NAME:$(Build.BuildId)
-              docker push $REGISTRY/$IMAGE_NAME:latest
-
-              echo "Build and push completed successfully"
-              docker images $IMAGE_NAME --format "table {{.Tag}}\t{{.Size}}\t{{.CreatedAt}}" | head -5
-            displayName: "Build and push Docker image"
-
-  # ==================== DEPLOY DEV ====================
-  - stage: DeployDev
-    displayName: "Deploy DEV"
-    dependsOn: Build
-    condition: and(succeeded(), eq(variables.IS_DEVELOP, true))
-    jobs:
-      - job: DeployDevJob
-        displayName: "Deploy dev.nexalumedigital.com.br"
-        steps:
-          - script: |
-              set -euo pipefail
-              # Remove old Coolify-managed containers (migration)
-              for c in $(docker ps -a --filter "name=y0gkwc84cg848o4g8gsswcsc" --format "{{.Names}}"); do
-                docker stop "$c" 2>/dev/null || true
-                docker rm "$c" 2>/dev/null || true
-              done
-            displayName: "Cleanup old containers"
-
-          - template: templates/deploy-container.yml@templates
-            parameters:
-              containerName: nexalume-dev
-              imageName: nexalume-dev
-              domain: dev.nexalumedigital.com.br
-              port: "3000"
-              coolifyAppId: "1"
-              coolifyUuid: y0gkwc84cg848o4g8gsswcsc
-              coolifyResourceName: nexalume-dev
-              coolifyProjectName: nexa-lume-digital
-              coolifyEnvironment: development
-              envFlags: '-e NODE_ENV=production -e "NEXT_PUBLIC_WHATSAPP_NUMBER=$(NEXT_PUBLIC_WHATSAPP_NUMBER)" -e "NEXT_PUBLIC_WHATSAPP_MESSAGE=$(NEXT_PUBLIC_WHATSAPP_MESSAGE)"'
-
-          - template: templates/notify-result.yml@templates
-            parameters:
-              appName: NexaLume
-              containerName: nexalume-dev
-              domain: dev.nexalumedigital.com.br
-              envLabel: DEV
+  # ==================== DEPLOY DEV (branch develop) ====================
+  - template: templates/stage-deploy.yml@templates
+    parameters:
+      stageId: DeployDev
+      appName: NexaLume
+      containerName: nexalume-dev
+      imageName: nexalumedigital
+      domain: dev.nexalumedigital.com.br
+      port: "3000"
+      coolifyAppId: "1"
+      coolifyUuid: y0gkwc84cg848o4g8gsswcsc
+      coolifyResourceName: nexalume-dev
+      coolifyProjectName: "nexa-lume-digital"
+      coolifyEnvironment: development
+      envFlags: '-e NODE_ENV=production -e "NEXT_PUBLIC_WHATSAPP_NUMBER=$(NEXT_PUBLIC_WHATSAPP_NUMBER)" -e "NEXT_PUBLIC_WHATSAPP_MESSAGE=$(NEXT_PUBLIC_WHATSAPP_MESSAGE)"'
+      envLabel: DEV
+      condition: and(succeeded(), eq(variables.IS_DEVELOP, true))
 
   # ==================== AUTO PR (develop → main) ====================
   - stage: CreatePR
     displayName: "Create PR to PROD"
     dependsOn: DeployDev
-    condition: succeeded()
+    condition: and(succeeded(), eq(variables.IS_DEVELOP, true))
     jobs:
       - job: CreatePRJob
         displayName: "Open PR develop → main"
+        timeoutInMinutes: 5
         steps:
           - checkout: self
             displayName: "Checkout source code"
@@ -124,7 +76,6 @@ stages:
               COMMIT_SHORT=$(git rev-parse --short HEAD)
               COMMIT_MSG=$(git log -1 --pretty=%s)
 
-              # Check if PR already exists
               EXISTING_PR=$(curl -s \
                 -H "Authorization: token $(GITHUB_PAT)" \
                 "https://api.github.com/repos/Rahgomes/nexalumedigital/pulls?state=open&head=Rahgomes:develop&base=main" \
@@ -141,7 +92,7 @@ stages:
                   "https://api.github.com/repos/Rahgomes/nexalumedigital/pulls" \
                   -d "{
                     \"title\": \"Deploy PROD — $COMMIT_MSG\",
-                    \"body\": \"## Deploy para Producao\n\nCommit: \`$COMMIT_SHORT\` — $COMMIT_MSG\n\nDEV validado com sucesso em https://dev.nexalumedigital.com.br\n\n> Aprovar e mergear para acionar deploy em PROD.\",
+                    \"body\": \"## Deploy para Producao\n\nCommit: \`$COMMIT_SHORT\` — $COMMIT_MSG\n\nDEV validado em https://dev.nexalumedigital.com.br\n\n> Aprovar e mergear para acionar deploy em PROD.\",
                     \"head\": \"develop\",
                     \"base\": \"main\"
                   }" | python3 -c "import json,sys; print(json.load(sys.stdin).get('html_url',''))")
@@ -162,43 +113,69 @@ stages:
               TELEGRAM_BOT_TOKEN: $(TELEGRAM_BOT_TOKEN)
               TELEGRAM_CHAT_ID: $(TELEGRAM_CHAT_ID)
 
-  # ==================== DEPLOY PROD ====================
-  - stage: DeployProd
-    displayName: "Deploy PROD"
-    dependsOn: Build
+  # ==================== DEPLOY PROD (branch main) ====================
+  - template: templates/stage-deploy.yml@templates
+    parameters:
+      stageId: DeployProd
+      appName: NexaLume
+      containerName: nexalume-prod
+      imageName: nexalumedigital
+      domain: nexalumedigital.com.br
+      port: "3000"
+      coolifyAppId: "8"
+      coolifyUuid: z91kut1jw73xy8oocq95c1e0
+      coolifyResourceName: nexalume-prod
+      coolifyProjectName: "nexa-lume-digital"
+      coolifyEnvironment: production
+      envFlags: '-e NODE_ENV=production -e "NEXT_PUBLIC_WHATSAPP_NUMBER=$(NEXT_PUBLIC_WHATSAPP_NUMBER)" -e "NEXT_PUBLIC_WHATSAPP_MESSAGE=$(NEXT_PUBLIC_WHATSAPP_MESSAGE)"'
+      envLabel: PROD
+      condition: and(succeeded(), eq(variables.IS_MAIN, true))
+
+  # ==================== REINDEX RAG (pos-deploy prod, nao bloqueia) ====================
+  - stage: ReindexRAG
+    displayName: "Reindex RAG (pos-deploy prod)"
+    dependsOn: DeployProd
     condition: and(succeeded(), eq(variables.IS_MAIN, true))
     jobs:
-      - job: DeployProdJob
-        displayName: "Deploy nexalumedigital.com.br"
+      - job: ReindexJob
+        displayName: "Trigger reindex apos deploy prod"
+        timeoutInMinutes: 5
+        continueOnError: true
         steps:
-          - template: templates/deploy-container.yml@templates
-            parameters:
-              containerName: nexalume-prod
-              imageName: nexalume-prod
-              domain: nexalumedigital.com.br
-              port: "3000"
-              coolifyAppId: "8"
-              coolifyUuid: z91kut1jw73xy8oocq95c1e0
-              coolifyResourceName: nexalume-prod
-              coolifyProjectName: nexa-lume-digital
-              coolifyEnvironment: production
-              envFlags: '-e NODE_ENV=production -e "NEXT_PUBLIC_WHATSAPP_NUMBER=$(NEXT_PUBLIC_WHATSAPP_NUMBER)" -e "NEXT_PUBLIC_WHATSAPP_MESSAGE=$(NEXT_PUBLIC_WHATSAPP_MESSAGE)"'
+          - script: |
+              set -uo pipefail
+              echo "Acionando POST /reindex..."
+              HTTP=$(curl -X POST https://rag-site.nexalumedigital.com.br/reindex \
+                -H "X-API-Key: $(REINDEX_API_KEY)" \
+                -H "Content-Type: application/json" \
+                --max-time 240 \
+                --silent --show-error \
+                --output /tmp/reindex.json \
+                --write-out "%{http_code}")
 
-          - template: templates/notify-result.yml@templates
-            parameters:
-              appName: NexaLume
-              containerName: nexalume-prod
-              domain: nexalumedigital.com.br
-              envLabel: PROD
+              echo "HTTP $HTTP"
+              cat /tmp/reindex.json || true
+              echo ""
 
-  # ==================== SYNC develop (after PROD deploy) ====================
+              if [ "$HTTP" != "200" ]; then
+                echo "Reindex retornou HTTP $HTTP — deploy prossegue, RAG ficou com snapshot anterior"
+                exit 0
+              fi
+
+              echo "Reindex concluido com sucesso"
+            displayName: "POST /reindex"
+            env:
+              REINDEX_API_KEY: $(REINDEX_API_KEY)
+
+  # ==================== SYNC develop (after direct PROD deploy) ====================
   - stage: SyncDevelop
     displayName: "Sync develop ← main"
     dependsOn: DeployProd
-    condition: succeeded()
+    condition: and(succeeded(), eq(variables.IS_MAIN, true))
     jobs:
       - job: SyncJob
         displayName: "Sync develop with main"
+        timeoutInMinutes: 5
         steps:
           - checkout: self
             persistCredentials: true
