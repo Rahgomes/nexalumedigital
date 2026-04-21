@@ -73,18 +73,27 @@ stages:
               COMMIT_SHORT=$(git rev-parse --short HEAD)
               COMMIT_MSG=$(git log -1 --pretty=%s)
 
-              EXISTING_PR=$(curl -s \
+              EXISTING_RESPONSE=$(curl -s \
                 -H "Authorization: token $(GITHUB_PAT)" \
-                "https://api.github.com/repos/Rahgomes/nexalumedigital/pulls?state=open&head=Rahgomes:develop&base=main" \
-                | python3 -c "import json,sys; prs=json.load(sys.stdin); print(prs[0]['number'] if prs else '')" 2>/dev/null || echo "")
+                -H "Accept: application/vnd.github+json" \
+                "https://api.github.com/repos/Rahgomes/nexalumedigital/pulls?state=open&head=Rahgomes:develop&base=main")
+              EXISTING_PR=$(echo "$EXISTING_RESPONSE" | python3 -c "
+              import json,sys
+              try:
+                  prs=json.load(sys.stdin)
+                  print(prs[0]['number'] if isinstance(prs, list) and prs else '')
+              except Exception:
+                  print('')
+              ")
 
               if [ -n "$EXISTING_PR" ]; then
                 echo "PR #$EXISTING_PR already open — skipping creation"
                 PR_URL="https://github.com/Rahgomes/nexalumedigital/pull/$EXISTING_PR"
               else
                 echo "Creating PR develop → main..."
-                PR_URL=$(curl -s -X POST \
+                CREATE_RESPONSE=$(curl -s -X POST \
                   -H "Authorization: token $(GITHUB_PAT)" \
+                  -H "Accept: application/vnd.github+json" \
                   -H "Content-Type: application/json" \
                   "https://api.github.com/repos/Rahgomes/nexalumedigital/pulls" \
                   -d "{
@@ -92,7 +101,24 @@ stages:
                     \"body\": \"## Deploy para Producao\n\nCommit: \`$COMMIT_SHORT\` — $COMMIT_MSG\n\nDEV validado em https://dev.nexalumedigital.com.br\n\n> Aprovar e mergear para acionar deploy em PROD.\",
                     \"head\": \"develop\",
                     \"base\": \"main\"
-                  }" | python3 -c "import json,sys; print(json.load(sys.stdin).get('html_url',''))")
+                  }")
+                PR_URL=$(echo "$CREATE_RESPONSE" | python3 -c "
+              import json,sys
+              try:
+                  d=json.load(sys.stdin)
+                  url=d.get('html_url')
+                  if url:
+                      print(url)
+                  else:
+                      sys.stderr.write('GitHub API error: ' + json.dumps(d) + chr(10))
+              except Exception as e:
+                  sys.stderr.write('Failed to parse response: ' + str(e) + chr(10))
+              ")
+                if [ -z "$PR_URL" ]; then
+                  echo "ERROR: PR creation failed. Raw response:"
+                  echo "$CREATE_RESPONSE"
+                  exit 1
+                fi
                 echo "PR created: $PR_URL"
               fi
 
@@ -176,15 +202,20 @@ stages:
         steps:
           - checkout: self
             persistCredentials: true
-            displayName: "Checkout source code"
+            fetchDepth: 0
+            displayName: "Checkout source code (full history)"
 
           - script: |
               set -euo pipefail
               git config user.name "Azure DevOps Pipeline"
               git config user.email "pipeline@rahz1n.dev"
 
-              echo "Fetching all branches..."
-              git fetch origin
+              echo "Ensuring full history (unshallow if needed)..."
+              if [ -f "$(git rev-parse --git-dir)/shallow" ]; then
+                git fetch --unshallow origin || git fetch origin
+              else
+                git fetch origin
+              fi
 
               echo "Checking out develop and aligning to origin/develop..."
               git checkout develop
