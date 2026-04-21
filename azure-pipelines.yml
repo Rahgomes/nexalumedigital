@@ -11,9 +11,18 @@ pr: none
 pool:
   name: rah-self-hosted
 
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: Rahgomes/rah-pipeline-templates
+      ref: main
+      endpoint: Rahgomes
+
 variables:
   - group: Telegram-Rah-Automation-Notifier-Credentials
   - group: NexaLume-Credentials
+  - group: RagNexalume-Credentials
   - name: APP_NAME
     value: "NexaLume"
   - name: IS_MAIN
@@ -23,153 +32,38 @@ variables:
 
 stages:
   # ==================== BUILD ====================
-  - stage: Build
-    displayName: "Build Docker Image"
-    jobs:
-      - job: BuildJob
-        displayName: "Build"
-        steps:
-          - checkout: self
-            displayName: "Checkout source code"
+  - template: templates/stage-build.yml@templates
+    parameters:
+      appName: NexaLume
+      imageName: nexalumedigital
 
-          - script: |
-              set -euo pipefail
-              COMMIT_SHORT=$(git rev-parse --short HEAD)
-              COMMIT_MSG=$(git log -1 --pretty=%s)
-              BRANCH=$(Build.SourceBranchName)
-              echo "##vso[task.setvariable variable=COMMIT_SHORT]$COMMIT_SHORT"
-              echo "##vso[task.setvariable variable=COMMIT_MSG]$COMMIT_MSG"
-
-              if [ "$BRANCH" = "main" ]; then
-                ENV_LABEL="PROD"
-              else
-                ENV_LABEL="DEV"
-              fi
-              echo "##vso[task.setvariable variable=ENV_LABEL]$ENV_LABEL"
-
-              curl -s -X POST \
-                "https://api.telegram.org/bot$(TELEGRAM_BOT_TOKEN)/sendMessage" \
-                -H "Content-Type: application/json" \
-                -d "{
-                  \"chat_id\": \"$(TELEGRAM_CHAT_ID)\",
-                  \"text\": \"🔄 <b>DEPLOY $(APP_NAME) [$ENV_LABEL] INICIADO</b>\nBranch: <code>$BRANCH</code>\nCommit: <code>$COMMIT_SHORT</code> — $COMMIT_MSG\",
-                  \"parse_mode\": \"HTML\"
-                }" > /dev/null
-            displayName: "Notify deploy started"
-            env:
-              TELEGRAM_BOT_TOKEN: $(TELEGRAM_BOT_TOKEN)
-              TELEGRAM_CHAT_ID: $(TELEGRAM_CHAT_ID)
-
-          - script: |
-              set -euo pipefail
-              BRANCH=$(Build.SourceBranchName)
-
-              if [ "$BRANCH" = "main" ]; then
-                IMAGE_NAME="nexalume-prod"
-              else
-                IMAGE_NAME="nexalume-dev"
-              fi
-              echo "##vso[task.setvariable variable=IMAGE_NAME]$IMAGE_NAME"
-
-              echo "Building Docker image: $IMAGE_NAME..."
-              docker build -t $IMAGE_NAME:$(Build.BuildId) -t $IMAGE_NAME:latest .
-              echo "Build completed successfully"
-              docker images $IMAGE_NAME --format "table {{.Tag}}\t{{.Size}}\t{{.CreatedAt}}" | head -5
-            displayName: "Build Docker image"
-
-  # ==================== DEPLOY DEV ====================
-  - stage: DeployDev
-    displayName: "Deploy DEV"
-    dependsOn: Build
-    condition: and(succeeded(), eq(variables.IS_DEVELOP, true))
-    jobs:
-      - job: DeployDevJob
-        displayName: "Deploy dev.nexalumedigital.com.br"
-        steps:
-          - script: |
-              set -euo pipefail
-              echo "Stopping current DEV container..."
-              docker stop nexalume-dev 2>/dev/null || true
-              docker rm nexalume-dev 2>/dev/null || true
-              # Remove old Coolify-managed containers (migration)
-              for c in $(docker ps -a --filter "name=y0gkwc84cg848o4g8gsswcsc" --format "{{.Names}}"); do
-                docker stop "$c" 2>/dev/null || true
-                docker rm "$c" 2>/dev/null || true
-              done
-
-              echo "Starting new DEV container..."
-              docker run -d \
-                --name nexalume-dev \
-                --restart unless-stopped \
-                --network coolify \
-                -e NODE_ENV=production \
-                -e "NEXT_PUBLIC_WHATSAPP_NUMBER=$(NEXT_PUBLIC_WHATSAPP_NUMBER)" \
-                -e "NEXT_PUBLIC_WHATSAPP_MESSAGE=$(NEXT_PUBLIC_WHATSAPP_MESSAGE)" \
-                -l "traefik.enable=true" \
-                -l "traefik.http.routers.nexalume-dev.rule=Host(\`dev.nexalumedigital.com.br\`)" \
-                -l "traefik.http.routers.nexalume-dev.entrypoints=https" \
-                -l "traefik.http.routers.nexalume-dev.tls=true" \
-                -l "traefik.http.routers.nexalume-dev.tls.certresolver=letsencrypt" \
-                -l "traefik.http.services.nexalume-dev.loadbalancer.server.port=3000" \
-                -l "coolify.managed=true" \
-                -l "coolify.applicationId=1" \
-                -l "coolify.type=application" \
-                -l "coolify.name=y0gkwc84cg848o4g8gsswcsc" \
-                -l "coolify.resourceName=nexalume-dev" \
-                -l "coolify.projectName=nexa-lume-digital" \
-                -l "coolify.environmentName=development" \
-                -l "coolify.serviceName=nexalume-dev" \
-                -l "coolify.pullRequestId=0" \
-                -l "coolify.version=4.0.0-beta.462" \
-                nexalume-dev:$(Build.BuildId)
-
-              echo "Waiting for container to be healthy..."
-              sleep 10
-              if docker ps --filter "name=nexalume-dev" --filter "status=running" | grep -q nexalume-dev; then
-                echo "Container is running"
-              else
-                echo "Container failed to start"
-                docker logs nexalume-dev --tail 50
-                exit 1
-              fi
-            displayName: "Deploy DEV container"
-            env:
-              NEXT_PUBLIC_WHATSAPP_NUMBER: $(NEXT_PUBLIC_WHATSAPP_NUMBER)
-              NEXT_PUBLIC_WHATSAPP_MESSAGE: $(NEXT_PUBLIC_WHATSAPP_MESSAGE)
-
-          - script: |
-              set -euo pipefail
-              COMMIT_SHORT=$(git rev-parse --short HEAD)
-
-              STATUS="✅"
-              TITLE="DEPLOY CONCLUÍDO"
-              if ! docker ps --filter "name=nexalume-dev" --filter "status=running" | grep -q nexalume-dev; then
-                STATUS="❌"
-                TITLE="DEPLOY FALHOU"
-              fi
-
-              curl -s -X POST \
-                "https://api.telegram.org/bot$(TELEGRAM_BOT_TOKEN)/sendMessage" \
-                -H "Content-Type: application/json" \
-                -d "{
-                  \"chat_id\": \"$(TELEGRAM_CHAT_ID)\",
-                  \"text\": \"$STATUS <b>$TITLE — $(APP_NAME) [DEV]</b>\nCommit: <code>$COMMIT_SHORT</code>\nURL: https://dev.nexalumedigital.com.br\",
-                  \"parse_mode\": \"HTML\"
-                }" > /dev/null
-            displayName: "Notify DEV deploy result"
-            condition: always()
-            env:
-              TELEGRAM_BOT_TOKEN: $(TELEGRAM_BOT_TOKEN)
-              TELEGRAM_CHAT_ID: $(TELEGRAM_CHAT_ID)
+  # ==================== DEPLOY DEV (branch develop) ====================
+  - template: templates/stage-deploy.yml@templates
+    parameters:
+      stageId: DeployDev
+      appName: NexaLume
+      containerName: nexalume-dev
+      imageName: nexalumedigital
+      domain: dev.nexalumedigital.com.br
+      port: "3000"
+      coolifyAppId: "1"
+      coolifyUuid: y0gkwc84cg848o4g8gsswcsc
+      coolifyResourceName: nexalume-dev
+      coolifyProjectName: "nexa-lume-digital"
+      coolifyEnvironment: development
+      envFlags: '-e NODE_ENV=production -e "NEXT_PUBLIC_WHATSAPP_NUMBER=$(NEXT_PUBLIC_WHATSAPP_NUMBER)" -e "NEXT_PUBLIC_WHATSAPP_MESSAGE=$(NEXT_PUBLIC_WHATSAPP_MESSAGE)"'
+      envLabel: DEV
+      condition: and(succeeded(), eq(variables.IS_DEVELOP, true))
 
   # ==================== AUTO PR (develop → main) ====================
   - stage: CreatePR
     displayName: "Create PR to PROD"
     dependsOn: DeployDev
-    condition: succeeded()
+    condition: and(succeeded(), eq(variables.IS_DEVELOP, true))
     jobs:
       - job: CreatePRJob
         displayName: "Open PR develop → main"
+        timeoutInMinutes: 5
         steps:
           - checkout: self
             displayName: "Checkout source code"
@@ -179,7 +73,6 @@ stages:
               COMMIT_SHORT=$(git rev-parse --short HEAD)
               COMMIT_MSG=$(git log -1 --pretty=%s)
 
-              # Check if PR already exists
               EXISTING_PR=$(curl -s \
                 -H "Authorization: token $(GITHUB_PAT)" \
                 "https://api.github.com/repos/Rahgomes/nexalumedigital/pulls?state=open&head=Rahgomes:develop&base=main" \
@@ -196,14 +89,13 @@ stages:
                   "https://api.github.com/repos/Rahgomes/nexalumedigital/pulls" \
                   -d "{
                     \"title\": \"Deploy PROD — $COMMIT_MSG\",
-                    \"body\": \"## Deploy para Producao\n\nCommit: \`$COMMIT_SHORT\` — $COMMIT_MSG\n\nDEV validado com sucesso em https://dev.nexalumedigital.com.br\n\n> Aprovar e mergear para acionar deploy em PROD.\",
+                    \"body\": \"## Deploy para Producao\n\nCommit: \`$COMMIT_SHORT\` — $COMMIT_MSG\n\nDEV validado em https://dev.nexalumedigital.com.br\n\n> Aprovar e mergear para acionar deploy em PROD.\",
                     \"head\": \"develop\",
                     \"base\": \"main\"
                   }" | python3 -c "import json,sys; print(json.load(sys.stdin).get('html_url',''))")
                 echo "PR created: $PR_URL"
               fi
 
-              # Notify on Telegram
               curl -s -X POST \
                 "https://api.telegram.org/bot$(TELEGRAM_BOT_TOKEN)/sendMessage" \
                 -H "Content-Type: application/json" \
@@ -218,94 +110,69 @@ stages:
               TELEGRAM_BOT_TOKEN: $(TELEGRAM_BOT_TOKEN)
               TELEGRAM_CHAT_ID: $(TELEGRAM_CHAT_ID)
 
-  # ==================== DEPLOY PROD ====================
-  - stage: DeployProd
-    displayName: "Deploy PROD"
-    dependsOn: Build
+  # ==================== DEPLOY PROD (branch main) ====================
+  - template: templates/stage-deploy.yml@templates
+    parameters:
+      stageId: DeployProd
+      appName: NexaLume
+      containerName: nexalume-prod
+      imageName: nexalumedigital
+      domain: nexalumedigital.com.br
+      port: "3000"
+      coolifyAppId: "8"
+      coolifyUuid: z91kut1jw73xy8oocq95c1e0
+      coolifyResourceName: nexalume-prod
+      coolifyProjectName: "nexa-lume-digital"
+      coolifyEnvironment: production
+      envFlags: '-e NODE_ENV=production -e "NEXT_PUBLIC_WHATSAPP_NUMBER=$(NEXT_PUBLIC_WHATSAPP_NUMBER)" -e "NEXT_PUBLIC_WHATSAPP_MESSAGE=$(NEXT_PUBLIC_WHATSAPP_MESSAGE)"'
+      envLabel: PROD
+      condition: and(succeeded(), eq(variables.IS_MAIN, true))
+
+  # ==================== REINDEX RAG (pos-deploy prod, nao bloqueia) ====================
+  - stage: ReindexRAG
+    displayName: "Reindex RAG (pos-deploy prod)"
+    dependsOn: DeployProd
     condition: and(succeeded(), eq(variables.IS_MAIN, true))
     jobs:
-      - job: DeployProdJob
-        displayName: "Deploy nexalumedigital.com.br"
+      - job: ReindexJob
+        displayName: "Trigger reindex apos deploy prod"
+        timeoutInMinutes: 5
+        continueOnError: true
         steps:
           - script: |
-              set -euo pipefail
-              echo "Stopping current PROD container..."
-              docker stop nexalume-prod 2>/dev/null || true
-              docker rm nexalume-prod 2>/dev/null || true
-
-              echo "Starting new PROD container..."
-              docker run -d \
-                --name nexalume-prod \
-                --restart unless-stopped \
-                --network coolify \
-                -e NODE_ENV=production \
-                -e "NEXT_PUBLIC_WHATSAPP_NUMBER=$(NEXT_PUBLIC_WHATSAPP_NUMBER)" \
-                -e "NEXT_PUBLIC_WHATSAPP_MESSAGE=$(NEXT_PUBLIC_WHATSAPP_MESSAGE)" \
-                -l "traefik.enable=true" \
-                -l "traefik.http.routers.nexalume-prod.rule=Host(\`nexalumedigital.com.br\`)" \
-                -l "traefik.http.routers.nexalume-prod.entrypoints=https" \
-                -l "traefik.http.routers.nexalume-prod.tls=true" \
-                -l "traefik.http.routers.nexalume-prod.tls.certresolver=letsencrypt" \
-                -l "traefik.http.services.nexalume-prod.loadbalancer.server.port=3000" \
-                -l "coolify.managed=true" \
-                -l "coolify.applicationId=8" \
-                -l "coolify.type=application" \
-                -l "coolify.name=z91kut1jw73xy8oocq95c1e0" \
-                -l "coolify.resourceName=nexalume-prod" \
-                -l "coolify.projectName=nexa-lume-digital" \
-                -l "coolify.environmentName=production" \
-                -l "coolify.serviceName=nexalume-prod" \
-                -l "coolify.pullRequestId=0" \
-                -l "coolify.version=4.0.0-beta.462" \
-                nexalume-prod:$(Build.BuildId)
-
-              echo "Waiting for container to be healthy..."
-              sleep 10
-              if docker ps --filter "name=nexalume-prod" --filter "status=running" | grep -q nexalume-prod; then
-                echo "Container is running"
-              else
-                echo "Container failed to start"
-                docker logs nexalume-prod --tail 50
-                exit 1
-              fi
-            displayName: "Deploy PROD container"
-            env:
-              NEXT_PUBLIC_WHATSAPP_NUMBER: $(NEXT_PUBLIC_WHATSAPP_NUMBER)
-              NEXT_PUBLIC_WHATSAPP_MESSAGE: $(NEXT_PUBLIC_WHATSAPP_MESSAGE)
-
-          - script: |
-              set -euo pipefail
-              COMMIT_SHORT=$(git rev-parse --short HEAD)
-
-              STATUS="✅"
-              TITLE="DEPLOY CONCLUÍDO"
-              if ! docker ps --filter "name=nexalume-prod" --filter "status=running" | grep -q nexalume-prod; then
-                STATUS="❌"
-                TITLE="DEPLOY FALHOU"
-              fi
-
-              curl -s -X POST \
-                "https://api.telegram.org/bot$(TELEGRAM_BOT_TOKEN)/sendMessage" \
+              set -uo pipefail
+              echo "Acionando POST /reindex..."
+              HTTP=$(curl -X POST https://rag-site.nexalumedigital.com.br/reindex \
+                -H "X-API-Key: $(REINDEX_API_KEY)" \
                 -H "Content-Type: application/json" \
-                -d "{
-                  \"chat_id\": \"$(TELEGRAM_CHAT_ID)\",
-                  \"text\": \"$STATUS <b>$TITLE — $(APP_NAME) [PROD]</b>\nCommit: <code>$COMMIT_SHORT</code>\nURL: https://nexalumedigital.com.br\",
-                  \"parse_mode\": \"HTML\"
-                }" > /dev/null
-            displayName: "Notify PROD deploy result"
-            condition: always()
+                --max-time 240 \
+                --silent --show-error \
+                --output /tmp/reindex.json \
+                --write-out "%{http_code}")
+
+              echo "HTTP $HTTP"
+              cat /tmp/reindex.json || true
+              echo ""
+
+              if [ "$HTTP" != "200" ]; then
+                echo "Reindex retornou HTTP $HTTP — deploy prossegue, RAG ficou com snapshot anterior"
+                exit 0
+              fi
+
+              echo "Reindex concluido com sucesso"
+            displayName: "POST /reindex"
             env:
-              TELEGRAM_BOT_TOKEN: $(TELEGRAM_BOT_TOKEN)
-              TELEGRAM_CHAT_ID: $(TELEGRAM_CHAT_ID)
+              REINDEX_API_KEY: $(REINDEX_API_KEY)
 
   # ==================== SYNC develop (after direct PROD deploy) ====================
   - stage: SyncDevelop
     displayName: "Sync develop ← main"
     dependsOn: DeployProd
-    condition: succeeded()
+    condition: and(succeeded(), eq(variables.IS_MAIN, true))
     jobs:
       - job: SyncJob
         displayName: "Sync develop with main"
+        timeoutInMinutes: 5
         steps:
           - checkout: self
             persistCredentials: true
