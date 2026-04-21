@@ -29,8 +29,6 @@ variables:
     value: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
   - name: IS_DEVELOP
     value: $[eq(variables['Build.SourceBranch'], 'refs/heads/develop')]
-  - name: imageTagSuffix
-    value: $[ replace(replace(variables['Build.SourceBranch'], 'refs/heads/', ''), '/', '-') ]
 
 stages:
   # ==================== BUILD ====================
@@ -38,7 +36,6 @@ stages:
     parameters:
       appName: NexaLume
       imageName: nexalumedigital
-      envLabel: ${{ variables.imageTagSuffix }}
 
   # ==================== DEPLOY DEV (branch develop) ====================
   - template: templates/stage-deploy.yml@templates
