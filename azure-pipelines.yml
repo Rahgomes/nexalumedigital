@@ -186,11 +186,11 @@ stages:
               echo "Fetching all branches..."
               git fetch origin
 
-              echo "Checking out develop..."
+              echo "Checking out develop and aligning to origin/develop..."
               git checkout develop
-              git pull origin develop
+              git reset --hard origin/develop
 
-              echo "Merging main into develop..."
+              echo "Merging origin/main into develop..."
               if git merge origin/main --no-edit; then
                 git push origin develop
                 echo "develop synced with main successfully"
