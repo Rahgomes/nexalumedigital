@@ -4,7 +4,6 @@ trigger:
   branches:
     include:
       - main
-      - develop
 
 pr: none
 
@@ -22,13 +21,10 @@ resources:
 variables:
   - group: Telegram-Rah-Automation-Notifier-Credentials
   - group: NexaLume-Credentials
-  - group: RagNexalume-Credentials
   - name: APP_NAME
     value: "NexaLume"
   - name: IS_MAIN
     value: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
-  - name: IS_DEVELOP
-    value: $[eq(variables['Build.SourceBranch'], 'refs/heads/develop')]
 
 stages:
   # ==================== BUILD ====================
@@ -36,105 +32,6 @@ stages:
     parameters:
       appName: NexaLume
       imageName: nexalumedigital
-
-  # ==================== DEPLOY DEV (branch develop) ====================
-  - template: templates/stage-deploy.yml@templates
-    parameters:
-      stageId: DeployDev
-      appName: NexaLume
-      containerName: nexalume-dev
-      imageName: nexalumedigital
-      domain: dev.nexalumedigital.com.br
-      port: "3000"
-      coolifyAppId: "1"
-      coolifyUuid: y0gkwc84cg848o4g8gsswcsc
-      coolifyResourceName: nexalume-dev
-      coolifyProjectName: "nexa-lume-digital"
-      coolifyEnvironment: development
-      envFlags: '-e NODE_ENV=production -e "NEXT_PUBLIC_WHATSAPP_NUMBER=$(NEXT_PUBLIC_WHATSAPP_NUMBER)" -e "NEXT_PUBLIC_WHATSAPP_MESSAGE=$(NEXT_PUBLIC_WHATSAPP_MESSAGE)"'
-      envLabel: DEV
-      condition: and(succeeded(), eq(variables.IS_DEVELOP, true))
-
-  # ==================== AUTO PR (develop → main) ====================
-  - stage: CreatePR
-    displayName: "Create PR to PROD"
-    dependsOn: DeployDev
-    condition: and(succeeded(), eq(variables.IS_DEVELOP, true))
-    jobs:
-      - job: CreatePRJob
-        displayName: "Open PR develop → main"
-        timeoutInMinutes: 5
-        steps:
-          - checkout: self
-            displayName: "Checkout source code"
-
-          - script: |
-              set -euo pipefail
-              COMMIT_SHORT=$(git rev-parse --short HEAD)
-              COMMIT_MSG=$(git log -1 --pretty=%s)
-
-              EXISTING_RESPONSE=$(curl -s \
-                -H "Authorization: token $(GITHUB_PAT)" \
-                -H "Accept: application/vnd.github+json" \
-                "https://api.github.com/repos/Rahgomes/nexalumedigital/pulls?state=open&head=Rahgomes:develop&base=main")
-              EXISTING_PR=$(echo "$EXISTING_RESPONSE" | python3 -c "
-              import json,sys
-              try:
-                  prs=json.load(sys.stdin)
-                  print(prs[0]['number'] if isinstance(prs, list) and prs else '')
-              except Exception:
-                  print('')
-              ")
-
-              if [ -n "$EXISTING_PR" ]; then
-                echo "PR #$EXISTING_PR already open — skipping creation"
-                PR_URL="https://github.com/Rahgomes/nexalumedigital/pull/$EXISTING_PR"
-              else
-                echo "Creating PR develop → main..."
-                CREATE_RESPONSE=$(curl -s -X POST \
-                  -H "Authorization: token $(GITHUB_PAT)" \
-                  -H "Accept: application/vnd.github+json" \
-                  -H "Content-Type: application/json" \
-                  "https://api.github.com/repos/Rahgomes/nexalumedigital/pulls" \
-                  -d "{
-                    \"title\": \"Deploy PROD — $COMMIT_MSG\",
-                    \"body\": \"## Deploy para Producao\n\nCommit: \`$COMMIT_SHORT\` — $COMMIT_MSG\n\nDEV validado em https://dev.nexalumedigital.com.br\n\n> Aprovar e mergear para acionar deploy em PROD.\",
-                    \"head\": \"develop\",
-                    \"base\": \"main\"
-                  }")
-                PR_URL=$(echo "$CREATE_RESPONSE" | python3 -c "
-              import json,sys
-              try:
-                  d=json.load(sys.stdin)
-                  url=d.get('html_url')
-                  if url:
-                      print(url)
-                  else:
-                      sys.stderr.write('GitHub API error: ' + json.dumps(d) + chr(10))
-              except Exception as e:
-                  sys.stderr.write('Failed to parse response: ' + str(e) + chr(10))
-              ")
-                if [ -z "$PR_URL" ]; then
-                  echo "ERROR: PR creation failed. Raw response:"
-                  echo "$CREATE_RESPONSE"
-                  exit 1
-                fi
-                echo "PR created: $PR_URL"
-              fi
-
-              curl -s -X POST \
-                "https://api.telegram.org/bot$(TELEGRAM_BOT_TOKEN)/sendMessage" \
-                -H "Content-Type: application/json" \
-                -d "{
-                  \"chat_id\": \"$(TELEGRAM_CHAT_ID)\",
-                  \"text\": \"📋 <b>PR CRIADO — $(APP_NAME)</b>\nDEV ok. Aprovar para deploy em PROD:\n$PR_URL\",
-                  \"parse_mode\": \"HTML\"
-                }" > /dev/null
-            displayName: "Create or update PR"
-            env:
-              GITHUB_PAT: $(GITHUB_PAT)
-              TELEGRAM_BOT_TOKEN: $(TELEGRAM_BOT_TOKEN)
-              TELEGRAM_CHAT_ID: $(TELEGRAM_CHAT_ID)
 
   # ==================== DEPLOY PROD (branch main) ====================
   - template: templates/stage-deploy.yml@templates
@@ -152,103 +49,6 @@ stages:
       coolifyEnvironment: production
       envFlags: '-e NODE_ENV=production -e "NEXT_PUBLIC_WHATSAPP_NUMBER=$(NEXT_PUBLIC_WHATSAPP_NUMBER)" -e "NEXT_PUBLIC_WHATSAPP_MESSAGE=$(NEXT_PUBLIC_WHATSAPP_MESSAGE)"'
       envLabel: PROD
+      # Roda na Contabo desde 21/11/2026 (DOCKER_HOST via VPN).
+      dockerHost: "ssh://contabo-docker"
       condition: and(succeeded(), eq(variables.IS_MAIN, true))
-
-  # ==================== REINDEX RAG (pos-deploy prod, nao bloqueia) ====================
-  - stage: ReindexRAG
-    displayName: "Reindex RAG (pos-deploy prod)"
-    dependsOn: DeployProd
-    condition: and(succeeded(), eq(variables.IS_MAIN, true))
-    jobs:
-      - job: ReindexJob
-        displayName: "Trigger reindex apos deploy prod"
-        timeoutInMinutes: 5
-        continueOnError: true
-        steps:
-          - script: |
-              set -uo pipefail
-              echo "Acionando POST /reindex..."
-              HTTP=$(curl -X POST https://rag-site.nexalumedigital.com.br/reindex \
-                -H "X-API-Key: $(REINDEX_API_KEY)" \
-                -H "Content-Type: application/json" \
-                --max-time 240 \
-                --silent --show-error \
-                --output /tmp/reindex.json \
-                --write-out "%{http_code}")
-
-              echo "HTTP $HTTP"
-              cat /tmp/reindex.json || true
-              echo ""
-
-              if [ "$HTTP" != "200" ]; then
-                echo "Reindex retornou HTTP $HTTP — deploy prossegue, RAG ficou com snapshot anterior"
-                exit 0
-              fi
-
-              echo "Reindex concluido com sucesso"
-            displayName: "POST /reindex"
-            env:
-              REINDEX_API_KEY: $(REINDEX_API_KEY)
-
-  # ==================== SYNC develop (after direct PROD deploy) ====================
-  - stage: SyncDevelop
-    displayName: "Sync develop ← main"
-    dependsOn: DeployProd
-    condition: and(succeeded(), eq(variables.IS_MAIN, true))
-    jobs:
-      - job: SyncJob
-        displayName: "Sync develop with main"
-        timeoutInMinutes: 5
-        steps:
-          - checkout: self
-            persistCredentials: true
-            fetchDepth: 0
-            displayName: "Checkout source code (full history)"
-
-          - script: |
-              set -euo pipefail
-              git config user.name "Azure DevOps Pipeline"
-              git config user.email "pipeline@rahz1n.dev"
-
-              echo "Ensuring full history (unshallow if needed)..."
-              if [ -f "$(git rev-parse --git-dir)/shallow" ]; then
-                git fetch --unshallow origin || git fetch origin
-              else
-                git fetch origin
-              fi
-
-              echo "Checking out develop and aligning to origin/develop..."
-              git checkout develop
-              git reset --hard origin/develop
-
-              echo "Merging origin/main into develop..."
-              if git merge origin/main --no-edit; then
-                git push origin develop
-                echo "develop synced with main successfully"
-
-                curl -s -X POST \
-                  "https://api.telegram.org/bot$(TELEGRAM_BOT_TOKEN)/sendMessage" \
-                  -H "Content-Type: application/json" \
-                  -d "{
-                    \"chat_id\": \"$(TELEGRAM_CHAT_ID)\",
-                    \"text\": \"🔄 <b>SYNC — $(APP_NAME)</b>\nBranch develop sincronizada com main.\",
-                    \"parse_mode\": \"HTML\"
-                  }" > /dev/null
-              else
-                echo "Merge conflict — manual resolution needed"
-                git merge --abort
-
-                curl -s -X POST \
-                  "https://api.telegram.org/bot$(TELEGRAM_BOT_TOKEN)/sendMessage" \
-                  -H "Content-Type: application/json" \
-                  -d "{
-                    \"chat_id\": \"$(TELEGRAM_CHAT_ID)\",
-                    \"text\": \"⚠️ <b>SYNC FALHOU — $(APP_NAME)</b>\nConflito ao mergear main → develop. Resolver manualmente.\",
-                    \"parse_mode\": \"HTML\"
-                  }" > /dev/null
-                exit 1
-              fi
-            displayName: "Merge main into develop"
-            env:
-              TELEGRAM_BOT_TOKEN: $(TELEGRAM_BOT_TOKEN)
-              TELEGRAM_CHAT_ID: $(TELEGRAM_CHAT_ID)
